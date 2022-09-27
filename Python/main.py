@@ -29,7 +29,7 @@ def MatrizTransicciones(e,c):
 
 
     
-
+#LEER CARACTER
 pos=0
 def leerCaracter (t,p):
     c = ord(texto[p])
@@ -57,6 +57,8 @@ caracterLeido = leerCaracter(texto,pos)
 transiccion = MatrizTransicciones(estadoActual,caracterLeido)
 print(transiccion)
 """
+
+#TRANSICIONES
 transiccion = MatrizTransicciones(estadoInicial,caracterLeido)
 for x in texto:
     print(caracterLeido)
