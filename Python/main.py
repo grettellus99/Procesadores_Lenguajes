@@ -17,8 +17,15 @@ def MatrizTransicciones(e,c):
         if c == 97:
             accion = 2
             estadoSig = "B"
+    if e =="A":
+        if c == 111:
+            accion = 3
+            estadoSig = "C"
+        if c == 97:
+            accion = 4
+            estadoSig = "Otra"
 
-    return accion,estadoSig
+    return accion,estadoSig, "hola"
 
 
     
@@ -26,20 +33,40 @@ def MatrizTransicciones(e,c):
 pos=0
 def leerCaracter (t,p):
     c = ord(texto[p])
+    global pos
+    pos = pos+1
     return c
+
 
 
 
 token = Token()
 texto = input("CÓDIGO: ")
 estadoInicial ="S"
+print("Elemento posicion= ",pos)
 caracterLeido = leerCaracter(texto,pos)
 
+"""
 transiccion = MatrizTransicciones(estadoInicial,caracterLeido)
-
+estadoActual = transiccion[1]
+accionARealizar = transiccion[0]
 print(transiccion)
-print(chr(232))
-print(chr(138))
+caracterLeido = leerCaracter(texto,pos)
+
+
+transiccion = MatrizTransicciones(estadoActual,caracterLeido)
+print(transiccion)
+"""
+transiccion = MatrizTransicciones(estadoInicial,caracterLeido)
+for x in texto:
+    print(caracterLeido)
+    estadoActual = transiccion[1]
+    accionARealizar = transiccion[0]
+    print(transiccion)    
+    print("Posicion=",pos)
+    caracterLeido = leerCaracter(texto,pos)
+    transiccion = MatrizTransicciones(estadoActual,caracterLeido)
+
 
 
 
