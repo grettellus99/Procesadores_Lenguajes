@@ -3,9 +3,9 @@ import array
 
 
 # TIPOS de caracteres que pueden entrar
-letras = list(range(97,122+1)) + list(range(65,90+1))
+letras = list(range(97,122+1)) + list(range(65,90+1)) + list(range(95,96))
 digitos = range(0,9+1)
-#32=espacio 
+                      #32=espacio 
 delimitadores = [32]
 palabrasReservadas = ["switch", "case", "default", "break", "let", "int", 
                     "boolean", "string", "if", "function", 
@@ -49,6 +49,7 @@ def MatrizTransicciones(e,c):
         if c in digitos:
             accion = 5
             estadoSig = "C"
+            #_
         if c == 95:
             accion = 6
             estadoSig = "C"
@@ -57,19 +58,21 @@ def MatrizTransicciones(e,c):
             estadoSig = "K"
         if c == 47:
             accion = 8
-            estadoSig = "E"  #-->--->---->POR AQUI<-----<----<--
+            estadoSig = "E"
+        if c == 59:
+            accion = 24
+            estadoSig = "W"
+          #-->--->---->POR AQUI<-----<----<--
+        else:
+            print("Caracter no valido para el Estado en el que estás")
     
 
     # A
     if e =="A":
-        if c == 111:
-            accion = 3
-            estadoSig = "C"
-        if c == 97:
-            accion = 4
-            estadoSig = "Otra"
+        
 
     # B
+
     # C
     # D
     # E
