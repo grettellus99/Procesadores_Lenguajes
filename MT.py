@@ -31,6 +31,7 @@ def esreservada(palabra):
     return esreservada
 
 
+
 # ***MATRIZ AFD***
 lexema="" #Vaciarlo cuando se genere el token 
 valor=0   # ""
@@ -39,6 +40,7 @@ def MatrizTransicciones(e,c):
 
     accion=0
     estadoSig=e
+    estadoFinal = False
 
     #----------CASILLAS MATRIZ AFD---------
     # S
@@ -91,8 +93,10 @@ def MatrizTransicciones(e,c):
         if c == delimitadores:
             accion = 21 
             estadoSig = "S"
+        else:
+            print("El caracter", c," no es valido para el estado", e)
     # A
-    if e =="S":
+    if e =="A":
         if c in letras:
             accion = 3
             estadoSig = "A"
@@ -105,9 +109,13 @@ def MatrizTransicciones(e,c):
         #OTHER CHARACTER CASO
             #accion = 4
             #estadoSig = "B"
+        else:
+            accion=4
+            estadoSig = "B"
     # B
-  # if e =="B":
-        #ESTADO FINAL
+    if e =="B":
+        estadoFinal= True
+        #vaciar Lexema y valor
     
 
     # C
@@ -219,7 +227,7 @@ def MatrizTransicciones(e,c):
 
 
     
-    return accion,estadoSig, "hola"
+    return accion,estadoSig, estadoFinal
 
 
 print("funciona")

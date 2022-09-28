@@ -64,10 +64,18 @@ for x in texto:
     print(caracterLeido)
     estadoActual = transiccion[1]
     accionARealizar = transiccion[0]
+    esFinal = transiccion[2]
     print(transiccion)    
     print("Posicion=",pos)
+
+    #Si es estado final, volvemos a S
+    if esFinal:
+        estadoActual = estadoInicial
+        
     caracterLeido = leerCaracter(texto,pos)
     transiccion = MatrizTransicciones(estadoActual,caracterLeido)
+
+
 
 
 
