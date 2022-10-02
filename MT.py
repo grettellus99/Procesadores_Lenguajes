@@ -59,7 +59,7 @@ def MatrizTransicciones(e,c):
             estadoSig = "K"
         if c == 47:       #if c == /
             accion = 8
-            estadoSig = "E"  #-->--->---->POR AQUI<-----<----<--
+            estadoSig = "E"  
         if c == 59:       #if c == ;
             accion = 24
             estadoSig = "W"
@@ -90,7 +90,7 @@ def MatrizTransicciones(e,c):
         if c == 61:       #if c ==   =
             accion = 12
             estadoSig = "H"
-        if c == delimitadores:
+        if c in delimitadores:
             accion = 21 
             estadoSig = "S"
         else:
@@ -123,26 +123,36 @@ def MatrizTransicciones(e,c):
         if c == 95:       #if c == _
             accion = 6
             estadoSig = "C"
+        else:
+            accion = 7
+            estadoSig = "D"
+
     # D
-  # if e =="D":
-        #ESTADO FINAL
+    if e =="D":
+        estadoFinal = True
+
     # E
     if e =="E":
         if c == 42:       #if c == *
             accion = 8
             estadoSig = "F"
+        else:
+            print("El caracter", c," no es valido para el estado", e)
+
     # F
     if e =="F":
-        if c == c1:       #if c ==  C1
+        if c in c1:       #if c ==  C1
             accion = 8
             estadoSig = "F"
         if c == 42:       #if c == *
             accion = 8
             estadoSig = "G"
+        else:
+            print("El caracter", c," no es valido para el estado", e)
         
     # G
     if e =="G":
-        if c == c2:       #if c ==  C2
+        if c in c2:       #if c ==  C2
             accion = 8
             estadoSig = "F"
         if c == 47:       #if c == /
@@ -151,79 +161,106 @@ def MatrizTransicciones(e,c):
         if c == 42:       #if c == *
             accion = 8
             estadoSig = "G"
+        else:
+            print("El caracter", c," no es valido para el estado", e)
+
     # H
     if e =="H":
-        #OTHER CHARACTER CASO
-            #accion = 14
-            #estadoSig = "J"
+        
         if c == 41:       #if c ==   =
             accion = 13
             estadoSig = "I"
+        else:
+            accion= 14
+            estadoSig = "J"
 
     # I
-     # if e =="I":
-        #ESTADO FINAL
+    if e =="I":
+        estadoFinal = True
+    
     # J
-     # if e =="J":
-        #ESTADO FINAL
+    if e =="J":
+        estadoFinal = True
+
     # K
-    if e =="H":
-        if c == c3:       #if c ==  C3
+    if e =="K":
+        if c in c3:       #if c ==  C3
             accion = 10
             estadoSig = "K"
         if c == 34:       #if c == ""
             accion = 11
             estadoSig = "L"
+        else:
+            print("El caracter", c," no es valido para el estado", e)
+
+        
     # L
-    # if e =="L":
-        #ESTADO FINAL
+    if e =="L":
+        estadoFinal = True
+
+
     # M
     if e =="M":
-    #OTHER CHARACTER CASO
-            #accion = 17
-            #estadoSig = "O"
+
         if c == 41:       #if c ==   =
             accion = 16
             estadoSig = "N"
+        else:
+            accion = 17
+            estadoSig = "O"
     
     
     # N
-    # if e =="N":
-        #ESTADO FINAL
+    if e =="N":
+        estadoFinal = True
+
     # O
-    # if e =="O":
-        #ESTADO FINAL
+    if e =="O":
+        estadoFinal = True
     
     # P
     if e =="P":
         if c == 38:       #if c == &
             accion = 19
             estadoSig = "Q"
-    # Q
-    # if e =="Q":
-        #ESTADO FINAL
-    # R
-    # if e =="R":
-        #ESTADO FINAL
-    # T
-    # if e =="T":
-        #ESTADO FINAL
-    # U
-    # if e =="U":
-        #ESTADO FINAL
-    # V
-    # if e =="V":
-        #ESTADO FINAL
-    # W
-    # if e =="W":
-        #ESTADO FINAL
-    # X
-    # if e =="X":
-        #ESTADO FINAL
-    # Y
-    # if e =="Y":
-        #ESTADO FINAL
+        else:
+            print("El caracter", c," no es valido para el estado", e)
 
+    # Q
+    if e =="Q":
+        estadoFinal = True
+
+    # R
+    if e =="R":
+        estadoFinal = True
+
+    # T
+    if e =="T":
+        estadoFinal = True
+
+    # U
+    if e =="U":
+        estadoFinal = True  
+
+    # V
+    if e =="V":
+        estadoFinal = True
+
+    # W
+    if e =="W":
+        estadoFinal = True
+
+    # X
+    if e =="X":
+        estadoFinal = True
+
+    # Y
+    if e =="Y":
+        estadoFinal = True
+    
+    #Z
+    if e == "Z":
+        estadoFinal = True
 
 
     
