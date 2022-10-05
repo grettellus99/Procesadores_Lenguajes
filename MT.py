@@ -31,6 +31,7 @@ def esreservada(palabra):
     return esreservada
 
 
+""" COPIADO
 
 # ***MATRIZ AFD***
 lexema="" #Vaciarlo cuando se genere el token 
@@ -266,5 +267,6 @@ def MatrizTransicciones(e,c):
     
     return accion,estadoSig, estadoFinal
 
+"""
 
 print("funciona")

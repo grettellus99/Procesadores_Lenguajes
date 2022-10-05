@@ -1,48 +1,42 @@
 from ast import List
+from asyncio.windows_events import NULL
 import re
 import array
 
-"""
-letras = list(range(97,122+1)) + list(range(65,90+1))
+class EntradasTablaSimbolos():
+    def __init__(self):
+        pass
+    def setValores(self,p,n,v):
+        self.pos = p
+        self.nombre = n
+        self.valor = v
 
-for n in letras:
-    print(chr(n))
+def buscarLugarTS(ps):
+    return TablaSimbolos[ps].nombre
+def buscarLugarTSNombre(n):
+    for e in TablaSimbolos:
+        if e.nombre == n:
+            print("encontrado en posicion:", e.pos)
+            return TablaSimbolos[e.pos].nombre
 
-digitos = range(0,9+1)
+TablaSimbolos=[] 
 
-for n in digitos:
-    print(n)
+entrada = EntradasTablaSimbolos()
+entrada.setValores(0,"x",9)
+TablaSimbolos.append(entrada)
 
+try:
+    lugar = buscarLugarTS(5)
+    print(lugar)
+except:
+    print("No se ha encontrado, se inserta en la pos:",len(TablaSimbolos) )
+    entrada3 = EntradasTablaSimbolos()
+    entrada3.setValores(len(TablaSimbolos),"z", "holaMundo")
+    TablaSimbolos.append(entrada3)
+    lugar = entrada3.pos
 
-barrabaja = 95
-asterisco = 42
-mas = 43
-palabrasReservadas = ["switch", "case", "default", "break", "let", "int", 
-                    "boolean", "string", "if", "function", 
-                    "input", "print", "return" "eof"]
-def esreservada(palabra):
-    esreservada= False
-    for p in palabrasReservadas:
-        if(p==palabra):
-            esreservada = True
-    
-    return esreservada
-"""
-c1 = list(range(33,42)) + list(range(43,126+1)) + list(range(130,131))
-c2 = list(range(33,42)) + list(range(43,47)) + list(range(48,126+1))
-c3 = list(range(33,34)) + list(range(35,126+1))
+for e in TablaSimbolos:
+    print("Variable ",e.pos," = " ,e.nombre) 
 
-
-
-c= 131
-
-if c in c1:
-    print("bien")
-else:
-    print("mal")
-
-print("xao")
-
-
-
-
+posInTs=buscarLugarTSNombre("j")
+print(posInTs)
