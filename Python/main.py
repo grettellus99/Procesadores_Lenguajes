@@ -5,24 +5,109 @@ import array
 
 #----------------------TOKENS-------------------------
 class Token:
-    def __init__(self):
-            self.nombre = "variable"
-            self.valor = 0
+    def __init__(self,n,v):
+            self.nombre = n
+            self.valor = v
 
 #-----------------ACCIONES SEMANTICAS--------------------
 def accionesSemanticas (a,ctr):
-    l=""
-    v=""
+    global lexema
+    global valor
+    global listaTokens
+
     c=chr(ctr)
 
     if a == 0:
-        l= l + c
+        print("Accion no valida") 
     if a == 1:
-        v= v+ctr
+        print("leer")
+    if a == 2:
+        lexema= c
+    if a == 3:     
+        lexema= lexema + c
+    if a == 4:
+        #POR HACER
+        if lexema in palabrasReservadas:
+            token = Token(lexema, "-")
+            listaTokens.append(token)
+        else:
+           #pos = buscarLugarTS()
+            if pos >= 0:
+                token = Token(lexema, pos)
+                listaTokens.append(token)
+            else:
+               #pos = insertarTS()
+                token = Token(lexema, pos)
+                listaTokens.append(token)
+
+    if a == 5:
+        valor = c 
+    if a == 6:
+        valor= valor *10 + c
+    if a == 7:
+        if valor > 32767:
+            print("ERROR")
+        else:
+            
+            token = Token("cteEntera", valor)
+            listaTokens.append(token)
+
+    if a == 8:
+        print("leer")
+    if a == 9:
+        lexema= "" 
+    if a == 10:
+        lexema= lexema + c
+    if a == 11:
+        if len(lexema) > 64:
+            print("ERROR")
+        else:
+            token = Token("cadena", lexema)
+            listaTokens.append(token)
+    if a == 12:
+        print("leer")
+    if a == 13:
+        token = Token("asignacion", "-")
+        listaTokens.append(token)
+    if a == 14:
+        token = Token("opRelacional", 1)
+        listaTokens.append(token)
+    if a == 15:
+        print("leer")
+    if a == 16:
+        token = Token("asigMultiplicacion", "-")
+        listaTokens.append(token)
+    if a == 17:
+        token = Token("opAritmetico",1)
+        listaTokens.append(token)
+    if a == 18:
+        print("leer")
+    if a == 19:
+        token = Token("opLogico",1)
+        listaTokens.append(token)
+    
+    if a == 20:
+        token = Token("abrirParantesis","-")
+        listaTokens.append(token)
         
-
-
-    return NULL
+    if a == 21:
+        token = Token("cerrarParantesis","-")
+        listaTokens.append(token)
+    if a == 22:
+        token = Token("abrirCorchete","-")
+        listaTokens.append(token)
+    if a == 23:
+        token = Token("cerrarCorchete","-")
+        listaTokens.append(token)
+    if a == 24:
+        token = Token("ptoComa","-")
+        listaTokens.append(token)
+    if a == 25:
+        token = Token("coma","-")
+        listaTokens.append(token)
+    if a == 26:
+        token = Token("opAritmetico",2)
+        listaTokens.append(token)
 
 
 
@@ -53,51 +138,54 @@ def MatrizTransicciones(e,cct):
         if c in letras:
             accion = 2
             estadoSig = "A"
-        if c in digitos:
+        elif c in digitos:
             accion = 5
             estadoSig = "C"
-        if c == 95:       #if c == _
+        elif c == 95:       #if c == _
             accion = 2
             estadoSig = "A"
-        if c == 34:       #if c == ""
+        elif c == 34:       #if c == ""
             accion = 9
             estadoSig = "K"
-        if c == 47:       #if c == /
+        elif c == 47:       #if c == /
             accion = 8
             estadoSig = "E"  
-        if c == 59:       #if c == ;
+        elif c == 59:       #if c == ;
             accion = 24
             estadoSig = "W"
-        if c == 44:       #if c == , 
+        elif c == 44:       #if c == , 
             accion = 25
             estadoSig = "X"
-        if c == 42:       #if c == *
+        elif c == 42:       #if c == *
             accion = 15
             estadoSig = "M"
-        if c == 43:       #if c == +
-            accion = 26
-            estadoSig = "Y"
-        if c == 38:       #if c == &
+        elif c == 43:       #if c == +
+            accion = 27
+            estadoSig = "Z"
+        elif c == 38:       #if c == &
             accion = 18
             estadoSig = "P"
-        if c == 40:       #if c == (
+        elif c == 40:       #if c == (
             accion = 20
             estadoSig = "R"
-        if c == 41:       #if c == )
+        elif c == 41:       #if c == )
             accion = 21
             estadoSig = "T"
-        if c == 123:       #if c == {
+        elif c == 123:       #if c == {
             accion = 22
             estadoSig = "U"
-        if c == 125:       #if c == }
+        elif c == 125:       #if c == }
             accion = 23
             estadoSig = "V"
-        if c == 61:       #if c ==   =
+        elif c == 61:       #if c ==   =
             accion = 12
             estadoSig = "H"
-        if c in delimitadores:
+        elif c in delimitadores:
             accion = 21 
             estadoSig = "S"
+        elif c == 58:
+            accion = 26
+            estadoSig= "Y"
         else:
             print("El caracter", c," no es valido para el estado", e)
     # A
@@ -105,10 +193,10 @@ def MatrizTransicciones(e,cct):
         if c in letras:
             accion = 3
             estadoSig = "A"
-        if c in digitos:
+        elif c in digitos:
             accion = 3
             estadoSig = "A"
-        if c == 95:       #if c == _
+        elif c == 95:       #if c == _
             accion = 3
             estadoSig = "A"
         #OTHER CHARACTER CASO
@@ -119,7 +207,7 @@ def MatrizTransicciones(e,cct):
             estadoSig = "B"
     # B
     if e =="B":
-        estadoFinal= True
+        estadoFinal = True
         #vaciar Lexema y valor
     
 
@@ -149,7 +237,7 @@ def MatrizTransicciones(e,cct):
         if c in c1:       #if c ==  C1
             accion = 8
             estadoSig = "F"
-        if c == 42:       #if c == *
+        elif c == 42:       #if c == *
             accion = 8
             estadoSig = "G"
         else:
@@ -160,10 +248,10 @@ def MatrizTransicciones(e,cct):
         if c in c2:       #if c ==  C2
             accion = 8
             estadoSig = "F"
-        if c == 47:       #if c == /
+        elif c == 47:       #if c == /
             accion = 8
             estadoSig = "S"
-        if c == 42:       #if c == *
+        elif c == 42:       #if c == *
             accion = 8
             estadoSig = "G"
         else:
@@ -192,7 +280,7 @@ def MatrizTransicciones(e,cct):
         if c in c3:       #if c ==  C3
             accion = 10
             estadoSig = "K"
-        if c == 34:       #if c == ""
+        elif c == 34:       #if c == ""
             accion = 11
             estadoSig = "L"
         else:
@@ -311,7 +399,7 @@ caracterLeido = leerCaracter(texto,pos)
 #Para los TOKENS
 lexema =""
 valor = 0
-
+listaTokens = []
 
 
 #------------------BUCLE TRANSICIONES-------------------
@@ -326,7 +414,7 @@ for x in texto:
 
     #Si es estado final, volvemos a S
     if esFinal:
-        estadoActual = estadoInicial
+        estadoActual = "S"
         
     caracterLeido = leerCaracter(texto,pos)
     transiccion = MatrizTransicciones(estadoActual,caracterLeido)
