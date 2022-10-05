@@ -1,4 +1,5 @@
 from ast import List
+from asyncio.windows_events import NULL
 import re
 import array
 
@@ -12,24 +13,17 @@ class EntradasTablaSimbolos():
 
 def buscarLugarTS(ps):
     return TablaSimbolos[ps].nombre
+def buscarLugarTSNombre(n):
+    for e in TablaSimbolos:
+        if e.nombre == n:
+            print("encontrado en posicion:", e.pos)
+            return TablaSimbolos[e.pos].nombre
 
 TablaSimbolos=[] 
 
 entrada = EntradasTablaSimbolos()
 entrada.setValores(0,"x",9)
 TablaSimbolos.append(entrada)
-
-entrada2 = EntradasTablaSimbolos()
-entrada2.setValores(1,"y",5)
-TablaSimbolos.append(entrada2)
-
-print(TablaSimbolos[0].pos)
-print(TablaSimbolos[1].nombre)
-
-entrada4 = EntradasTablaSimbolos()
-entrada4.setValores(len(TablaSimbolos),"j",99)
-TablaSimbolos.append(entrada4)
-
 
 try:
     lugar = buscarLugarTS(5)
@@ -39,6 +33,10 @@ except:
     entrada3 = EntradasTablaSimbolos()
     entrada3.setValores(len(TablaSimbolos),"z", "holaMundo")
     TablaSimbolos.append(entrada3)
+    lugar = entrada3.pos
 
 for e in TablaSimbolos:
     print("Variable ",e.pos," = " ,e.nombre) 
+
+posInTs=buscarLugarTSNombre("j")
+print(posInTs)
