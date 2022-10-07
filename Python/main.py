@@ -2,6 +2,20 @@ from asyncio.windows_events import NULL
 import re
 import array
 
+#------------------TABLA DE SIMBOLOS------------------
+class EntradasTablaSimbolos():
+    def __init__(self):
+        pass
+    def setValores(self,p,n,v):
+        self.pos = p
+        self.nombre = n
+        self.valor = v
+
+def buscarLugarTSNombre(n):
+    for e in TablaSimbolos:
+        if e.nombre == n:
+            print("encontrado en posicion:", e.pos)
+            return TablaSimbolos[e.pos].nombre
 
 #----------------------TOKENS-------------------------
 class Token:
@@ -31,25 +45,28 @@ def accionesSemanticas (a,ctr):
             token = Token(lexema, "-")
             listaTokens.append(token)
         else:
-           #pos = buscarLugarTS()
-            if pos >= 0:
-                token = Token(lexema, pos)
+            try:
+                lugar = buscarLugarTSNombre(lexema)
+                token = Token(lexema, lugar)
                 listaTokens.append(token)
-            else:
-               #pos = insertarTS()
-                token = Token(lexema, pos)
-                listaTokens.append(token)
+            except:
+                print("No se ha encontrado, se inserta en la pos:",len(TablaSimbolos) )
+                entrada3 = EntradasTablaSimbolos()
+                entrada3.setValores(len(TablaSimbolos),"z", "holaMundo")
+                TablaSimbolos.append(entrada3)
+                lugar = entrada3.pos
 
+        
     if a == 5:
         valor = c 
     if a == 6:
-        valor= valor *10 + c
+        valor= valor + c
     if a == 7:
-        if valor > 32767:
+        if int(valor) > 32767:
             print("ERROR")
         else:
             
-            token = Token("cteEntera", valor)
+            token = Token("cteEntera", int(valor))
             listaTokens.append(token)
 
     if a == 8:
@@ -180,7 +197,7 @@ def MatrizTransicciones(e,cct):
         elif c == 61:       #if c ==   =
             accion = 12
             estadoSig = "H"
-        elif c in delimitadores:
+        elif c == 32:
             accion = 21 
             estadoSig = "S"
         elif c == 58:
@@ -203,17 +220,19 @@ def MatrizTransicciones(e,cct):
             #accion = 4
             #estadoSig = "B"
         else:
-            accion=4
             estadoSig = "B"
+            accion = 4
     # B
     if e =="B":
+        accion=1
         estadoFinal = True
+        estadoSig = "S"
         #vaciar Lexema y valor
     
 
     # C
     if e =="C":
-        if c == 95:       #if c == _
+        if c in digitos:       #if c == digitos
             accion = 6
             estadoSig = "C"
         else:
@@ -222,7 +241,10 @@ def MatrizTransicciones(e,cct):
 
     # D
     if e =="D":
+
+        accion = 1
         estadoFinal = True
+        estadoSig = "S"
 
     # E
     if e =="E":
@@ -270,10 +292,12 @@ def MatrizTransicciones(e,cct):
     # I
     if e =="I":
         estadoFinal = True
+        estadoSig = "S"
     
     # J
     if e =="J":
         estadoFinal = True
+        estadoSig = "S"
 
     # K
     if e =="K":
@@ -290,6 +314,7 @@ def MatrizTransicciones(e,cct):
     # L
     if e =="L":
         estadoFinal = True
+        estadoSig = "S"
 
 
     # M
@@ -306,10 +331,12 @@ def MatrizTransicciones(e,cct):
     # N
     if e =="N":
         estadoFinal = True
+        estadoSig = "S"
 
     # O
     if e =="O":
         estadoFinal = True
+        estadoSig = "S"
     
     # P
     if e =="P":
@@ -322,38 +349,47 @@ def MatrizTransicciones(e,cct):
     # Q
     if e =="Q":
         estadoFinal = True
+        estadoSig = "S"
 
     # R
     if e =="R":
         estadoFinal = True
+        estadoSig = "S"
 
     # T
     if e =="T":
         estadoFinal = True
+        estadoSig = "S"
 
     # U
     if e =="U":
-        estadoFinal = True  
+        estadoFinal = True
+        estadoSig = "S"
 
     # V
     if e =="V":
         estadoFinal = True
+        estadoSig = "S"
 
     # W
     if e =="W":
         estadoFinal = True
+        estadoSig = "S"
 
     # X
     if e =="X":
         estadoFinal = True
+        estadoSig = "S"
 
     # Y
     if e =="Y":
         estadoFinal = True
+        estadoSig = "S"
     
     #Z
     if e == "Z":
         estadoFinal = True
+        estadoSig = "S"
 
 
     
@@ -378,9 +414,8 @@ def leerCaracter (t,p):
 #------------------------DATOS------------------------
 
 #-------TIPOS de caracteres que pueden entrar  
-digitos = range(0,9+1)
-#32=espacio 
-delimitadores = [32]
+digitos = range(48,57+1) 
+#32=espacio
 palabrasReservadas = ["switch", "case", "default", "break", "let", "int", 
                     "boolean", "string", "if", "function", 
                     "input", "print", "return" "eof"]
@@ -388,7 +423,7 @@ c1 = list(range(33,42)) + list(range(43,126+1))
 c2 = list(range(33,42)) + list(range(43,47)) + list(range(48,126+1))
 c3 = list(range(33,34)) + list(range(35,126+1))
 
-token = Token()
+token = Token("coma","-")
 #Programa a compilar
 texto = input("CÓDIGO: ")
 #Inicializar 
@@ -398,27 +433,39 @@ caracterLeido = leerCaracter(texto,pos)
 
 #Para los TOKENS
 lexema =""
-valor = 0
+valor = ""
 listaTokens = []
+
+#Para la TS
+TablaSimbolos=[]
 
 
 #------------------BUCLE TRANSICIONES-------------------
 transiccion = MatrizTransicciones(estadoInicial,caracterLeido)
 for x in texto:
-    print(caracterLeido)
+    print(caracterLeido,"=",x)
     estadoActual = transiccion[1]
     accionARealizar = transiccion[0]
     esFinal = transiccion[2]
+    print("Accion a realizar: ", accionARealizar)
+    accionesSemanticas(accionARealizar,caracterLeido)
+
     print(transiccion)    
     print("Posicion=",pos)
+    print("LEXEMA=",lexema)
+    print("VALOR=", valor)
+    
+    try:    
+        caracterLeido = leerCaracter(texto,pos)
+        transiccion = MatrizTransicciones(estadoActual,caracterLeido)
+    except:
+        print("FIN DE TEXTO")
 
-    #Si es estado final, volvemos a S
-    if esFinal:
-        estadoActual = "S"
-        
-    caracterLeido = leerCaracter(texto,pos)
-    transiccion = MatrizTransicciones(estadoActual,caracterLeido)
-
-
-
+#IMPIRMIR TS
+for e in TablaSimbolos:
+    print("Variable ",e.pos," = " ,e.nombre)
+    print("estoy dentro")
+for e in listaTokens:
+    print("TOKEN",e.nombre, "VALOR= ", e.valor)
+    print("estoy dentro")
 

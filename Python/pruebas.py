@@ -11,8 +11,6 @@ class EntradasTablaSimbolos():
         self.nombre = n
         self.valor = v
 
-def buscarLugarTS(ps):
-    return TablaSimbolos[ps].nombre
 def buscarLugarTSNombre(n):
     for e in TablaSimbolos:
         if e.nombre == n:
@@ -25,8 +23,13 @@ entrada = EntradasTablaSimbolos()
 entrada.setValores(0,"x",9)
 TablaSimbolos.append(entrada)
 
+entrada2 = EntradasTablaSimbolos()
+entrada2.setValores(1,"y",4)
+TablaSimbolos.append(entrada2)
+
+
 try:
-    lugar = buscarLugarTS(5)
+    lugar = buscarLugarTSPos(100)
     print(lugar)
 except:
     print("No se ha encontrado, se inserta en la pos:",len(TablaSimbolos) )
@@ -37,6 +40,3 @@ except:
 
 for e in TablaSimbolos:
     print("Variable ",e.pos," = " ,e.nombre) 
-
-posInTs=buscarLugarTSNombre("j")
-print(posInTs)
