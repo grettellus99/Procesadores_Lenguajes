@@ -14,9 +14,8 @@ class EntradasTablaSimbolos():
 def buscarLugarTSNombre(n):
     for e in TablaSimbolos:
         if e.nombre == n:
-            print("encontrado en posicion:", e.pos)
+            print("encontrado en posición:", e.pos)
             return TablaSimbolos[e.pos].nombre
-
 #----------------------TOKENS-------------------------
 class Token:
     def __init__(self,n,v):
@@ -32,7 +31,7 @@ def accionesSemanticas (a,ctr):
     c=chr(ctr)
 
     if a == 0:
-        print("Accion no valida") 
+        print("Acción no válida") 
     if a == 1:
         print("leer")
     if a == 2:
@@ -44,7 +43,7 @@ def accionesSemanticas (a,ctr):
         if lexema in palabrasReservadas:
             token = Token(lexema, "-")
             listaTokens.append(token)
-        else:
+        else: 
             try:
                 lugar = buscarLugarTSNombre(lexema)
                 token = Token(lexema, lugar)
@@ -125,8 +124,9 @@ def accionesSemanticas (a,ctr):
     if a == 26:
         token = Token("opAritmetico",2)
         listaTokens.append(token)
-
-
+    if a == 27:
+        token = Token("dosPuntos","-")
+        listaTokens.append(token)
 
 #----------Funcion: saber si la palabra es reservada-------
 def esreservada(palabra):
@@ -177,7 +177,7 @@ def MatrizTransicciones(e,cct):
             accion = 15
             estadoSig = "M"
         elif c == 43:       #if c == +
-            accion = 27
+            accion = 26
             estadoSig = "Z"
         elif c == 38:       #if c == &
             accion = 18
@@ -197,11 +197,11 @@ def MatrizTransicciones(e,cct):
         elif c == 61:       #if c ==   =
             accion = 12
             estadoSig = "H"
-        elif c == 32:
+        elif c == 32:       #if c == espacio en blanco
             accion = 21 
             estadoSig = "S"
-        elif c == 58:
-            accion = 26
+        elif c == 58:       #if c == :
+            accion = 27
             estadoSig= "Y"
         else:
             print("El caracter", c," no es valido para el estado", e)

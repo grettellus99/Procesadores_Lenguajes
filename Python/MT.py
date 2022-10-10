@@ -99,7 +99,7 @@ def MatrizTransicciones(e,c):
 
 
     
-    return accion,estadoSig, "hola"
+   return accion,estadoSig, "hola"
 
 
 print("funciona")
