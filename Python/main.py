@@ -31,14 +31,14 @@ def accionesSemanticas (a,ctr):
     c=chr(ctr)
 
     if a == 0:
-        print("Acción no válida") 
-    if a == 1:
+        print("La acción 0 no es válida") 
+    elif a == 1:
         print("leer")
-    if a == 2:
+    elif a == 2:
         lexema= c
-    if a == 3:     
+    elif a == 3:     
         lexema= lexema + c
-    if a == 4:
+    elif a == 4:
         #POR HACER
         if lexema in palabrasReservadas:
             token = Token(lexema, "-")
@@ -56,11 +56,11 @@ def accionesSemanticas (a,ctr):
                 lugar = entrada3.pos
 
         
-    if a == 5:
+    elif a == 5:
         valor = c 
-    if a == 6:
+    elif a == 6:
         valor= valor + c
-    if a == 7:
+    elif a == 7:
         if int(valor) > 32767:
             print("ERROR")
         else:
@@ -68,65 +68,67 @@ def accionesSemanticas (a,ctr):
             token = Token("cteEntera", int(valor))
             listaTokens.append(token)
 
-    if a == 8:
+    elif a == 8:
         print("leer")
-    if a == 9:
+    elif a == 9:
         lexema= "" 
-    if a == 10:
+    elif a == 10:
         lexema= lexema + c
-    if a == 11:
+    elif a == 11:
         if len(lexema) > 64:
             print("ERROR")
         else:
             token = Token("cadena", lexema)
             listaTokens.append(token)
-    if a == 12:
+    elif a == 12:
         print("leer")
-    if a == 13:
+    elif a == 13:
         token = Token("asignacion", "-")
         listaTokens.append(token)
-    if a == 14:
+    elif a == 14:
         token = Token("opRelacional", 1)
         listaTokens.append(token)
-    if a == 15:
+    elif a == 15:
         print("leer")
-    if a == 16:
+    elif a == 16:
         token = Token("asigMultiplicacion", "-")
         listaTokens.append(token)
-    if a == 17:
+    elif a == 17:
         token = Token("opAritmetico",1)
         listaTokens.append(token)
-    if a == 18:
+    elif a == 18:
         print("leer")
-    if a == 19:
+    elif a == 19:
         token = Token("opLogico",1)
         listaTokens.append(token)
     
-    if a == 20:
+    elif a == 20:
         token = Token("abrirParantesis","-")
         listaTokens.append(token)
         
-    if a == 21:
+    elif a == 21:
         token = Token("cerrarParantesis","-")
         listaTokens.append(token)
-    if a == 22:
+    elif a == 22:
         token = Token("abrirCorchete","-")
         listaTokens.append(token)
-    if a == 23:
+    elif a == 23:
         token = Token("cerrarCorchete","-")
         listaTokens.append(token)
-    if a == 24:
+    elif a == 24:
         token = Token("ptoComa","-")
         listaTokens.append(token)
-    if a == 25:
+    elif a == 25:
         token = Token("coma","-")
         listaTokens.append(token)
-    if a == 26:
+    elif a == 26:
         token = Token("opAritmetico",2)
         listaTokens.append(token)
-    if a == 27:
+    elif a == 27:
         token = Token("dosPuntos","-")
         listaTokens.append(token)
+    else:
+        ("Acción no valida")
 
 #----------Funcion: saber si la palabra es reservada-------
 def esreservada(palabra):
