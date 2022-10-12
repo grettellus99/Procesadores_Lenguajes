@@ -1,5 +1,8 @@
 from objetos.token import *
 from objetos.transicciones import matrizTransicciones
+from objetos.acciones import *
+from objetos.Reader import *
+
 
 print(matrizTransicciones("S",104))
 
@@ -53,7 +56,7 @@ TablaSimbolos=[]
 
 
 #------------------BUCLE TRANSICIONES-------------------
-transiccion = MatrizTransicciones(estadoInicial,caracterLeido)
+transiccion = matrizTransicciones(estadoInicial,caracterLeido)
 for x in texto:
     print(caracterLeido,"=",x)
     estadoActual = transiccion[1]
@@ -69,7 +72,7 @@ for x in texto:
     
     try:    
         caracterLeido = leerCaracter(texto,pos)
-        transiccion = MatrizTransicciones(estadoActual,caracterLeido)
+        transiccion = matrizTransicciones(estadoActual,caracterLeido)
     except:
         print("FIN DE TEXTO")
 

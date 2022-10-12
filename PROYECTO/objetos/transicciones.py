@@ -1,4 +1,4 @@
-"""letras = list(range(65,90+1)) + list(range(97,122+1))
+letras = list(range(65,90+1)) + list(range(97,122+1))
 
 digitos = range(48,57+1) 
 #32=espacio
@@ -7,8 +7,8 @@ palabrasReservadas = ["switch", "case", "default", "break", "let", "int",
                     "input", "print", "return" "eof"]
 c1 = list(range(33,42)) + list(range(43,255+1))
 c2 = list(range(33,42)) + list(range(43,47)) + list(range(48,255+1))
-c3 = list(range(33,34)) + list(range(35,255+1))"""
-from analizadorLexico import letras
+c3 = list(range(33,34)) + list(range(35,255+1))
+
 def matrizTransicciones(e,cct):
     accion=0
     estadoSig=""

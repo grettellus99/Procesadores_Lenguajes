@@ -5,8 +5,8 @@ class Reader:
     ### Guarda la referencia al archivo abierto si este está disponible ###
     def _init_ (self, f_path):
         self.path=f_path
-        self.numLinea=0;
-        self.numCar=0;
+        self.numLinea=0
+        self.numCar=0
         try:
             if(os.path.exists(self.path)):  # el path introducido existe?
                 f = open(f_path)    # abrir el archivo
@@ -22,7 +22,7 @@ class Reader:
     ### Devuelve la linea numero numLinea de un archivo
     def readLine():
         f=Reader.file
-        linea="";
+        linea=""
         i=0
         try:
             while i<Reader.numLinea: 
