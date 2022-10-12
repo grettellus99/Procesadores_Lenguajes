@@ -1,5 +1,5 @@
 
-from reader import Reader
+from objetos import Reader
 
 r=Reader("../Ficheros Fuente/fichero_fuente.txt")
 
