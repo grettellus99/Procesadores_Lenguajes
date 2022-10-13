@@ -57,7 +57,7 @@ def accionesSemanticas (a,ctr,listaTokens,tabla):
         else:
             listaTokens.addTokenConstEntera(valor) # agrega token cteEntera a la lista y el fichero
 
-    elif a == 8 | a == 9 | a == 10 | a == 11 | a == 12 | a == 13 | a == 14 :    # acciones correspondientes a comentarios
+    elif a == 8 or a == 9 or a == 10 or a == 11 or a == 12 or a == 13 or a == 14:    # acciones correspondientes a comentarios
         print("LEER")
         leer=True      # debe leerse el próximo carácter   
     

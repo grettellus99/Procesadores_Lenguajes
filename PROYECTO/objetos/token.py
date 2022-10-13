@@ -54,3 +54,9 @@ class ListaTokens:
         tokenFichero="< "+op+" , "+ str(num) +" >"    # añadir al fichero 
         self.addFichero(tokenFichero)     
     
+    def addEndOfFile(self):
+        token=Token("eof","-")
+        self.tokens.append(token)
+        
+        tokenFichero="< eof , - >"
+        self.addFichero(tokenFichero)

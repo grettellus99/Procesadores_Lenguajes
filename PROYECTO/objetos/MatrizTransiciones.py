@@ -133,6 +133,7 @@ def matrizTransiciones(e,cct):
         elif c == 47:       #if c == /
             accion = 14
             estadoSig = "S"
+            estadoFinal=True
         elif c == 42:       #if c == *
             accion = 13
             estadoSig = "G"
@@ -144,7 +145,7 @@ def matrizTransiciones(e,cct):
     # H
     elif e =="H":
         
-        if c == 41:       #if c ==   =
+        if c == 61:       #if c ==   =
             accion = 19
             estadoSig = "I"
         else:
@@ -154,13 +155,12 @@ def matrizTransiciones(e,cct):
     # I ( ESTADO FINAL ) 
     elif e =="I":
         accion=0
-        estadoFinal = True
+        estadoFinal=True;
         estadoSig = "S"
     
     # J  ( ESTADO FINAL ) 
     elif e =="J":
         accion=0
-        estadoFinal = True
         estadoSig = "S"
 
     # K 
@@ -180,13 +180,14 @@ def matrizTransiciones(e,cct):
     # L  ( ESTADO FINAL ) 
     elif e =="L":
         accion=0
+        estadoFinal=True;
         estadoSig = "S"
 
 
     # M
     elif e =="M":
 
-        if c == 41:       #if c ==   =
+        if c == 61:       #if c ==   =
             accion = 22
             estadoSig = "N"
         else:
@@ -197,9 +198,10 @@ def matrizTransiciones(e,cct):
     # N ( ESTADO FINAL )
     elif e =="N":
         accion=0
+        estadoFinal=True;
         estadoSig = "S"
 
-    # O
+    # O ( ESTADO FINAL )
     elif e =="O":
         accion=0
         estadoSig = "S"
@@ -217,6 +219,7 @@ def matrizTransiciones(e,cct):
     # Q ( ESTADO FINAL )
     elif e =="Q":
         accion=0
+        estadoFinal=True;
         estadoSig = "S"
 
     # R ( ESTADO FINAL )

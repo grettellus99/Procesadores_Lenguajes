@@ -4,7 +4,6 @@ from objetos.MatrizTransiciones import matrizTransiciones
 from objetos.Reader import Reader
 from objetos.TS import TablaSimbolos
 from objetos.Token import ListaTokens
-from objetos.datos import op
 
 #------------ Inicializaciones ------------------
 
@@ -27,13 +26,21 @@ error=False
 c=""
 
 #------------- ANALIZADOR LÉXICO ---------------------
+terminado = False
 seguir = True
 while(seguir):
     if(leer):   # si la accion anterior no devuelve leer en true NO se lee el siguiente carácter
         c=readFicheroFuente.readSigCaracter()
     
-    if(c):  # si c no es False sigue
-        # determinar la siguiente transicion con el último caracter leído
+    # si el carácter leído es False es fin de fichero pero puede que todavía no se
+    # haya realizado la última acción en transiciones con o.c como transición final
+    # así que se comprueba que el estado actual sea S
+    if(c==False and estadoSiguiente == "S"):  
+        terminado=True
+    
+    # si Terminado es False sigue
+    # determinar la siguiente transicion con el último caracter leído
+    if(terminado==False):    
         transicion=matrizTransiciones(estadoSiguiente,c)
     
         accion=transicion[0]            # obtener la siguiente acción semántica
@@ -49,7 +56,7 @@ while(seguir):
             print(mensajeError)
             writerErrores.write(mensajeError,False)
     
-        if(estadoFinal):    # c es un caracter cuya regla es S --> t donde t es un Terminal
+        if(estadoFinal):    # c es un caracter que no está en una transicion o.c
             leer=True
         else:
             resAccion = accionesSemanticas(accion,c,listaTokens,tabla)    # realizar la accion semantica correspondiente
@@ -64,8 +71,7 @@ while(seguir):
     else:   # si c es FALSE el fichero ha terminado
         seguir=False
         readFicheroFuente.close()
+        listaTokens.addEndOfFile()
         for i in listaTokens.tokens:
             print(str(i.nombre) +"\t"+ str(i.valor) + "\n")
-        #writerTokens.write("< eof , - >", False) # Agregar el token fin de fichero a la lista de tokens
-        print("Fin de fichero")
         
