@@ -1,20 +1,12 @@
-letras = list(range(65,90+1)) + list(range(97,122+1))
+from objetos.datos import *
+from objetos.GestorError import Error
 
-digitos = range(48,57+1) 
-#32=espacio
-palabrasReservadas = ["switch", "case", "default", "break", "let", "int", 
-                    "boolean", "string", "if", "function", 
-                    "input", "print", "return" "eof"]
-c1 = list(range(33,42)) + list(range(43,255+1))
-c2 = list(range(33,42)) + list(range(43,47)) + list(range(48,255+1))
-c3 = list(range(33,34)) + list(range(35,255+1))
-
-def matrizTransicciones(e,cct):
+def matrizTransiciones(e,cct):
     accion=0
     estadoSig=""
     estadoFinal = False
     c=cct
-
+    error=False
     
     #CASILLAS MATRIZ AFD:
     # S
@@ -28,52 +20,54 @@ def matrizTransicciones(e,cct):
         elif c == 95:       #if c == _
             accion = 2
             estadoSig = "A"
-        elif c == 34:       #if c == ""
-            accion = 9
+        elif c == 34:       #if c == "
+            accion = 15
             estadoSig = "K"
         elif c == 47:       #if c == /
             accion = 8
             estadoSig = "E"  
         elif c == 59:       #if c == ;
-            accion = 24
+            accion = 30
             estadoSig = "W"
         elif c == 44:       #if c == , 
-            accion = 25
+            accion = 31
             estadoSig = "X"
         elif c == 42:       #if c == *
             accion = 15
             estadoSig = "M"
         elif c == 43:       #if c == +
-            accion = 26
+            accion = 33
             estadoSig = "Z"
         elif c == 38:       #if c == &
-            accion = 18
+            accion = 24
             estadoSig = "P"
         elif c == 40:       #if c == (
-            accion = 20
+            accion = 26
             estadoSig = "R"
         elif c == 41:       #if c == )
-            accion = 21
+            accion = 27
             estadoSig = "T"
         elif c == 123:       #if c == {
-            accion = 22
+            accion = 28
             estadoSig = "U"
         elif c == 125:       #if c == }
-            accion = 23
+            accion = 29
             estadoSig = "V"
         elif c == 61:       #if c ==   =
-            accion = 12
+            accion = 18
             estadoSig = "H"
-        elif c == 32:       #if c == espacio en blanco
-            accion = 21 
+        elif c == 32 or c == 10 or c == 13 or c == 11:       #if c == del (espacio en blanco, salto de linea, retorno de carro o tab)
+            accion = 1 
             estadoSig = "S"
         elif c == 58:       #if c == :
-            accion = 27
+            accion = 32
             estadoSig= "Y"
         else:
-            print("El caracter", c," no es valido para el estado", e)
+            mensaje= f"El carácter {c} no es válido para el estado {e}"
+            print(mensaje)
+            error=Error("", mensaje ,"")
     # A
-    if e =="A":
+    elif e =="A":
         if c in letras:
             accion = 3
             estadoSig = "A"
@@ -89,16 +83,15 @@ def matrizTransicciones(e,cct):
         else:
             estadoSig = "B"
             accion = 4
-    # B
-    if e =="B":
-        accion=1
+    # B ( ESTADO FINAL ) 
+    elif e =="B":
+        accion=0
         estadoFinal = True
         estadoSig = "S"
         #vaciar Lexema y valor
     
-
     # C
-    if e =="C":
+    elif e =="C":
         if c in digitos:       #if c == digitos
             accion = 6
             estadoSig = "C"
@@ -106,158 +99,180 @@ def matrizTransicciones(e,cct):
             accion = 7
             estadoSig = "D"
 
-    # D
-    if e =="D":
-
-        accion = 1
+    # D ( ESTADO FINAL ) 
+    elif e =="D":
+        accion = 0
         estadoFinal = True
         estadoSig = "S"
 
     # E
-    if e =="E":
+    elif e =="E":
         if c == 42:       #if c == *
-            accion = 8
+            accion = 9
             estadoSig = "F"
         else:
-            print("El caracter", c," no es valido para el estado", e)
-
+            mensaje= f"El carácter {c} no es válido para el estado {e}"
+            print(mensaje)
+            error=Error("", mensaje ,"")
     # F
-    if e =="F":
+    elif e =="F":
         if c in c1:       #if c ==  C1
-            accion = 8
+            accion = 10
             estadoSig = "F"
         elif c == 42:       #if c == *
-            accion = 8
+            accion = 11
             estadoSig = "G"
         else:
-            print("El caracter", c," no es valido para el estado", e)
+            mensaje= f"El carácter {c} no es válido para el estado {e}"
+            print(mensaje)
+            error=Error("", mensaje ,"")
         
     # G
-    if e =="G":
+    elif e =="G":
         if c in c2:       #if c ==  C2
-            accion = 8
+            accion = 12
             estadoSig = "F"
         elif c == 47:       #if c == /
-            accion = 8
+            accion = 14
             estadoSig = "S"
         elif c == 42:       #if c == *
-            accion = 8
+            accion = 13
             estadoSig = "G"
         else:
-            print("El caracter", c," no es valido para el estado", e)
+            mensaje= f"El carácter {c} no es válido para el estado {e}"
+            print(mensaje)
+            error=Error("", mensaje ,"")
 
     # H
-    if e =="H":
+    elif e =="H":
         
         if c == 41:       #if c ==   =
-            accion = 13
+            accion = 19
             estadoSig = "I"
         else:
-            accion= 14
+            accion= 20
             estadoSig = "J"
 
-    # I
-    if e =="I":
+    # I ( ESTADO FINAL ) 
+    elif e =="I":
+        accion=0
         estadoFinal = True
         estadoSig = "S"
     
-    # J
-    if e =="J":
+    # J  ( ESTADO FINAL ) 
+    elif e =="J":
+        accion=0
         estadoFinal = True
         estadoSig = "S"
 
-    # K
-    if e =="K":
+    # K 
+    elif e =="K":
         if c in c3:       #if c ==  C3
-            accion = 10
+            accion = 16
             estadoSig = "K"
         elif c == 34:       #if c == ""
-            accion = 11
+            accion = 17
             estadoSig = "L"
         else:
-            print("El caracter", c," no es valido para el estado", e)
+            mensaje= f"El carácter {c} no es válido para el estado {e}"
+            print(mensaje)
+            error=Error("", mensaje ,"")
 
         
-    # L
-    if e =="L":
+    # L  ( ESTADO FINAL ) 
+    elif e =="L":
+        accion=0
         estadoFinal = True
         estadoSig = "S"
 
 
     # M
-    if e =="M":
+    elif e =="M":
 
         if c == 41:       #if c ==   =
-            accion = 16
+            accion = 22
             estadoSig = "N"
         else:
-            accion = 17
+            accion = 23
             estadoSig = "O"
     
     
-    # N
-    if e =="N":
+    # N ( ESTADO FINAL )
+    elif e =="N":
+        accion=0
         estadoFinal = True
         estadoSig = "S"
 
     # O
-    if e =="O":
+    elif e =="O":
+        accion=0
         estadoFinal = True
         estadoSig = "S"
     
     # P
-    if e =="P":
+    elif e =="P":
         if c == 38:       #if c == &
-            accion = 19
+            accion = 25
             estadoSig = "Q"
         else:
-            print("El caracter", c," no es valido para el estado", e)
+            mensaje= f"El carácter {c} no es válido para el estado {e}"
+            print(mensaje)
+            error=Error("", mensaje ,"")
 
-    # Q
-    if e =="Q":
+    # Q ( ESTADO FINAL )
+    elif e =="Q":
+        accion=0
         estadoFinal = True
         estadoSig = "S"
 
-    # R
-    if e =="R":
+    # R ( ESTADO FINAL )
+    elif e =="R":
+        accion=0
         estadoFinal = True
         estadoSig = "S"
 
-    # T
-    if e =="T":
+    # T ( ESTADO FINAL )
+    elif e =="T":
+        accion=0
         estadoFinal = True
         estadoSig = "S"
 
-    # U
-    if e =="U":
+    # U ( ESTADO FINAL )
+    elif e =="U":
+        accion=0
         estadoFinal = True
         estadoSig = "S"
 
-    # V
-    if e =="V":
+    # V ( ESTADO FINAL )
+    elif e =="V":
+        accion=0
         estadoFinal = True
         estadoSig = "S"
 
-    # W
-    if e =="W":
+    # W ( ESTADO FINAL )
+    elif e =="W":
+        accion=0
         estadoFinal = True
         estadoSig = "S"
 
-    # X
-    if e =="X":
+    # X ( ESTADO FINAL )
+    elif e =="X":
+        accion=0
         estadoFinal = True
         estadoSig = "S"
 
-    # Y
-    if e =="Y":
+    # Y ( ESTADO FINAL )
+    elif e =="Y":
+        accion=0
         estadoFinal = True
         estadoSig = "S"
     
-    #Z
-    if e == "Z":
+    #Z ( ESTADO FINAL )
+    elif e == "Z":
+        accion=0
         estadoFinal = True
         estadoSig = "S"
 
 
     
-    return accion,estadoSig, estadoFinal
+    return accion, estadoSig, estadoFinal, error

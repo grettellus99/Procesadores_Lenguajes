@@ -1,2 +1,5 @@
-<hola,->
-<hola2,->
+Tokens
+< int , - >
+< Hola , 0 >
+< asignacion , - >
+< cteEntera , 5 >

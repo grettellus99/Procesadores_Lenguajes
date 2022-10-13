@@ -1,2 +1,2 @@
-Holaa
-Holaaaaa
+int Hola = 5;
+if(Hola==5) print Hola

@@ -1,107 +1,131 @@
+
+from objetos.datos import *
+from objetos.GestorError import Error
+
+
+
 #-----------------ACCIONES SEMANTICAS--------------------
-def accionesSemanticas (a,ctr):
-    global lexema
-    global valor
-    global listaTokens
-
+def accionesSemanticas (a,ctr,listaTokens,tabla):
+    global lexema       # para tokens de tipo palabra reservada, cadena e identidicador 
+    global valor        # para tokens de tipo constante entera
+    #global listaTokens  # lista de tokens para guardar los tokens una vez se creen
+    leer=False  # saber si se necesita leer el próximo carácter
+    error=False
+    
     c=chr(ctr)
-
+    
     if a == 0:
-        print("La acción 0 no es válida") 
+        print("Alcanzado estado final")   # no es una accion válida
     elif a == 1:
-        print("leer")
+        leer=True   # debe leerse el próximo carácter
+    
     elif a == 2:
         lexema= c
+        leer=True   # debe leerse el próximo carácter
+    
     elif a == 3:     
         lexema= lexema + c
+        leer=True   # debe leerse el próximo carácter
+    
     elif a == 4:
-        #POR HACER
         if lexema in palabrasReservadas:
-            token = Token(lexema, "-")
-            listaTokens.append(token)
-        else: 
-            try:
-                lugar = buscarLugarTSNombre(lexema)
-                token = Token(lexema, lugar)
-                listaTokens.append(token)
-            except:
-                print("No se ha encontrado, se inserta en la pos:",len(TablaSimbolos) )
-                entrada3 = EntradasTablaSimbolos()
-                entrada3.setValores(len(TablaSimbolos),"z", "holaMundo")
-                TablaSimbolos.append(entrada3)
-                lugar = entrada3.pos
-
+            listaTokens.addTokenPalabraReservada(lexema)    # agrega token de tipo palabra reservada a la lista y el fichero
+        else:          
+                resul = tabla.buscarLugarTSNombre(lexema)
+                pos=resul[0]
+                insertar=resul[1]
+                if(insertar==False):
+                    listaTokens.addTokenIdentificador(lexema,pos) # agrega token id a la lista y el fichero
+                else:  # si no devuelve False lo encontró
+                    pos = tabla.insertarValor(lexema)
+                    listaTokens.addTokenIdentificador(lexema,pos)
+                    print("No se ha encontrado, se inserta en la pos: ",pos)     
         
     elif a == 5:
         valor = int(c) 
+        leer=True      # debe leerse el próximo carácter
+    
     elif a == 6:
-        valor= (int(valor) * 10) + int(c)
+        valor= valor*10 + int(c)
+        leer=True      # debe leerse el próximo carácter
+    
     elif a == 7:
-        if int(valor) > 32767:
+        if valor > 32767:
             print("ERROR")
+            # Crear un objeto Error con el mensaje específico para devolverlo como valor de retorno 
+            error=Error("","El número introducido es mayor que el máximo número válido 32767", "")
         else:
-            
-            token = Token("cteEntera", int(valor))
-            listaTokens.append(token)
+            listaTokens.addTokenConstEntera(valor) # agrega token cteEntera a la lista y el fichero
 
-    elif a == 8:
-        pass
-    elif a == 9:
-        lexema= "" 
-    elif a == 10:
+    elif a == 8 | a == 9 | a == 10 | a == 11 | a == 12 | a == 13 | a == 14 :    # acciones correspondientes a comentarios
+        print("LEER")
+        leer=True      # debe leerse el próximo carácter   
+    
+    elif a == 15:
+        lexema= ""
+        leer=True      # debe leerse el próximo carácter   
+    
+    elif a == 16:
         lexema= lexema + c
-    elif a == 11:
+        leer=True      # debe leerse el próximo carácter   
+    
+    elif a == 17:
         if len(lexema) > 64:
             print("ERROR")
+             # Crear un objeto Error con el mensaje específico para devolverlo como valor de retorno 
+            error=Error("","La cadena introducida tiene más del número máximo de caracteres permitidas: 64", "")
         else:
-            token = Token("cadena", lexema)
-            listaTokens.append(token)
-    elif a == 12:
-        pass
-    elif a == 13:
-        token = Token("asignacion", "-")
-        listaTokens.append(token)
-    elif a == 14:
-        token = Token("opRelacional", 1)
-        listaTokens.append(token)
-    elif a == 15:
-        pass
-    elif a == 16:
-        token = Token("asigMultiplicacion", "-")
-        listaTokens.append(token)
-    elif a == 17:
-        token = Token("opAritmetico",1)
-        listaTokens.append(token)
+            listaTokens.addTokenCadena(lexema) # agrega token cadena a la lista y el fichero
+
     elif a == 18:
-        print("leer")
-    elif a == 19:
-        token = Token("opLogico",1)
-        listaTokens.append(token)
+        leer=True      # debe leerse el próximo carácter 
     
+    elif a == 19:
+        listaTokens.addTokenOperadoresSignos("opRelacional", 1)   # agrega token operador relacional a la lista y el fichero
+   
     elif a == 20:
-        token = Token("abrirParantesis","-")
-        listaTokens.append(token)
-        
+        listaTokens.addTokenOperadoresSignos("asignacion", "-")   # agrega token operador asignación a la lista y el fichero
+   
     elif a == 21:
-        token = Token("cerrarParantesis","-")
-        listaTokens.append(token)
+        leer=True      # debe leerse el próximo carácter
+    
     elif a == 22:
-        token = Token("abrirCorchete","-")
-        listaTokens.append(token)
+        listaTokens.addTokenOperadoresSignos("asigMultiplicacion", "-")   # agrega token operador asignación a la lista y el fichero
+   
     elif a == 23:
-        token = Token("cerrarCorchete","-")
-        listaTokens.append(token)
+        listaTokens.addTokenOperadoresSignos("opAritmetico",1)   # agrega token operador aritmético a la lista y el fichero
+   
     elif a == 24:
-        token = Token("ptoComa","-")
-        listaTokens.append(token)
+        leer=True      # debe leerse el próximo carácter
+        
     elif a == 25:
-        token = Token("coma","-")
-        listaTokens.append(token)
+        listaTokens.addTokenOperadoresSignos("opLogico",1)   # agrega token operador lógico a la lista y el fichero
+    
     elif a == 26:
-        token = Token("opAritmetico",2)
-        listaTokens.append(token)
+        listaTokens.addTokenOperadoresSignos("abrirParantesis","-")   # agrega token abrir paréntesis a la lista y el fichero
+        
     elif a == 27:
-        token = Token("dosPuntos","-")
-        listaTokens.append(token)
+        listaTokens.addTokenOperadoresSignos("cerrarParantesis","-")   # agrega token cerrar paréntesis a la lista y el fichero
+        
+    elif a == 28:
+        listaTokens.addTokenOperadoresSignos("abrirCorchete","-")   # agrega token abrir corchete a la lista y el fichero
+       
+    elif a == 29:
+        listaTokens.addTokenOperadoresSignos("cerrarCorchete","-")   # agrega token cerrar corchete a la lista y el fichero
+      
+    elif a == 30:
+        listaTokens.addTokenOperadoresSignos("ptoComa","-")   # agrega token punto y coma a la lista y el fichero
+      
+    elif a == 31:
+        listaTokens.addTokenOperadoresSignos("coma","-")   # agrega token coma a la lista y el fichero
+      
+    elif a == 32:
+        listaTokens.addTokenOperadoresSignos("dosPuntos","-")   # agrega token dosPuntos a la lista y el fichero
+      
+    elif a == 33:
+        listaTokens.addTokenOperadoresSignos("opAritmetico",2)   # agrega token operador aritmético 2 a la lista y el fichero
+      
     else:
-        ("Acción no valida")
+        print("Acción no válida")
+    
+    return leer, error

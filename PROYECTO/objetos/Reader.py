@@ -13,7 +13,7 @@ class Reader:
         self.numLinea=0
         self.numCar=0
         self.linea=""
-        
+        self.file=False
         try:
             if(os.path.exists(self.path)):  # el path introducido existe?
                 f = open(self.path)    # abrir el archivo
@@ -43,7 +43,6 @@ class Reader:
 
         except OSError as err:
             print("Error: {0}",format(err))
-    
     # Devuelve el siguiente caracter. Si se acaba el fichero devuelve False      
     def readSigCaracter(self):
         endFile=False
@@ -58,12 +57,12 @@ class Reader:
             self.numCar=0
         
         i=self.numCar
-        l= self.linea   
-        c=ord(l[i])
+        l= self.linea     
+        c=ord(l[i])       # leer siguiente caracter
         self.numCar+=1    # pos sig caracter
         return c
         
-    ## Cierra el fichero
+    ## Cierra el fichero 
     def close (self):
         closed= False
         try:
@@ -76,19 +75,23 @@ class Reader:
     ## Escribe en el fichero sustituyendo todo si sobreescribir es True
     ## o agregando si sobrescribir es False
     def write(self,texto,sobrescribir):
-        self.file.close()
+        
+        if(self.file):    # si es la primer vaz que se accede luego de crear el objeto
+            self.close()           # se cierra el fichero. El fichero no se cierra en el constructor para
+                                        # que la funcionalidad por defecto sea la de leer lineas del fichero fuente       
         try:
             if(sobrescribir): 
                 # "w" permite sobrescribir todo
-                f=open(self.path,"w")
+                f=open(self.path,"w")   # abrir el archivo
                 self.file=f
-                f.write(texto)
-                f.write('\n')       
+                f.write(texto)  # introducir texto SOBRESCRIBIENDO todo
+                f.write('\n')   # introducir el salto de línea       
             else:
-                # "a" permite agregar una linea al final
-                f=open(self.path,"a")
-                self.file=f
-                f.write(texto)
-                f.write('\n')   
+                # "a" permite agregar una línea al final
+                f=open(self.path,"a")   # abrir el archivo
+                self.file=f             
+                f.write(texto)  # introducir texto SIN SOBRESCRIBIR (al final)
+                f.write('\n')   # introducir el salto de línea
         except OSError as err:
             print("Error: {0}",format(err))
+        self.close()   # se cierra el archivo para evitar que se corrompa

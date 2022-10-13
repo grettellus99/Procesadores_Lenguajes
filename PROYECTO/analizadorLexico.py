@@ -1,10 +1,10 @@
-from objetos.token import *
-from objetos.transicciones import matrizTransicciones
+from objetos.Token import *
+from objetos.transiciones import matrizTransiciones
 from objetos.acciones import *
 from objetos.Reader import *
+from objetos.datos import *
 
-
-print(matrizTransicciones("S",104))
+print(matrizTransiciones("S",104))
 
 def buscarLugarTSNombre(n):
     for e in TablaSimbolos:
@@ -26,18 +26,6 @@ def leerCaracter (t,p):
     return c
 #------------------------DATOS------------------------
 
-#-------TIPOS de caracteres que pueden entrar
-letras = list(range(65,90+1)) + list(range(97,122+1))
-
-digitos = range(48,57+1) 
-#32=espacio
-palabrasReservadas = ["switch", "case", "default", "break", "let", "int", 
-                    "boolean", "string", "if", "function", 
-                    "input", "print", "return" "eof"]
-c1 = list(range(33,42)) + list(range(43,255+1))
-c2 = list(range(33,42)) + list(range(43,47)) + list(range(48,255+1))
-c3 = list(range(33,34)) + list(range(35,255+1))
-
 token = Token("coma","-")
 #Programa a compilar
 texto = input("CÓDIGO: ")
@@ -56,23 +44,23 @@ TablaSimbolos=[]
 
 
 #------------------BUCLE TRANSICIONES-------------------
-transiccion = matrizTransicciones(estadoInicial,caracterLeido)
+transicion = matrizTransiciones(estadoInicial,caracterLeido)
 for x in texto:
     print(caracterLeido,"=",x)
-    estadoActual = transiccion[1]
-    accionARealizar = transiccion[0]
-    esFinal = transiccion[2]
+    estadoActual = transicion[1]
+    accionARealizar = transicion[0]
+    esFinal = transicion[2]
     print("Accion a realizar: ", accionARealizar)
     accionesSemanticas(accionARealizar,caracterLeido)
 
-    print(transiccion)    
+    print(transicion)    
     print("Posicion=",pos)
     print("LEXEMA=",lexema)
     print("VALOR=", valor)
     
     try:    
         caracterLeido = leerCaracter(texto,pos)
-        transiccion = matrizTransicciones(estadoActual,caracterLeido)
+        transicion = matrizTransiciones(estadoActual,caracterLeido)
     except:
         print("FIN DE TEXTO")
 
