@@ -11,7 +11,7 @@ from objetos.datos import op
 #------------ path a partir de Reader.py ------------
 readFicheroFuente = Reader("../Ficheros Fuente/fichero_fuente.txt")
 writerErrores=Reader("../Ficheros Salida/errores.txt")
-writerErrores.write("Errores de compilación",True)
+writerErrores.write("Errores:",True)
 
 writerTokens=Reader("../Ficheros Salida/tokens.txt")
 
@@ -40,17 +40,17 @@ while(seguir):
         estadoSiguiente=transicion[1]   # obtener el estado siguiente dado el carácter
         estadoFinal=transicion[2]       # es True si es un estado final
         error=transicion[3]             # NO es False si hay un error en las transiciones
-    
+        
+        
+        
         if(error):
             #   GESTION DE ERROES NO COMPLETADA #
             mensajeError="Error en línea "+readFicheroFuente.linea+". "+error.mensaje
             print(mensajeError)
             writerErrores.write(mensajeError,False)
-        
-        if(estadoFinal): # reestablecer leer estados dende S es estado final
-            if c in op:
-                leer=True
-             
+    
+        if(estadoFinal):    # c es un caracter cuya regla es S --> t donde t es un Terminal
+            leer=True
         else:
             resAccion = accionesSemanticas(accion,c,listaTokens,tabla)    # realizar la accion semantica correspondiente
             leer=resAccion[0]

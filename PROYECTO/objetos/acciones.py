@@ -100,7 +100,7 @@ def accionesSemanticas (a,ctr,listaTokens,tabla):
         
     elif a == 25:
         listaTokens.addTokenOperadoresSignos("opLogico",1)   # agrega token operador lógico a la lista y el fichero
-    
+
     elif a == 26:
         listaTokens.addTokenOperadoresSignos("abrirParantesis","-")   # agrega token abrir paréntesis a la lista y el fichero
         

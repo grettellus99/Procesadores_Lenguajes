@@ -12,7 +12,7 @@ class TablaSimbolos():
     def __init__(self):
         self.identificadores=[]     # array de identificadores
         self.writerFichero = Reader("../Ficheros Salida/tabla.txt")     # crear el reader al fichero de salida de la Tabla de Símbolos
-        self.writerFichero.write("Tabla de Símbolos",True)     # Borrar lo escrito por compilaciones anteriores
+        self.writerFichero.write("Tabla de Simbolos",True)     # Borrar lo escrito por compilaciones anteriores
         
     def insertarValor(self,n):
         pos= len(self.identificadores)      # la posicion a insertar será la última de la lista de identificadores

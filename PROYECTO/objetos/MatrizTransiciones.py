@@ -86,7 +86,6 @@ def matrizTransiciones(e,cct):
     # B ( ESTADO FINAL ) 
     elif e =="B":
         accion=0
-        estadoFinal = True
         estadoSig = "S"
         #vaciar Lexema y valor
     
@@ -102,7 +101,6 @@ def matrizTransiciones(e,cct):
     # D ( ESTADO FINAL ) 
     elif e =="D":
         accion = 0
-        estadoFinal = True
         estadoSig = "S"
 
     # E
@@ -182,7 +180,6 @@ def matrizTransiciones(e,cct):
     # L  ( ESTADO FINAL ) 
     elif e =="L":
         accion=0
-        estadoFinal = True
         estadoSig = "S"
 
 
@@ -200,13 +197,11 @@ def matrizTransiciones(e,cct):
     # N ( ESTADO FINAL )
     elif e =="N":
         accion=0
-        estadoFinal = True
         estadoSig = "S"
 
     # O
     elif e =="O":
         accion=0
-        estadoFinal = True
         estadoSig = "S"
     
     # P
@@ -222,7 +217,6 @@ def matrizTransiciones(e,cct):
     # Q ( ESTADO FINAL )
     elif e =="Q":
         accion=0
-        estadoFinal = True
         estadoSig = "S"
 
     # R ( ESTADO FINAL )

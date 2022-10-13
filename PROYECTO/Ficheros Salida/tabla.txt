@@ -1,2 +1,2 @@
-Tabla de Símbolos
+Tabla de Simbolos
 LEXEMA: Hola	POSICION: 0
