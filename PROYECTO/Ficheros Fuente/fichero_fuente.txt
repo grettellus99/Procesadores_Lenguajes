@@ -4,4 +4,4 @@ _B*=57;
 abcd&&f="micasa"; /* alkjf */
 +:,{}
 switch case default return function break
-let string boolean int
+let string boolean int true false
