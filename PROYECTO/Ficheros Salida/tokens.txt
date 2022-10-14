@@ -6,20 +6,20 @@ Tokens
 < ptoComa ,   >
 < if ,  >
 < abrirParantesis ,   >
-< Hola , 0 >
+< Hola5 , 1 >
 < opRelacional , 1 >
 < cteEntera , 5 >
 < cerrarParantesis ,   >
 < print ,  >
 < Hola , 0 >
 < ptoComa ,   >
-< _B , 1 >
+< _B , 2 >
 < asigMultiplicacion ,   >
 < cteEntera , 57 >
 < ptoComa ,   >
-< abcd , 2 >
+< abcd , 3 >
 < opLogico , 1 >
-< f , 3 >
+< f , 4 >
 < asignacion ,   >
 < cadena , micasa >
 < ptoComa ,   >

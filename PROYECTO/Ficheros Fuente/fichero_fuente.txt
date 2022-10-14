@@ -1,5 +1,5 @@
 int Hola = 5;
-if(Hola==5) print Hola;
+if(Hola5==5) print Hola;
 _B*=57;
 abcd&&f="micasa"; /* alkjf */
 +:,{}
