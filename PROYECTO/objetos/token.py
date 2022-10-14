@@ -20,10 +20,10 @@ class ListaTokens:
             print("Error: {0}",format(err)) 
     
     def addTokenPalabraReservada(self,lexema):
-        token=Token(lexema,"-")     # añadir a la lista como Token
+        token=Token(lexema, " ")     # añadir a la lista como Token
         self.tokens.append(token)
         
-        tokenFichero="< "+lexema+" , - >"    # añadir al fichero 
+        tokenFichero="< "+lexema+" ,  >"    # añadir al fichero 
         self.addFichero(tokenFichero)
     
     def addTokenIdentificador(self,lexema,pos):
@@ -55,8 +55,8 @@ class ListaTokens:
         self.addFichero(tokenFichero)     
     
     def addEndOfFile(self):
-        token=Token("eof","-")
+        token=Token("eof"," ")
         self.tokens.append(token)
         
-        tokenFichero="< eof , - >"
+        tokenFichero="< eof ,  >"
         self.addFichero(tokenFichero)

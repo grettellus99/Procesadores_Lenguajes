@@ -84,13 +84,13 @@ def accionesSemanticas (a,ctr,listaTokens,tabla):
         listaTokens.addTokenOperadoresSignos("opRelacional", 1)   # agrega token operador relacional a la lista y el fichero
    
     elif a == 20:
-        listaTokens.addTokenOperadoresSignos("asignacion", "-")   # agrega token operador asignación a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("asignacion", " ")   # agrega token operador asignación a la lista y el fichero
    
     elif a == 21:
         leer=True      # debe leerse el próximo carácter
     
     elif a == 22:
-        listaTokens.addTokenOperadoresSignos("asigMultiplicacion", "-")   # agrega token operador asignación a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("asigMultiplicacion", " ")   # agrega token operador asignación a la lista y el fichero
    
     elif a == 23:
         listaTokens.addTokenOperadoresSignos("opAritmetico",1)   # agrega token operador aritmético a la lista y el fichero
@@ -102,25 +102,25 @@ def accionesSemanticas (a,ctr,listaTokens,tabla):
         listaTokens.addTokenOperadoresSignos("opLogico",1)   # agrega token operador lógico a la lista y el fichero
 
     elif a == 26:
-        listaTokens.addTokenOperadoresSignos("abrirParantesis","-")   # agrega token abrir paréntesis a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("abrirParantesis"," ")   # agrega token abrir paréntesis a la lista y el fichero
         
     elif a == 27:
-        listaTokens.addTokenOperadoresSignos("cerrarParantesis","-")   # agrega token cerrar paréntesis a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("cerrarParantesis"," ")   # agrega token cerrar paréntesis a la lista y el fichero
         
     elif a == 28:
-        listaTokens.addTokenOperadoresSignos("abrirCorchete","-")   # agrega token abrir corchete a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("abrirCorchete"," ")   # agrega token abrir corchete a la lista y el fichero
        
     elif a == 29:
-        listaTokens.addTokenOperadoresSignos("cerrarCorchete","-")   # agrega token cerrar corchete a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("cerrarCorchete"," ")   # agrega token cerrar corchete a la lista y el fichero
       
     elif a == 30:
-        listaTokens.addTokenOperadoresSignos("ptoComa","-")   # agrega token punto y coma a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("ptoComa"," ")   # agrega token punto y coma a la lista y el fichero
       
     elif a == 31:
-        listaTokens.addTokenOperadoresSignos("coma","-")   # agrega token coma a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("coma"," ")   # agrega token coma a la lista y el fichero
       
     elif a == 32:
-        listaTokens.addTokenOperadoresSignos("dosPuntos","-")   # agrega token dosPuntos a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("dosPuntos"," ")   # agrega token dosPuntos a la lista y el fichero
       
     elif a == 33:
         listaTokens.addTokenOperadoresSignos("opAritmetico",2)   # agrega token operador aritmético 2 a la lista y el fichero

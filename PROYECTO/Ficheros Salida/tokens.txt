@@ -1,41 +1,41 @@
 Tokens
-< int , - >
+< int ,  >
 < Hola , 0 >
-< asignacion , - >
+< asignacion ,   >
 < cteEntera , 5 >
-< ptoComa , - >
-< if , - >
-< abrirParantesis , - >
+< ptoComa ,   >
+< if ,  >
+< abrirParantesis ,   >
 < Hola , 0 >
 < opRelacional , 1 >
 < cteEntera , 5 >
-< cerrarParantesis , - >
-< print , - >
+< cerrarParantesis ,   >
+< print ,  >
 < Hola , 0 >
-< ptoComa , - >
+< ptoComa ,   >
 < _B , 1 >
-< asigMultiplicacion , - >
+< asigMultiplicacion ,   >
 < cteEntera , 57 >
-< ptoComa , - >
+< ptoComa ,   >
 < abcd , 2 >
 < opLogico , 1 >
 < f , 3 >
-< asignacion , - >
+< asignacion ,   >
 < cadena , micasa >
-< ptoComa , - >
+< ptoComa ,   >
 < opAritmetico , 2 >
-< dosPuntos , - >
-< coma , - >
-< abrirCorchete , - >
-< cerrarCorchete , - >
-< switch , - >
-< case , - >
-< default , - >
-< return , - >
-< function , - >
-< break , - >
-< let , - >
-< string , - >
-< boolean , - >
-< int , - >
-< eof , - >
+< dosPuntos ,   >
+< coma ,   >
+< abrirCorchete ,   >
+< cerrarCorchete ,   >
+< switch ,  >
+< case ,  >
+< default ,  >
+< return ,  >
+< function ,  >
+< break ,  >
+< let ,  >
+< string ,  >
+< boolean ,  >
+< int ,  >
+< eof ,  >
