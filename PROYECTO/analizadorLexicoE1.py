@@ -10,7 +10,7 @@ from objetos.Token import ListaTokens
 #------------ path a partir de Reader.py ------------
 readFicheroFuente = Reader("../Ficheros Fuente/fichero_fuente.txt")
 writerErrores=Reader("../Ficheros Salida/errores.txt")
-writerErrores.write("Errores:",True)
+writerErrores.write("\n",True)
 
 writerTokens=Reader("../Ficheros Salida/tokens.txt")
 
@@ -52,10 +52,22 @@ while(seguir):
         
         if(error):
             #   GESTION DE ERROES NO COMPLETADA #
-            mensajeError="Error en línea "+readFicheroFuente.linea+". "+error.mensaje
+            #   Si hay un error y no ha terminado de leer --> Leer siguiente caracter hasta delimitador
+            lexemaError=""
+            if(estadoSiguiente != "S"):
+                lexemaError=f"{c}"
+                while(c!=32 or c!=10 or c!=13 or c!=False): 
+                    c=readFicheroFuente.readSigCaracter();
+                    lexemaError+=str(c)  # concatenar el lexema
+            else:
+                estadoSiguiente="S" #   Reiniciar la MT
+            
+            
+            error= False
+            mensajeError="Error en línea "+readFicheroFuente.linea+". "+error.mensaje  
             print(mensajeError)
             writerErrores.write(mensajeError,False)
-    
+            
         if(estadoFinal):    # c es un caracter que no está en una transicion o.c
             leer=True
         else:

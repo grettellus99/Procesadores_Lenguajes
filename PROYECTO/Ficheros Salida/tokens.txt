@@ -1,43 +1,58 @@
-Tokens
-< int ,  >
-< Hola , 0 >
-< asignacion ,   >
-< cteEntera , 5 >
-< ptoComa ,   >
-< if ,  >
-< abrirParantesis ,   >
-< Hola5 , 1 >
-< opRelacional , 1 >
-< cteEntera , 5 >
-< cerrarParantesis ,   >
-< print ,  >
-< Hola , 0 >
-< ptoComa ,   >
-< _B , 2 >
-< asigMultiplicacion ,   >
-< cteEntera , 57 >
-< ptoComa ,   >
-< abcd , 3 >
-< opLogico , 1 >
-< f , 4 >
-< asignacion ,   >
-< cadena , micasa >
-< ptoComa ,   >
-< opAritmetico , 2 >
-< dosPuntos ,   >
-< coma ,   >
-< abrirCorchete ,   >
-< cerrarCorchete ,   >
-< switch ,  >
-< case ,  >
-< default ,  >
-< return ,  >
-< function ,  >
-< break ,  >
+
+
 < let ,  >
-< string ,  >
-< boolean ,  >
+< id  , 0 >
 < int ,  >
-< true ,  >
-< false ,  >
+< ptoComa ,   >
+< let ,  >
+< id  , 1 >
+< int ,  >
+< ptoComa ,   >
+< let ,  >
+< id  , 2 >
+< int ,  >
+< ptoComa ,   >
+< print ,  >
+< cadena , Introduce el primer operando >
+< ptoComa ,   >
+< input ,  >
+< id  , 0 >
+< ptoComa ,   >
+< print ,  >
+< cadena , Introduce el segundo operando >
+< ptoComa ,   >
+< input ,  >
+< id  , 1 >
+< ptoComa ,   >
+< function ,  >
+< id  , 3 >
+< int ,  >
+< abrirParantesis ,   >
+< int ,  >
+< id  , 4 >
+< coma ,   >
+< int ,  >
+< id  , 5 >
+< cerrarParantesis ,   >
+< abrirCorchete ,   >
+< return ,  >
+< id  , 4 >
+< opAritmetico , 2 >
+< id  , 5 >
+< opAritmetico , 1 >
+< cteEntera , 77 >
+< ptoComa ,   >
+< cerrarCorchete ,   >
+< id  , 2 >
+< asignacion ,   >
+< id  , 3 >
+< abrirParantesis ,   >
+< id  , 0 >
+< coma ,   >
+< id  , 1 >
+< cerrarParantesis ,   >
+< ptoComa ,   >
+< print ,  >
+< id  , 2 >
+< ptoComa ,   >
 < eof ,  >

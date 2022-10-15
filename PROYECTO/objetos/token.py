@@ -11,7 +11,7 @@ class ListaTokens:
             self.tokens=[]
        ##### Inicilizar fichero tokens.txt ####
             self.writeFichero = Reader("../Ficheros Salida/tokens.txt")
-            self.writeFichero.write("Tokens",True)
+            self.writeFichero.write("\n",True)
     
     def addFichero(self,token):
         try:
@@ -26,11 +26,11 @@ class ListaTokens:
         tokenFichero="< "+lexema+" ,  >"    # añadir al fichero 
         self.addFichero(tokenFichero)
     
-    def addTokenIdentificador(self,lexema,pos):
-        token=Token(lexema,pos)     # añadir a la lista como Token
+    def addTokenIdentificador(self,pos):
+        token=Token("id",pos)     # añadir a la lista como Token
         self.tokens.append(token)
         
-        tokenFichero="< "+lexema+" , "+ str(pos) +" >"    # añadir al fichero 
+        tokenFichero="< id  , "+ str(pos) +" >"    # añadir al fichero 
         self.addFichero(tokenFichero)
       
     def addTokenConstEntera(self,valor):

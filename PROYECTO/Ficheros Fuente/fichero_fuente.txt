@@ -1,7 +1,14 @@
-int Hola = 5;
-if(Hola5==5) print Hola;
-_B*=57;
-abcd&&f="micasa"; /* alkjf */
-+:,{}
-switch case default return function break
-let string boolean int true false
+let a    int   ;
+let b     int  ;
+let number int ;
+print  "Introduce el primer operando" ;
+input a;
+print "Introduce el segundo operando";input  
+	b;
+function  operacion	int(int num_1, int num_2)
+{
+	return  num_1 + num_2*77;
+}
+
+number = operacion (a, b);
+print number;

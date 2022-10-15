@@ -22,7 +22,8 @@ class Reader:
                 else:
                     print(f"El fichero {self.path} no tiene permisos de lectura")
             else:
-                print(f"El fichero {self.path} no existe")
+                f=open(self.path,'w')
+                #print(f"El fichero {self.path} no existe")
         except OSError as err:
             print("Error: {0}",format(err))
 

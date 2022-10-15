@@ -35,10 +35,10 @@ def accionesSemanticas (a,ctr,listaTokens,tabla):
                 pos=resul[0]
                 insertar=resul[1]
                 if(insertar==False):
-                    listaTokens.addTokenIdentificador(lexema,pos) # agrega token id a la lista y el fichero
+                    listaTokens.addTokenIdentificador(pos) # agrega token id a la lista y el fichero
                 else:  # si no devuelve False lo encontró
                     pos = tabla.insertarValor(lexema)
-                    listaTokens.addTokenIdentificador(lexema,pos)
+                    listaTokens.addTokenIdentificador(pos)
                     print("No se ha encontrado, se inserta en la pos: ",pos)     
         
     elif a == 5:

@@ -1,6 +1,27 @@
-Tabla de Simbolos
-LEXEMA: Hola	POSICION: 0
-LEXEMA: Hola5	POSICION: 1
-LEXEMA: _B	POSICION: 2
-LEXEMA: abcd	POSICION: 3
-LEXEMA: f	POSICION: 4
+CONTENIDOS DE LA TABLA # 1 :
+
+
+	* LEXEMA :	'a'
+	ATRIBUTOS :
+	+ despl :	0
+	----------- ----------
+	* LEXEMA :	'b'
+	ATRIBUTOS :
+	+ despl :	1
+	----------- ----------
+	* LEXEMA :	'number'
+	ATRIBUTOS :
+	+ despl :	2
+	----------- ----------
+	* LEXEMA :	'operacion'
+	ATRIBUTOS :
+	+ despl :	3
+	----------- ----------
+	* LEXEMA :	'num_1'
+	ATRIBUTOS :
+	+ despl :	4
+	----------- ----------
+	* LEXEMA :	'num_2'
+	ATRIBUTOS :
+	+ despl :	5
+	----------- ----------

@@ -12,7 +12,8 @@ class TablaSimbolos():
     def __init__(self):
         self.identificadores=[]     # array de identificadores
         self.writerFichero = Reader("../Ficheros Salida/tabla.txt")     # crear el reader al fichero de salida de la Tabla de Símbolos
-        self.writerFichero.write("Tabla de Simbolos",True)     # Borrar lo escrito por compilaciones anteriores
+        
+        self.writerFichero.write("CONTENIDOS DE LA TABLA # 1 :\n\n",True)     # Borrar lo escrito por compilaciones anteriores
         
     def insertarValor(self,n):
         pos= len(self.identificadores)      # la posicion a insertar será la última de la lista de identificadores
@@ -21,7 +22,7 @@ class TablaSimbolos():
         self.identificadores.append(entrada)      # agregar el objeto crado al final del array de identificadores de la TS
         
         try:
-            self.writerFichero.write("LEXEMA: " + n + "\t" +"POSICION: " + str(pos), False)      # escribir la nueva entrada en el fichero SIN sobrescribir
+            self.writerFichero.write("\t* LEXEMA :\t" + f"'{n}'" + "\n" +"\tATRIBUTOS :\n" + "\t+ despl :\t"+str(pos) + "\n\t----------- ----------", False)      # escribir la nueva entrada en el fichero SIN sobrescribir
         except OSError as err:
             print("Error: {0}",format(err))
         

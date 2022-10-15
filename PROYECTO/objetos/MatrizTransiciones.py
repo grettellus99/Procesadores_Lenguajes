@@ -56,7 +56,7 @@ def matrizTransiciones(e,cct):
         elif c == 61:       #if c ==   =
             accion = 18
             estadoSig = "H"
-        elif c == 32 or c == 10 or c == 13 or c == 11:       #if c == del (espacio en blanco, salto de linea, retorno de carro o tab)
+        elif c == 32 or c == 10 or c == 13 or c == 11 or c==9:       #if c == del (espacio en blanco, salto de linea, retorno de carro o tab)
             accion = 1 
             estadoSig = "S"
         elif c == 58:       #if c == :
