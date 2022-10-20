@@ -1,2 +1,29 @@
 
 
+Línea 1 - Código de error 60: 
+	 ERROR LÉXICO - El número introducido está fuera de rango.
+	 NUM: 40000 es mayor que 32767.
+
+
+Línea 2 - Código de error 50: 
+	 ERROR LÉXICO - carácter CAR: '-' no esperado.
+
+
+Línea 2 - Código de error 60: 
+	 ERROR LÉXICO - El número introducido está fuera de rango.
+	 NUM: 50000 es mayor que 32767.
+
+
+Línea 3 - Código de error 61: 
+	 ERROR LÉXICO - La cadena introducida tiene más del número máximo de caracteres permitidos: 64. 
+	 CAD: 'aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaa'.
+
+
+Línea 4 - Código de error 55: 
+	 ERROR LÉXICO - carácter CAR: '5' no válido. Se esperaba &.
+
+
+Línea 5 - Código de error 51: 
+	 ERROR LÉXICO - carácter CAR: 'a' no válido. Se esperaba *.
+
+

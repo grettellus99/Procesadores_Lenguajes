@@ -1,14 +1,8 @@
-let a    int   ;
-let b     int  ;
-let number int ;
-print  "Introduce el primer operando" ;
-input a;
-print "Introduce el segundo operando";input  
-	b;
-function  operacion	int(int num_1, int num_2)
-{
-	return  num_1 + num_2*77;
-}
+40000
+-50000
+"aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaa"
+&5
+/auidfoaif;iadf
 
-number = operacion (a, b);
-print number;
+int hola;
+if(hola == 5) return 7;

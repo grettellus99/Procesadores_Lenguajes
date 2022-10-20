@@ -1,27 +1,15 @@
 CONTENIDOS DE LA TABLA # 1 :
 
 
-	* LEXEMA :	'a'
+	* LEXEMA :	'auidfoaif'
 	ATRIBUTOS :
 	+ despl :	0
 	----------- ----------
-	* LEXEMA :	'b'
+	* LEXEMA :	'iadf'
 	ATRIBUTOS :
 	+ despl :	1
 	----------- ----------
-	* LEXEMA :	'number'
+	* LEXEMA :	'hola'
 	ATRIBUTOS :
 	+ despl :	2
-	----------- ----------
-	* LEXEMA :	'operacion'
-	ATRIBUTOS :
-	+ despl :	3
-	----------- ----------
-	* LEXEMA :	'num_1'
-	ATRIBUTOS :
-	+ despl :	4
-	----------- ----------
-	* LEXEMA :	'num_2'
-	ATRIBUTOS :
-	+ despl :	5
 	----------- ----------

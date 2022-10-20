@@ -1,6 +1,6 @@
 
 from objetos.datos import *
-from objetos.GestorError import Error
+from objetos.GestorErrorAL import Error
 
 
 
@@ -39,7 +39,7 @@ def accionesSemanticas (a,ctr,listaTokens,tabla):
                 else:  # si no devuelve False lo encontró
                     pos = tabla.insertarValor(lexema)
                     listaTokens.addTokenIdentificador(pos)
-                    print("No se ha encontrado, se inserta en la pos: ",pos)     
+                    print(f"No se ha encontrado el identificador {lexema}, se inserta en la pos: {pos}")     
         
     elif a == 5:
         valor = int(c) 
@@ -50,10 +50,10 @@ def accionesSemanticas (a,ctr,listaTokens,tabla):
         leer=True      # debe leerse el próximo carácter
     
     elif a == 7:
-        if valor > 32767:
+        if (valor > 32767):
             print("ERROR")
             # Crear un objeto Error con el mensaje específico para devolverlo como valor de retorno 
-            error=Error("","El número introducido es mayor que el máximo número válido 32767", "")
+            error=Error(60,f"ERROR LÉXICO - El número introducido está fuera de rango.\n\t NUM: {valor} es mayor que 32767.", "")         
         else:
             listaTokens.addTokenConstEntera(valor) # agrega token cteEntera a la lista y el fichero
 
@@ -73,7 +73,7 @@ def accionesSemanticas (a,ctr,listaTokens,tabla):
         if len(lexema) > 64:
             print("ERROR")
              # Crear un objeto Error con el mensaje específico para devolverlo como valor de retorno 
-            error=Error("","La cadena introducida tiene más del número máximo de caracteres permitidas: 64", "")
+            error=Error(61,f"ERROR LÉXICO - La cadena introducida tiene más del número máximo de caracteres permitidos: 64. \n\t CAD: '{lexema}'.", "")
         else:
             listaTokens.addTokenCadena(lexema) # agrega token cadena a la lista y el fichero
 

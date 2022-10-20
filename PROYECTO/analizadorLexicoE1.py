@@ -4,19 +4,17 @@ from objetos.MatrizTransiciones import matrizTransiciones
 from objetos.Reader import Reader
 from objetos.TS import TablaSimbolos
 from objetos.Token import ListaTokens
+from objetos.GestorErrorAL import *
 
 #------------ Inicializaciones ------------------
 
 #------------ path a partir de Reader.py ------------
 readFicheroFuente = Reader("../Ficheros Fuente/fichero_fuente.txt")
-writerErrores=Reader("../Ficheros Salida/errores.txt")
-writerErrores.write("\n",True)
-
-writerTokens=Reader("../Ficheros Salida/tokens.txt")
 
 #----- Creación de la instancia GLOBAL de Tabla de Símbolos --------------
 tabla = TablaSimbolos()
 listaTokens = ListaTokens()
+errores=GestorErrorAL()
 
 leer=True
 estadoSiguiente="S"
@@ -51,34 +49,32 @@ while(seguir):
         
         
         if(error):
-            #   GESTION DE ERROES NO COMPLETADA #
             #   Si hay un error y no ha terminado de leer --> Leer siguiente caracter hasta delimitador
-            lexemaError=""
-            if(estadoSiguiente != "S"):
-                lexemaError=f"{c}"
-                while(c!=32 or c!=10 or c!=13 or c!=False): 
+            if(estadoSiguiente != "S" and (error.cod == 52 or error.cod == 53 or error.cod == 54)):
+                while(c!=10 and c!=13 and c!=False): 
                     c=readFicheroFuente.readSigCaracter();
-                    lexemaError+=str(c)  # concatenar el lexema
-            else:
-                estadoSiguiente="S" #   Reiniciar la MT
+            elif(estadoSiguiente != "S" and (error.cod == 51 or error.cod == 55)):
+                leer=False
+            error.linea = f"{readFicheroFuente.numLinea}"
+            errores.crearError(error)  
             
-            
-            error= False
-            mensajeError="Error en línea "+readFicheroFuente.linea+". "+error.mensaje  
-            print(mensajeError)
-            writerErrores.write(mensajeError,False)
-            
-        if(estadoFinal):    # c es un caracter que no está en una transicion o.c
+            # Reinicializar el estado
+            estadoSiguiente = "S"        
+            error= False 
+        
+        elif(estadoFinal):    # c es un caracter que no está en una transicion o.c
             leer=True
         else:
             resAccion = accionesSemanticas(accion,c,listaTokens,tabla)    # realizar la accion semantica correspondiente
             leer=resAccion[0]
             error=resAccion[1]
+            
             if(error):
-                #   GESTION DE ERROES NO COMPLETADA #
-                mensajeError="Error en línea "+readFicheroFuente.linea+". "+error.mensaje
-                print(mensajeError)
-                writerErrores.write(mensajeError,False)
+                #   Si hay un error y no ha terminado de leer --> Leer siguiente caracter hasta delimitador
+                error.linea = f"{readFicheroFuente.numLinea}"
+                errores.crearError(error)  
+             
+                error= False
                   
     else:   # si c es FALSE el fichero ha terminado
         seguir=False

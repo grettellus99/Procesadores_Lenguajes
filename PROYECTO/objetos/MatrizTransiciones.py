@@ -1,9 +1,9 @@
 from objetos.datos import *
-from objetos.GestorError import Error
+from objetos.GestorErrorAL import Error
 
 def matrizTransiciones(e,cct):
     accion=0
-    estadoSig=""
+    estadoSig=e
     estadoFinal = False
     c=cct
     error=False
@@ -63,9 +63,10 @@ def matrizTransiciones(e,cct):
             accion = 32
             estadoSig= "Y"
         else:
-            mensaje= f"El carácter {c} no es válido para el estado {e}"
-            print(mensaje)
-            error=Error("", mensaje ,"")
+            print("ERROR")
+            c=chr(c)
+            mensaje= f"ERROR LÉXICO - carácter CAR: '{c}' no esperado."
+            error=Error(50, mensaje ,"")
     # A
     elif e =="A":
         if c in letras:
@@ -109,9 +110,10 @@ def matrizTransiciones(e,cct):
             accion = 9
             estadoSig = "F"
         else:
-            mensaje= f"El carácter {c} no es válido para el estado {e}"
-            print(mensaje)
-            error=Error("", mensaje ,"")
+            print("ERROR")
+            c=chr(c)
+            mensaje= f"ERROR LÉXICO - carácter CAR: '{c}' no válido. Se esperaba *."
+            error=Error(51, mensaje ,"")
     # F
     elif e =="F":
         if c in c1:       #if c ==  C1
@@ -121,9 +123,10 @@ def matrizTransiciones(e,cct):
             accion = 11
             estadoSig = "G"
         else:
-            mensaje= f"El carácter {c} no es válido para el estado {e}"
-            print(mensaje)
-            error=Error("", mensaje ,"")
+            print("ERROR")
+            c=chr(c)
+            mensaje= f"ERROR LÉXICO - carácter CAR: '{c}' no esperado."
+            error=Error(52, mensaje ,"")
         
     # G
     elif e =="G":
@@ -138,9 +141,10 @@ def matrizTransiciones(e,cct):
             accion = 13
             estadoSig = "G"
         else:
-            mensaje= f"El carácter {c} no es válido para el estado {e}"
-            print(mensaje)
-            error=Error("", mensaje ,"")
+            print("ERROR")
+            c=chr(c)
+            mensaje= f"ERROR LÉXICO - carácter CAR: '{c}' no esperado."
+            error=Error(53, mensaje ,"")
 
     # H
     elif e =="H":
@@ -172,9 +176,10 @@ def matrizTransiciones(e,cct):
             accion = 17
             estadoSig = "L"
         else:
-            mensaje= f"El carácter {c} no es válido para el estado {e}"
-            print(mensaje)
-            error=Error("", mensaje ,"")
+            print("ERROR")
+            c=chr(c)
+            mensaje= f"ERROR LÉXICO - carácter CAR: '{c}' no válido. Se esperaba &."
+            error=Error(54, mensaje ,"")
 
         
     # L  ( ESTADO FINAL ) 
@@ -212,9 +217,10 @@ def matrizTransiciones(e,cct):
             accion = 25
             estadoSig = "Q"
         else:
-            mensaje= f"El carácter {c} no es válido para el estado {e}"
-            print(mensaje)
-            error=Error("", mensaje ,"")
+            print("ERROR")
+            c=chr(c)
+            mensaje= f"ERROR LÉXICO - carácter CAR: '{c}' no válido. Se esperaba &."
+            error=Error(55, mensaje ,"")
 
     # Q ( ESTADO FINAL )
     elif e =="Q":

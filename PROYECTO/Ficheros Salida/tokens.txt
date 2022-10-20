@@ -1,58 +1,19 @@
 
 
-< let ,  >
+< cteEntera , 5 >
 < id  , 0 >
-< int ,  >
 < ptoComa ,   >
-< let ,  >
 < id  , 1 >
 < int ,  >
-< ptoComa ,   >
-< let ,  >
 < id  , 2 >
-< int ,  >
 < ptoComa ,   >
-< print ,  >
-< cadena , Introduce el primer operando >
-< ptoComa ,   >
-< input ,  >
-< id  , 0 >
-< ptoComa ,   >
-< print ,  >
-< cadena , Introduce el segundo operando >
-< ptoComa ,   >
-< input ,  >
-< id  , 1 >
-< ptoComa ,   >
-< function ,  >
-< id  , 3 >
-< int ,  >
+< if ,  >
 < abrirParantesis ,   >
-< int ,  >
-< id  , 4 >
-< coma ,   >
-< int ,  >
-< id  , 5 >
+< id  , 2 >
+< opRelacional , 1 >
+< cteEntera , 5 >
 < cerrarParantesis ,   >
-< abrirCorchete ,   >
 < return ,  >
-< id  , 4 >
-< opAritmetico , 2 >
-< id  , 5 >
-< opAritmetico , 1 >
-< cteEntera , 77 >
-< ptoComa ,   >
-< cerrarCorchete ,   >
-< id  , 2 >
-< asignacion ,   >
-< id  , 3 >
-< abrirParantesis ,   >
-< id  , 0 >
-< coma ,   >
-< id  , 1 >
-< cerrarParantesis ,   >
-< ptoComa ,   >
-< print ,  >
-< id  , 2 >
+< cteEntera , 7 >
 < ptoComa ,   >
 < eof ,  >
