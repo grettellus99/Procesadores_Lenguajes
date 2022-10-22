@@ -1,0 +1,46 @@
+/*
+    CASO DE PRUEBA #5: 
+*/
+
+let unaCadena64 string = "Si la vida te da limones haz limonada. Quieres limones ?????????"
+
+let _un_num_1 int = 50000;
+
+let a int = _un_num_1; 
+
+let bool boolean = true;
+
+if (a <= _un_num_1 || bool != false & ) {
+    bool = false;
+}
+
+/* Cod 52 😀 * /
+
+/* Cod 53 *😀 * /
+
+function PrintRecursivo boolean (string cadena) {
+
+    print cadena;
+
+    if(bool == false) {
+        bool = true;
+        PrintRecursivo(cadena);
+    }
+
+    return true;
+}
+
+a = a/a;
+
+
+_un_num_1 = a * a;
+
+switch(a){
+    case _un_num_1:
+        PrintRecursivo("Una cadena de más de 64 caracteres. Una cadena de más de 64 caracteres.");
+        break;
+    default:
+        PrintRecursivo(unaCadena64);
+}
+
+unaCadena64 = "Emoji 😀";

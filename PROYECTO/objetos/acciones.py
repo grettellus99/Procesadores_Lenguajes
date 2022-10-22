@@ -102,10 +102,10 @@ def accionesSemanticas (a,ctr,listaTokens,tabla):
         listaTokens.addTokenOperadoresSignos("opLogico",1)   # agrega token operador lógico a la lista y el fichero
 
     elif a == 26:
-        listaTokens.addTokenOperadoresSignos("abrirParantesis"," ")   # agrega token abrir paréntesis a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("abrirParentesis"," ")   # agrega token abrir paréntesis a la lista y el fichero
         
     elif a == 27:
-        listaTokens.addTokenOperadoresSignos("cerrarParantesis"," ")   # agrega token cerrar paréntesis a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("cerrarParentesis"," ")   # agrega token cerrar paréntesis a la lista y el fichero
         
     elif a == 28:
         listaTokens.addTokenOperadoresSignos("abrirCorchete"," ")   # agrega token abrir corchete a la lista y el fichero

@@ -178,7 +178,7 @@ def matrizTransiciones(e,cct):
         else:
             print("ERROR")
             c=chr(c)
-            mensaje= f"ERROR LÉXICO - carácter CAR: '{c}' no válido. Se esperaba &."
+            mensaje= f"ERROR LÉXICO - carácter CAR: '{c}' no esperado dentro de la cadena"
             error=Error(54, mensaje ,"")
 
         

@@ -1,19 +1,104 @@
 
 
-< cteEntera , 5 >
+< print ,  >
+< cadena , "Introduce el resultado de 6+6*2: " >
+< ptoComa ,   >
+< let ,  >
+< id  , 0 >
+< int ,  >
+< asignacion ,   >
+< cteEntera , 0 >
+< ptoComa ,   >
+< input ,  >
 < id  , 0 >
 < ptoComa ,   >
+< let ,  >
 < id  , 1 >
 < int ,  >
-< id  , 2 >
+< asignacion ,   >
+< cteEntera , 5 >
 < ptoComa ,   >
 < if ,  >
-< abrirParantesis ,   >
-< id  , 2 >
+< abrirParentesis ,   >
+< id  , 0 >
 < opRelacional , 1 >
-< cteEntera , 5 >
-< cerrarParantesis ,   >
+< cteEntera , 18 >
+< cerrarParentesis ,   >
+< abrirCorchete ,   >
+< print ,  >
+< cadena , "Bien!!" >
+< ptoComa ,   >
+< print ,  >
+< cadena , "Introduce un número para sumarle a 18: " >
+< ptoComa ,   >
+< input ,  >
+< id  , 1 >
+< cerrarCorchete ,   >
+< switch ,  >
+< abrirParentesis ,   >
+< id  , 0 >
+< cerrarParentesis ,   >
+< abrirCorchete ,   >
+< case ,  >
+< cteEntera , 24 >
+< dosPuntos ,   >
+< print ,  >
+< cadena , ":( es 6*2 = 12 y luego 12 + 6 = 18 no 24" >
+< ptoComa ,   >
+< print ,  >
+< cadena , "Introduce un número para sumarle a 24: " >
+< ptoComa ,   >
+< input ,  >
+< id  , 1 >
+< ptoComa ,   >
+< break ,  >
+< ptoComa ,   >
+< default ,  >
+< dosPuntos ,   >
+< print ,  >
+< cadena , "Vaya " >
+< opAritmetico , 2 >
+< id  , 0 >
+< opAritmetico , 2 >
+< cadena , " no es correcto." >
+< ptoComa ,   >
+< cerrarCorchete ,   >
+< function ,  >
+< id  , 2 >
+< int ,  >
+< abrirParentesis ,   >
+< int ,  >
+< id  , 3 >
+< coma ,   >
+< int ,  >
+< id  , 4 >
+< cerrarParentesis ,   >
+< abrirCorchete ,   >
+< id  , 5 >
+< asignacion ,   >
+< id  , 3 >
+< opAritmetico , 2 >
+< id  , 4 >
+< ptoComa ,   >
 < return ,  >
-< cteEntera , 7 >
+< id  , 5 >
+< ptoComa ,   >
+< cerrarCorchete ,   >
+< print ,  >
+< id  , 0 >
+< opAritmetico , 2 >
+< cadena , " + " >
+< opAritmetico , 2 >
+< id  , 1 >
+< opAritmetico , 2 >
+< cadena , " = " >
+< ptoComa ,   >
+< print ,  >
+< id  , 2 >
+< abrirParentesis ,   >
+< id  , 0 >
+< coma ,   >
+< id  , 1 >
+< cerrarParentesis ,   >
 < ptoComa ,   >
 < eof ,  >

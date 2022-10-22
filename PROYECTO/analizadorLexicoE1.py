@@ -55,6 +55,10 @@ while(seguir):
                     c=readFicheroFuente.readSigCaracter();
             elif(estadoSiguiente != "S" and (error.cod == 51 or error.cod == 55)):
                 leer=False
+                
+            elif(estadoSiguiente == "S" and error.cod == 50):
+                leer=True
+                
             error.linea = f"{readFicheroFuente.numLinea}"
             errores.crearError(error)  
             

@@ -41,10 +41,10 @@ class ListaTokens:
         self.addFichero(tokenFichero)     
 
     def addTokenCadena(self,lexema):
-        token=Token("cadena",lexema)     # añadir a la lista como Token
+        token=Token("cadena","\"" + lexema+ "\"")     # añadir a la lista como Token
         self.tokens.append(token)
         
-        tokenFichero="< cadena , " + lexema +" >"    # añadir al fichero 
+        tokenFichero="< cadena , \"" + lexema +"\" >"    # añadir al fichero 
         self.addFichero(tokenFichero)     
     
     def addTokenOperadoresSignos(self,op,num):

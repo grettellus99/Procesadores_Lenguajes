@@ -1,13 +1,18 @@
 /*
-    CASO DE PRUEBA #1
+    CASO DE PRUEBA #4 C#1 con errores
 */
 
 print "Introduce el resultado de 6+6*2: ";
-let a_1 int = 0;
+
+let a_1 int = 32800;  /* Este num es mayoy que el max */ 
 
 input a_1;
 
+/
+
+
 let num int = 5;
+let b boolean = true&false;
 
 if (a_1 == 18) {
     print "Bien!!";
@@ -18,7 +23,7 @@ if (a_1 == 18) {
 switch (a_1) {
 
     case 24:
-        print ":( es 6*2 = 12 y luego 12 + 6 = 18 no 24";
+        print "Nooo :(. La precedencia de operadores obliga a realizar 6*2 = 12 primero y luego 12 + 6 = 18";
         print "Introduce un número para sumarle a 24: "; 
         input num;
         break;
@@ -26,10 +31,10 @@ switch (a_1) {
         print "Vaya " + a_1 + " no es correcto.";
 }
 
-
+ 
 function Suma int (int a, int b) {
     
-    j= a + b;
+    j= a - b;
     return j;
     /* La función finaliza y devuelve el valor entero de la expresión */
 }
