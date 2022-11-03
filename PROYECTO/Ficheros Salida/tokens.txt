@@ -1,104 +1,56 @@
 
 
-< print ,  >
-< cadena , "Introduce el resultado de 6+6*2: " >
-< ptoComa ,   >
 < let ,  >
 < id  , 0 >
 < int ,  >
-< asignacion ,   >
-< cteEntera , 0 >
-< ptoComa ,   >
-< input ,  >
-< id  , 0 >
 < ptoComa ,   >
 < let ,  >
 < id  , 1 >
 < int ,  >
-< asignacion ,   >
-< cteEntera , 5 >
 < ptoComa ,   >
-< if ,  >
-< abrirParentesis ,   >
-< id  , 0 >
-< opRelacional , 1 >
-< cteEntera , 18 >
-< cerrarParentesis ,   >
-< abrirCorchete ,   >
-< print ,  >
-< cadena , "Bien!!" >
+< let ,  >
+< id  , 2 >
+< int ,  >
 < ptoComa ,   >
 < print ,  >
-< cadena , "Introduce un número para sumarle a 18: " >
+< cadena , "Introduce el primer operando" >
 < ptoComa ,   >
 < input ,  >
-< id  , 1 >
-< cerrarCorchete ,   >
-< switch ,  >
-< abrirParentesis ,   >
 < id  , 0 >
-< cerrarParentesis ,   >
-< abrirCorchete ,   >
-< case ,  >
-< cteEntera , 24 >
-< dosPuntos ,   >
-< print ,  >
-< cadena , ":( es 6*2 = 12 y luego 12 + 6 = 18 no 24" >
 < ptoComa ,   >
 < print ,  >
-< cadena , "Introduce un número para sumarle a 24: " >
+< cadena , "Introduce el segundo operando" >
 < ptoComa ,   >
 < input ,  >
 < id  , 1 >
 < ptoComa ,   >
-< break ,  >
-< ptoComa ,   >
-< default ,  >
-< dosPuntos ,   >
-< print ,  >
-< cadena , "Vaya " >
-< opAritmetico , 2 >
-< id  , 0 >
-< opAritmetico , 2 >
-< cadena , " no es correcto." >
-< ptoComa ,   >
-< cerrarCorchete ,   >
 < function ,  >
-< id  , 2 >
+< id  , 3 >
 < int ,  >
 < abrirParentesis ,   >
 < int ,  >
-< id  , 3 >
+< id  , 4 >
 < coma ,   >
 < int ,  >
-< id  , 4 >
+< id  , 5 >
 < cerrarParentesis ,   >
 < abrirCorchete ,   >
-< id  , 5 >
-< asignacion ,   >
-< id  , 3 >
-< opAritmetico , 2 >
-< id  , 4 >
-< ptoComa ,   >
 < return ,  >
+< id  , 4 >
+< opAritmetico , 1 >
 < id  , 5 >
 < ptoComa ,   >
 < cerrarCorchete ,   >
-< print ,  >
-< id  , 0 >
-< opAritmetico , 2 >
-< cadena , " + " >
-< opAritmetico , 2 >
-< id  , 1 >
-< opAritmetico , 2 >
-< cadena , " = " >
-< ptoComa ,   >
-< print ,  >
 < id  , 2 >
+< asignacion ,   >
+< id  , 3 >
 < abrirParentesis ,   >
 < id  , 0 >
 < coma ,   >
 < id  , 1 >
 < cerrarParentesis ,   >
+< ptoComa ,   >
+< print ,  >
+< id  , 2 >
 < ptoComa ,   >
 < eof ,  >

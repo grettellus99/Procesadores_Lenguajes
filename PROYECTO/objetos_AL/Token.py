@@ -1,4 +1,4 @@
-from objetos.Reader import Reader
+from objetos_AL.Reader import Reader
 
 class Token:
     def __init__(self,n,v):

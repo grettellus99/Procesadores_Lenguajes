@@ -1,10 +1,10 @@
 
-from objetos.Acciones import accionesSemanticas
-from objetos.MatrizTransiciones import matrizTransiciones
-from objetos.Reader import Reader
-from objetos.TS import TablaSimbolos
-from objetos.Token import ListaTokens
-from objetos.GestorErrorAL import *
+from objetos_AL.Acciones import accionesSemanticas
+from objetos_AL.MatrizTransiciones import matrizTransiciones
+from objetos_AL.Reader import Reader
+from objetos_AL.TS import TablaSimbolos
+from objetos_AL.Token import ListaTokens
+from objetos_AL.GestorErrorAL import *
 
 #------------ Inicializaciones ------------------
 

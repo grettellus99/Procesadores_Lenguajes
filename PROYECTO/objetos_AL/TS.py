@@ -1,4 +1,4 @@
-from objetos.Reader import Reader
+from objetos_AL.Reader import Reader
 
 # Definir una entrada en la Tabla de Simbolos
 class EntradaTablaSimbolos():

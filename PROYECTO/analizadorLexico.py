@@ -1,8 +1,8 @@
-from objetos.Token import *
-from objetos.transiciones import matrizTransiciones
-from objetos.acciones import *
-from objetos.Reader import *
-from objetos.datos import *
+from objetos_AL.Token import *
+from objetos_AL.transiciones import matrizTransiciones
+from objetos_AL.acciones import *
+from objetos_AL.Reader import *
+from objetos_AL.datos import *
 
 print(matrizTransiciones("S",104))
 
