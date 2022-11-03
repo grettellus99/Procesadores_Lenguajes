@@ -1,0 +1,83 @@
+
+F(A) = { if ; let ; switch ; id ; print ; input ; return ; function ; eof }			
+Fo(A) = { eof }
+
+F(B) = { if ; let ; switch ; id ; print ; input ; return }
+Fo(B) =  { if ; let ; switch ; id ; print ; input ; return ; function ; eof ; 
+		Fo(C) ; break ; Fo(O); Fo(O')}
+	
+F(S) = { id ; print ; input ; return }	
+Fo(S) = Fo(B)
+							
+
+F(S') = { = ; *= ; ( }
+Fo(S') = { ; } 
+
+F(E) = { id ; ( ; cteEntera ; cadena ; true ;  false }
+Fo(E) = { ) ; ; ; Fo(S') ; , ; Fo(L) ; Fo(X)}
+
+F(E') = { && ; λ }
+Fo(E') = { Fo(E)}
+
+F(R) = { id ; ( ; cteEntera ; cadena ; true ;  false }
+F(R) = { && ; Fo(E) }
+
+F(R') = { == ; λ } 
+F(R') = { Fo(R) }
+
+F(U) = { id ; ( ; cteEntera ; cadena ; true ;  false }
+Fo(U) = { == ; Fo(R); ) ; Fo(S') }
+
+F(U') = { + ; λ } 
+Fo(U') = { Fo(U) }
+
+F(V) = { id ; ( ; cteEntera ; cadena ; true ;  false }
+Fo(V) = { + ; Fo(U) }
+
+F(V') = { * ; λ }
+F(V') = { Fo (V) }
+
+F(P) = { id ; ( ; cteEntera ; cadena ; true ;  false }
+Fo(P) = { * ; Fo(V) }
+
+F(P') = { ( ; λ }
+Fo(P') = { Fo(P) }
+
+F(L) = { id ; ( ; cteEntera ; cadena ; true ;  false ; λ }
+Fo(L) = { ) }
+
+F(Q) = { , ; λ }
+Fo(Q) = { Fo(L) }
+
+F(X) = { id ; ( ; cteEntera ; cadena ; true ;  false ; λ }
+Fo(X) = { ; }
+
+F(T) = { int ; boolean ; string }
+Fo(T) = { id ; Fo(H) ; ; ; = ; *= }
+
+F(F) = { function }
+Fo(F) = {  if ; let ; switch ; id ; print ; input ; return ; function ; eof }
+
+F(H) = { int ; boolean ; string ; λ }
+Fo(H) = { ( }
+
+F(D) = { int ; boolean ; string ; λ }
+Fo(D) =  { ) }
+
+F(K) = { , ; λ }
+Fo(K) = { Fo(D) }
+
+F(C) = { if ; let ; switch ; id ; print ; input ; return ; λ }
+Fo(C) = { } }
+
+F(N) = { ; ; = ; *= }
+Fo(N) = { Fo(B) }
+
+F(Z) = { case ; default }
+Fo(Z) = { } }
+
+F(O) = { if ; let ; switch ; id ; print ; input ; return ; break }
+Fo(O) = { case ; default ; Fo(Z)}
+
+F(O') = { if ; let ; switch ; id ; print ; input ; return ; break ; λ }
+Fo(O') = { Fo(O) }
