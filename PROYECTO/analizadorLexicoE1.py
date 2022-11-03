@@ -4,7 +4,7 @@ from objetos_AL.MatrizTransiciones import matrizTransiciones
 from objetos_AL.Reader import Reader
 from objetos_AL.TS import TablaSimbolos
 from objetos_AL.Token import ListaTokens
-from objetos_AL.GestorErrorAL import *
+from GestorError import *
 
 #------------ Inicializaciones ------------------
 
@@ -14,7 +14,7 @@ readFicheroFuente = Reader("../Ficheros Fuente/fichero_fuente.txt")
 #----- Creación de la instancia GLOBAL de Tabla de Símbolos --------------
 tabla = TablaSimbolos()
 listaTokens = ListaTokens()
-errores=GestorErrorAL()
+errores=GestorError()
 
 leer=True
 estadoSiguiente="S"

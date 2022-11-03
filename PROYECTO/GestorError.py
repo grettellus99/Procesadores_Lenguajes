@@ -7,14 +7,11 @@ class Error():
         self.mensaje=mensaje
         self.linea=linea
         
-class GestorErrorAL():
-    
-   
-    
-    
+class GestorError():
+     
     def __init__ (self):
           ##### Inicilizar fichero tokens.txt ####
-        self.writeFichero = Reader("../Ficheros Salida/errores.txt")
+        self.writeFichero = Reader("./Ficheros Salida/errores.txt")
         self.writeFichero.write("\n",True)
         self.listaErrores=[]
         
