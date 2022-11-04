@@ -64,3 +64,36 @@ firstU1 = ["id","abrirParentesis","cteEntera","cadena","true","false"]
 followU = ["opRelacional1"] + followR
 
 #-------- U' -------------------
+
+firstUprima2 = ["opAritmetico2"]
+
+followUprima = [] + followU
+
+#-------- V -------------------
+
+firstV1 = ["id","abrirParentesis","cteEntera","cadena","true","false"]
+
+followV = ["opAritmetico2"] + followU
+
+#-------- V' -------------------
+
+firstVprima2 = ["opAritmetico1"]
+
+followVprima = [] + followV
+
+#--------- P --------------------
+
+firstP1 = ["id"]
+firstP2 = ["abrirParentesis"]
+firstP3 = ["cteEntera"]
+firstP4 = ["cadena"]
+firstP5 = ["true"]
+firstP6 = ["false"]
+
+followP = ["opAritmetico1"] + followV
+
+#--------- P' --------------------
+
+firstPprima2 = ["abrirParentesis"]
+
+followPprima = [] +  followP
