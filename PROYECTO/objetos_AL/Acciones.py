@@ -1,6 +1,6 @@
 
 from objetos_AL.datos import *
-from GestorError import Error
+from objetosGenerales.GestorError import Error
 
 
 

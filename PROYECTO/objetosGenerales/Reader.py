@@ -23,7 +23,6 @@ class Reader:
                     print(f"El fichero {self.path} no tiene permisos de lectura")
             else:
                 f=open(self.path,'w')
-                #print(f"El fichero {self.path} no existe")
         except OSError as err:
             print("Error: {0}",format(err))
 
@@ -95,4 +94,32 @@ class Reader:
                 f.write('\n')   # introducir el salto de línea
         except OSError as err:
             print("Error: {0}",format(err))
+        self.close()   # se cierra el archivo para evitar que se corrompa
+
+    def writeParse(self,parse):
+        if(self.file):      # si es la primer vaz que se accede luego de crear el objeto
+            self.close()    # se cierra el fichero. El fichero no se cierra en el constructor para
+                            # que la funcionalidad por defecto sea la de leer lineas del fichero fuente       
+        try:
+           
+            # "w" permite sobrescribir todo
+            f=open(self.path,"w")   # abrir el archivo
+            
+            self.file=f  
+            
+            f.write("Descendente\t")  # introducir texto SOBRESCRIBIENDO todo
+            
+            sizeParse = parse.count()
+            i=0
+            while(i<sizeParse):
+                f.write(""+ str(parse[i]))
+                i+=1
+                if(i%10==0): 
+                    f.write("\n")   # si se ha escrito 10 veces se hace salto de linea
+                else: 
+                    f.write("\t")   # se escribe un tabulador en caso contrario   
+          
+        except OSError as err:
+            print("Error: {0}",format(err))
+        
         self.close()   # se cierra el archivo para evitar que se corrompa

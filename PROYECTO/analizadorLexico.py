@@ -1,9 +1,9 @@
 from objetos_AL.Acciones import accionesSemanticas
 from objetos_AL.MatrizTransiciones import matrizTransiciones
-from objetos_AL.Reader import Reader
+from objetosGenerales.Reader import Reader
 from objetos_AL.TS import TablaSimbolos
 from objetos_AL.Token import ListaTokens
-from GestorError import *
+from objetosGenerales.GestorError import *
 
 
 class AnalizadorLexico():
@@ -89,4 +89,4 @@ class AnalizadorLexico():
                 #   print(str(i.nombre) +"\t"+ str(i.valor) + "\n")
           
         t = self.listaTokens.getLastToken()
-        return t
+        return t,self.terminado

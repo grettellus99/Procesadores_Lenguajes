@@ -1,4 +1,4 @@
-from objetos_AL.Reader import Reader
+from objetosGenerales.Reader import Reader
 
 # Definir una clase error
 class Error():

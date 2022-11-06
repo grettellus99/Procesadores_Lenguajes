@@ -1,5 +1,5 @@
 from objetos_ASintac.datos import *
-from GestorError import Error
+from objetosGenerales.GestorError import Error
 from objetos_ASintac.Pila import Pila
 
 
@@ -11,6 +11,7 @@ class Tabla:
         self.valorToken = ""
         self.parse=[]
         self.pila= Pila()
+        self.pila.append("A")    #inicializar la pila con el axioma
         
     
     # Establecer el token actual
@@ -19,8 +20,8 @@ class Tabla:
         self.valorToken = str(t.valor)
      
      
-    def comprobarToken(self,nT,pedirToken,error):
-    
+    def comprobarToken(self,nT):
+  
     # ----------- INICIALIZAR  -----------   
         t=self.token
         if(t != "id" and t != "cadena" and t != "cteEntera"):
