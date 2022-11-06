@@ -97,3 +97,96 @@ followP = ["opAritmetico1"] + followV
 firstPprima2 = ["abrirParentesis"]
 
 followPprima = [] +  followP
+
+#---------- L --------------------
+
+firstL1 = ["id","abrirParentesis","cteEntera","cadena","true","false"]
+
+followL = ["cerrarParentesis"]
+
+#---------- Q --------------------
+
+firstQ1 = ["coma"]
+
+followQ = [] + followL
+
+#---------- X --------------------
+
+firstX1 = ["id","abrirParentesis","cteEntera","cadena","true","false"]
+
+followX = ["ptoComa"]
+
+#---------- T --------------------
+
+firstT1 = ["int"]
+
+firstT2 = ["boolean"]
+
+firstT3 = ["string"]
+
+followT = ["id", "cerrarParentesis", "ptoComa", "asignacion", "asigMultiplicacion"]
+
+#---------- F --------------------
+
+firstF1 = ["function"]
+
+followF = ["if", "let", "switch", "id", "print", "input", "return", "function", "eof"]
+
+#---------- H --------------------
+
+firstH1 = ["int", "boolean", "string"]
+
+followH = ["abrirParentesis"]
+
+#---------- D --------------------
+
+firstD1 = ["int", "boolean", "string"]
+
+followD = ["cerrarParentesis"]
+
+#---------- K --------------------
+
+firstK1 = ["coma"]
+
+followK = [] + followD
+
+#---------- C --------------------
+
+firstC1 = ["if", "let", "switch", "id", "print", "input", "return"]
+
+followC = ["cerrarCorchete"]
+
+#---------- N --------------------
+
+firstN1 = ["ptoComa"] 
+
+firstN2 = ["asignacion"] 
+
+firstN3 = ["asigMultiplicacion"]
+
+followN = ["if", "let","switch","id","print","input","return", "function", "eof", "cerrarParentesis","break","case","default"]
+
+#---------- Z --------------------
+
+firstZ1 = ["case"]
+
+firstZ2 = ["default"]
+
+followZ= ["cerrarCorchete"]
+
+#---------- O --------------------
+
+firstO1 = ["if", "let", "switch", "id", "print", "input", "return"]
+
+firstO2 = ["break"]
+
+followO = ["case", "default"] + followZ
+
+#---------- O' --------------------
+
+firstOprima1 = ["if", "let", "switch", "id", "print", "input", "return"]
+
+firstOprima2 = ["break"]
+
+followOprima = [] + followO
+

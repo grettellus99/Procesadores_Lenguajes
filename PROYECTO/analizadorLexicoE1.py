@@ -66,9 +66,7 @@ while(seguir):
             estadoSiguiente = "S"        
             error= False 
         
-        elif(estadoFinal):    # c es un caracter que no está en una transicion o.c
-            leer=True
-        else:
+        elif(estadoFinal == False):   
             resAccion = accionesSemanticas(accion,c,listaTokens,tabla)    # realizar la accion semantica correspondiente
             leer=resAccion[0]
             error=resAccion[1]

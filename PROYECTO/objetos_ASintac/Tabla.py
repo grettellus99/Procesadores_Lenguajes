@@ -379,25 +379,264 @@ class Tabla:
                 self.pila.append("L")
                 self.pila.append("abrirParentesis")
                 
-    #-----------------------------------------------------------------------------------------   
+                if(self.pila.equipara(tv)):
+                    pedirToken=True
+                else:
+                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+
+            else:
+                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
         
+    #-----------------------------------------------------------------------------------------   
+        elif nT == "L":
+            if tv in firstL1:
+                self.parse.append(35)
+                self.pila.append("Q")
+                self.pila.append("E")
+            
+            elif tv in followL:
+                self.parse.append(36)
+            
+            else:
+                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+            
+    #-----------------------------------------------------------------------------------------               
+        elif nT == "Q":
+            if tv in firstQ1:
+                self.parse.append(37)
+                self.pila.append("Q")
+                self.pila.append("E")
+                self.pila.append("coma")
+                 
+                if(self.pila.equipara(tv)):
+                    pedirToken=True
+                else:
+                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+
+            elif tv in followQ:
+                self.parse.append(38)
+            
+            else:
+                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+            
+    #-----------------------------------------------------------------------------------------   
+        elif nT == "X":
+            if tv in firstX1:
+                self.parse.append(39)
+                self.pila.append("E")
+            
+            elif tv in followX:
+                self.parse.append(40)
+            
+            else:
+                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+            
+    #-----------------------------------------------------------------------------------------               
+        elif nT == "T":
+            if tv in firstT1:
+                self.parse.append(41)
+                self.pila.append("int")
+                
+                if(self.pila.equipara(tv)):
+                    pedirToken=True
+                else:
+                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+            
+            elif tv in firstT2:
+                self.parse.append(42)
+                self.pila.append("boolean")
+                
+                if(self.pila.equipara(tv)):
+                    pedirToken=True
+                else:
+                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+             
+            elif tv in firstT3:
+                self.parse.append(43)
+                self.pila.append("string")
+                
+                if(self.pila.equipara(tv)):
+                    pedirToken=True
+                else:
+                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                 
+            else:
+                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+    
+    #-----------------------------------------------------------------------------------------   
+        elif nT == "F":
+            if tv in firstF1:
+                self.parse.append(44)
+                self.pila.append("function")
+            
+            else:
+                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+    
+    #-----------------------------------------------------------------------------------------               
+        elif nT == "H":
+            if tv in firstH1:
+                self.parse.append(45)
+                self.pila.append("T")
+            
+            elif tv in followH:
+                self.parse.append(46)
+                
+            else:
+                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+    
+    #-----------------------------------------------------------------------------------------   
+        elif nT == "D":
+            if tv in firstD1:
+                self.parse.append(47)
+                self.pila.append("K")
+                self.pila.append("id")
+                self.pila.append("T")
+            
+            elif tv in followD:
+                self.parse.append(48)
+                
+            else:
+                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+    
+    #-----------------------------------------------------------------------------------------               
+        elif nT == "K":
+            if tv in firstK1:
+                self.parse.append(49)
+                self.pila.append("K")
+                self.pila.append("id")
+                self.pila.append("T")
+                self.pila.append("coma")
+                
+                if(self.pila.equipara(tv)):
+                    pedirToken=True
+                else:
+                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+            
+            elif tv in followK:
+                self.parse.append(50)
+                
+            else:
+                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+    
+    #-----------------------------------------------------------------------------------------   
+        elif nT == "C":
+            if tv in firstC1:
+                self.parse.append(51)
+                self.pila.append("C")
+                self.pila.append("B")
+                
+            elif tv in followC:
+                self.parse.append(52)
+                
+            else:
+                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+    
         
     #-----------------------------------------------------------------------------------------               
-    
-    
+        elif nT == "N":
+            if tv in firstN1:
+                self.parse.append(53)
+                self.pila.append("ptoComa")
+                
+                if(self.pila.equipara(tv)):
+                    pedirToken=True
+                else:
+                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                
+            elif tv in firstN2:
+                self.parse.append(54)
+                self.pila.append("E")
+                self.pila.append("asignacion")
+                
+                if(self.pila.equipara(tv)):
+                    pedirToken=True
+                else:
+                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                
+            elif tv in firstN3:
+                self.parse.append(55)
+                self.pila.append("E")
+                self.pila.append("asigMultiplicacion")
+                
+                if(self.pila.equipara(tv)):
+                    pedirToken=True
+                else:
+                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                
+            else:
+                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
     
     #-----------------------------------------------------------------------------------------   
-        
-        
+        elif nT == "Z":
+            if tv in firstZ1:
+                self.parse.append(56)
+                self.pila.append("Z")
+                self.pila.append("O")
+                self.pila.append(":")
+                self.pila.append("cteEntera")
+                self.pila.append("case")
+                
+                if(self.pila.equipara(tv)):
+                    pedirToken=True
+                else:
+                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")  
+            
+            elif tv in firstZ2:
+                self.parse.append(57)
+                self.pila.append("O")
+                self.pila.append(":")
+                self.pila.append("default")
+                
+                if(self.pila.equipara(tv)):
+                    pedirToken=True
+                else:
+                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")  
+            
+            else:
+                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+    
     #-----------------------------------------------------------------------------------------               
-    
-    
-    
+        elif nT == "O":
+            if tv in firstO1:
+                self.parse.append(58)
+                self.pila.append("O'")  
+                self.pila.append("B") 
+            
+            elif tv in firstO2:
+                self.parse.append(59)
+                self.pila.append("ptoComa")  
+                self.pila.append("break")
+                
+                if(self.pila.equipara(tv)):
+                    pedirToken=True
+                else:
+                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")  
+            
+            else:
+                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+            
     #-----------------------------------------------------------------------------------------   
-        
-        
+        elif nT == "O'":
+            if tv in firstOprima1:
+                self.parse.append(60)
+                self.pila.append("O'")  
+                self.pila.append("B") 
+            
+            elif tv in firstOprima2:
+                self.parse.append(61)
+                self.pila.append("ptoComa")  
+                self.pila.append("break")
+                
+                if(self.pila.equipara(tv)):
+                    pedirToken=True
+                else:
+                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")  
+            
+            elif tv in followOprima:
+                self.parse.append(62)
+            
+            else:
+                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+                 
     #-----------------------------------------------------------------------------------------               
-    
-    
-    
         return pedirToken,error
