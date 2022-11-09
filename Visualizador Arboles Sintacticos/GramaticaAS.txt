@@ -1,0 +1,94 @@
+/////// GRAMATICA ////////////
+
+Terminales = { if let switch id print input return function break cteEntera cadena true false == && ; , ( ) { } + * = *= int boolean string case default : eof }
+
+NoTerminales = { A B S Sp E Ep R Rp U Up V Vp P Pp L Q X T F H D K C N Z O Op }
+
+Axioma = A
+
+Producciones = {
+
+A  -> B A		//// Axioma
+A -> F A
+A -> eof
+
+B -> if ( E ) S	//// Sentencias compuestas
+B -> let id T N
+B -> S
+B -> switch ( U ) { Z }
+
+S -> id Sp ;	//// Sentencias simples
+S -> print E ;
+S -> input id ;
+S -> return X ;
+Sp -> = E
+Sp -> *= U
+Sp -> ( L )
+
+
+E -> R Ep	//// Expresiones
+Ep -> lambda
+Ep -> && R Ep
+R -> U Rp
+Rp -> lambda
+Rp -> == U Rp
+U -> V Up
+Up -> lambda
+Up -> + V Up
+V -> P Vp
+Vp -> lambda
+Vp -> * P Vp
+
+
+P -> id Pp	//// Operandos 
+P -> ( E )
+P -> cteEntera
+P -> cadena
+P -> true
+P -> false
+Pp -> lambda
+Pp -> ( L )
+
+
+L -> E Q		//// Argumentos de función
+L -> lambda
+Q -> , E Q
+Q -> lambda
+
+
+X -> E		//// Valor de retorno
+X -> lambda
+
+
+T -> int		//// Tipos de variables
+T -> boolean
+T -> string
+
+
+F -> function id H ( D ) { C }	//// Declaración de funciones
+H -> T
+H -> lambda
+D -> T id K
+D -> lambda
+K -> , T id K
+K -> lambda
+C -> B C
+C -> lambda
+
+
+N -> ;	//// Inicialización de identificadores
+N -> = E ;
+N -> *= E ;
+
+
+Z -> case cteEntera : O Z	//// Cuerpo del switch
+Z -> default : O
+O -> B Op
+O ->  break ;
+Op -> B Op
+Op -> break ;
+Op -> lambda
+
+}
+
+
