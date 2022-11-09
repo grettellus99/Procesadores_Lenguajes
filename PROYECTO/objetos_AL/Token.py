@@ -1,4 +1,4 @@
-from objetos_AL.Reader import Reader
+from objetosGenerales.Reader import Reader
 
 class Token:
     def __init__(self,n,v):
@@ -20,7 +20,7 @@ class ListaTokens:
             print("Error: {0}",format(err)) 
     
     def addTokenPalabraReservada(self,lexema):
-        token=Token(lexema, "")     # añadir a la lista como Token
+        token=Token(lexema,"")     # añadir a la lista como Token
         self.tokens.append(token)
         
         tokenFichero="< "+lexema+" ,  >"    # añadir al fichero 

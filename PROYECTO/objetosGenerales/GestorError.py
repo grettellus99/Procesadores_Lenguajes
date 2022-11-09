@@ -11,7 +11,7 @@ class GestorError():
      
     def __init__ (self):
           ##### Inicilizar fichero tokens.txt ####
-        self.writeFichero = Reader("./Ficheros Salida/errores.txt")
+        self.writeFichero = Reader("../Ficheros Salida/errores.txt")
         self.writeFichero.write("\n",True)
         self.listaErrores=[]
         

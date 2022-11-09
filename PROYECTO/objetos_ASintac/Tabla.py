@@ -19,15 +19,29 @@ class Tabla:
         self.token = t.nombre
         self.valorToken = str(t.valor)
      
+    def getTokenActual(self):
+        t = self.token
+        tv = ""
+        if(t != "id" and t != "cadena" and t != "cteEntera"):
+            tv = t + self.valorToken
+        else:
+            tv = t
+        return tv  
+    
+    def getTokenName(self):
+        tv = self.getTokenActual()
+        if tv in tokenOp:
+            l = tokenOp
+            index = l.index(tv)
+            tv = convertirOp[index]   
+        return tv
      
     def comprobarToken(self,nT):
   
     # ----------- INICIALIZAR  -----------   
-        t=self.token
-        if(t != "id" and t != "cadena" and t != "cteEntera"):
-            tv = t + self.valorToken
-        else:
-            tv = t    
+        tv=self.getTokenActual()
+        t = self.getTokenName()
+        
         pedirToken = False
         error=False
     #----------------------------------------------------------------------------------------
@@ -468,8 +482,20 @@ class Tabla:
         elif nT == "F":
             if tv in firstF1:
                 self.parse.append(44)
+                self.pila.append("cerrarCorchete")
+                self.pila.append("C")
+                self.pila.append("abrirCorchete")
+                self.pila.append("cerrarParentesis")
+                self.pila.append("D")
+                self.pila.append("abrirParentesis")
+                self.pila.append("H")
+                self.pila.append("id")
                 self.pila.append("function")
-            
+                
+                if(self.pila.equipara(tv)):
+                    pedirToken=True
+                else:
+                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")      
             else:
                 error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
     

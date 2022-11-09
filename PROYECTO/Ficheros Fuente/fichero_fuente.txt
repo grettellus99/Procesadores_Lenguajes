@@ -1,7 +1,8 @@
 let a    int   ;
 let b     int  ;
 let number int ;
-print  "Introduce el primer operando" ;
+print  "a";
+print  "Introduce el primer operando";
 input a;
 print "Introduce el segundo operando";input  
 	b;

@@ -70,6 +70,7 @@ def accionesSemanticas (a,ctr,listaTokens,tabla):
         leer=True      # debe leerse el próximo carácter   
     
     elif a == 17:
+        leer=True
         if len(lexema) > 64:
             print("ERROR")
              # Crear un objeto Error con el mensaje específico para devolverlo como valor de retorno 
@@ -85,14 +86,14 @@ def accionesSemanticas (a,ctr,listaTokens,tabla):
         listaTokens.addTokenOperadoresSignos("opRelacional", 1)   # agrega token operador relacional a la lista y el fichero
    
     elif a == 20:
-        listaTokens.addTokenOperadoresSignos("asignacion", " ")   # agrega token operador asignación a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("asignacion", "")   # agrega token operador asignación a la lista y el fichero
    
     elif a == 21:
         leer=True      # debe leerse el próximo carácter
     
     elif a == 22:
         leer=True   # debe leerse el próximo carácter
-        listaTokens.addTokenOperadoresSignos("asigMultiplicacion", " ")   # agrega token operador asignación a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("asigMultiplicacion", "")   # agrega token operador asignación a la lista y el fichero
    
     elif a == 23:
         listaTokens.addTokenOperadoresSignos("opAritmetico",1)   # agrega token operador aritmético a la lista y el fichero
@@ -106,31 +107,31 @@ def accionesSemanticas (a,ctr,listaTokens,tabla):
 
     elif a == 26:
         leer=True   # debe leerse el próximo carácter
-        listaTokens.addTokenOperadoresSignos("abrirParentesis"," ")   # agrega token abrir paréntesis a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("abrirParentesis","")   # agrega token abrir paréntesis a la lista y el fichero
         
     elif a == 27:
         leer=True   # debe leerse el próximo carácter
-        listaTokens.addTokenOperadoresSignos("cerrarParentesis"," ")   # agrega token cerrar paréntesis a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("cerrarParentesis","")   # agrega token cerrar paréntesis a la lista y el fichero
         
     elif a == 28:
         leer=True   # debe leerse el próximo carácter
-        listaTokens.addTokenOperadoresSignos("abrirCorchete"," ")   # agrega token abrir corchete a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("abrirCorchete","")   # agrega token abrir corchete a la lista y el fichero
        
     elif a == 29:
         leer=True   # debe leerse el próximo carácter
-        listaTokens.addTokenOperadoresSignos("cerrarCorchete"," ")   # agrega token cerrar corchete a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("cerrarCorchete","")   # agrega token cerrar corchete a la lista y el fichero
       
     elif a == 30:
         leer=True   # debe leerse el próximo carácter
-        listaTokens.addTokenOperadoresSignos("ptoComa"," ")   # agrega token punto y coma a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("ptoComa","")   # agrega token punto y coma a la lista y el fichero
       
     elif a == 31:
         leer=True   # debe leerse el próximo carácter
-        listaTokens.addTokenOperadoresSignos("coma"," ")   # agrega token coma a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("coma","")   # agrega token coma a la lista y el fichero
       
     elif a == 32:
         leer=True   # debe leerse el próximo carácter
-        listaTokens.addTokenOperadoresSignos("dosPuntos"," ")   # agrega token dosPuntos a la lista y el fichero
+        listaTokens.addTokenOperadoresSignos("dosPuntos","")   # agrega token dosPuntos a la lista y el fichero
       
     elif a == 33:
         leer=True   # debe leerse el próximo carácter

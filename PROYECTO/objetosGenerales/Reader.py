@@ -107,14 +107,14 @@ class Reader:
             
             self.file=f  
             
-            f.write("Descendente\t")  # introducir texto SOBRESCRIBIENDO todo
+            f.write("Descendente\n")  # introducir texto SOBRESCRIBIENDO todo
             
-            sizeParse = parse.count()
+            sizeParse = len(parse)
             i=0
             while(i<sizeParse):
                 f.write(""+ str(parse[i]))
                 i+=1
-                if(i%10==0): 
+                if(i%20==0): 
                     f.write("\n")   # si se ha escrito 10 veces se hace salto de linea
                 else: 
                     f.write("\t")   # se escribe un tabulador en caso contrario   

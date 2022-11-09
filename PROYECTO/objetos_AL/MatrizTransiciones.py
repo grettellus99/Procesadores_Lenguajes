@@ -186,7 +186,7 @@ def matrizTransiciones(e,cct):
     # L  ( ESTADO FINAL ) 
     elif e =="L":
         accion=0
-        estadoFinal=True;
+        estadoFinal=True
         estadoSig = "S"
 
 

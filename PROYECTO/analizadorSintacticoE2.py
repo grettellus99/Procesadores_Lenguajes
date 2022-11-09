@@ -29,6 +29,7 @@ while(seguir):
     terminado = respAL[1]
     
     tablaAS.setTokenActual(siguienteToken)
+    siguienteToken = tablaAS.getTokenActual()
     
     pedirToken = False
     while(pedirToken == False and error == False):
@@ -55,14 +56,15 @@ while(seguir):
     if(terminado or error != False):
         seguir = False    
 
-if(error != False):
+if(error == False):
     parse = tablaAS.parse
     writerParse.writeParse(parse)
     
 else:
     ### GESTIONAR ERRORES ####
+    writerParse.writeParse("ERROR")
     errores = analizadorLexico.errores
-    linea = analizadorLexico.readFicheroFuente.linea
+    linea = analizadorLexico.readFicheroFuente.numLinea
     error.linea = linea
     
     errores.crearError(error)

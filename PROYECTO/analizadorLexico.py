@@ -46,13 +46,13 @@ class AnalizadorLexico():
                 self.estadoSiguiente=transicion[1]   # obtener el estado siguiente dado el carácter
                 self.estadoFinal=transicion[2]       # es True si es un estado final
                 self.error=transicion[3]             # NO es False si hay un error en las transiciones
-        
+                self.leer = False
         
                 if(self.error):
                      #   Si hay un error y no ha terminado de leer --> Leer siguiente caracter hasta delimitador
                     if(self.estadoSiguiente != "S" and (self.error.cod == 52 or self.error.cod == 53 or self.error.cod == 54)):
-                        while(c!=10 and c!=13 and c!=False): 
-                            c=self.readFicheroFuente.readSigCaracter()
+                        while(self.c!=10 and self.c!=13 and self.c!=False): 
+                            self.c=self.readFicheroFuente.readSigCaracter()
                     elif(self.estadoSiguiente != "S" and (self.error.cod == 51 or self.error.cod == 55)):
                             self.leer=False
                 
@@ -66,8 +66,8 @@ class AnalizadorLexico():
                     self.estadoSiguiente = "S"        
                     self.error = False 
         
-                elif(self.estadoFinal):    # se llega a un estado final
-                    self.seguir = False # se para el bucle porque ya se generó el siguiente token
+                elif(self.estadoFinal and len(self.listaTokens.tokens)>0):    # se llega a un estado final y hay tokens en la lista
+                    seguir = False # se para el bucle porque ya se generó el siguiente token
                     
                 else:
                     resAccion = accionesSemanticas(self.accion,self.c,self.listaTokens,self.tabla)    # realizar la accion semantica correspondiente

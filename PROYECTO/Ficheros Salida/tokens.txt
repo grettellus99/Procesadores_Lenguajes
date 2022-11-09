@@ -3,54 +3,57 @@
 < let ,  >
 < id  , 0 >
 < int ,  >
-< ptoComa ,   >
+< ptoComa ,  >
 < let ,  >
 < id  , 1 >
 < int ,  >
-< ptoComa ,   >
+< ptoComa ,  >
 < let ,  >
 < id  , 2 >
 < int ,  >
-< ptoComa ,   >
+< ptoComa ,  >
+< print ,  >
+< cadena , "a" >
+< ptoComa ,  >
 < print ,  >
 < cadena , "Introduce el primer operando" >
-< ptoComa ,   >
+< ptoComa ,  >
 < input ,  >
 < id  , 0 >
-< ptoComa ,   >
+< ptoComa ,  >
 < print ,  >
 < cadena , "Introduce el segundo operando" >
-< ptoComa ,   >
+< ptoComa ,  >
 < input ,  >
 < id  , 1 >
-< ptoComa ,   >
+< ptoComa ,  >
 < function ,  >
 < id  , 3 >
 < int ,  >
-< abrirParentesis ,   >
+< abrirParentesis ,  >
 < int ,  >
 < id  , 4 >
-< coma ,   >
+< coma ,  >
 < int ,  >
 < id  , 5 >
-< cerrarParentesis ,   >
-< abrirCorchete ,   >
+< cerrarParentesis ,  >
+< abrirCorchete ,  >
 < return ,  >
 < id  , 4 >
 < opAritmetico , 1 >
 < id  , 5 >
-< ptoComa ,   >
-< cerrarCorchete ,   >
+< ptoComa ,  >
+< cerrarCorchete ,  >
 < id  , 2 >
-< asignacion ,   >
+< asignacion ,  >
 < id  , 3 >
-< abrirParentesis ,   >
+< abrirParentesis ,  >
 < id  , 0 >
-< coma ,   >
+< coma ,  >
 < id  , 1 >
-< cerrarParentesis ,   >
-< ptoComa ,   >
+< cerrarParentesis ,  >
+< ptoComa ,  >
 < print ,  >
 < id  , 2 >
-< ptoComa ,   >
+< ptoComa ,  >
 < eof ,  >

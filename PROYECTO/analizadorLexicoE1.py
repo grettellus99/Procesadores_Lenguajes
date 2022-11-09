@@ -45,7 +45,7 @@ while(seguir):
         estadoSiguiente=transicion[1]   # obtener el estado siguiente dado el carácter
         estadoFinal=transicion[2]       # es True si es un estado final
         error=transicion[3]             # NO es False si hay un error en las transiciones
-        
+        leer = False
         
         
         if(error):

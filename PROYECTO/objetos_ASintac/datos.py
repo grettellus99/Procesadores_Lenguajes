@@ -1,6 +1,10 @@
 #------- Simbolos No Terminales -------------
 noTerminales = ["A","B","S","S'","E","E'","R","R'","U","U'","V","V'","P","P'","L","Q","X","T","F","H","D","K","C","N","Z","O","O'"]
 
+#------- TokenOp -----------------------
+tokenOp = ["opRelacional1","opLogico1","opAritmetico1","opAritmetico2"]
+convertirOp = ["==","&&","*","+"]
+
 # --------- FIRST Y FOLLOW --------------------
 
 #----------- A -------------
