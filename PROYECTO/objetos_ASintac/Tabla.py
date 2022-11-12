@@ -63,10 +63,10 @@ class Tabla:
                 if(self.pila.equipara(t)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba fin de fichero", "")
             
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                error=Error(101,f"ERROR SINTÁCTICO - El token {t} no pertenece al primer elemento de una sentencia válida, una función o es fin de fichero", "")
     #----------------------------------------------------------------------------------------  
         elif nT == "B":
             if tv in firstB1:
@@ -80,7 +80,7 @@ class Tabla:
                 if(self.pila.equipara(t)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: if", "")
             
             elif tv in firstB2:
                 self.parse.append(5)
@@ -92,7 +92,7 @@ class Tabla:
                 if(self.pila.equipara(t)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: let", "")
             
             elif tv in firstB3:
                 self.parse.append(6)
@@ -111,10 +111,10 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: switch", "")
             
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                error=Error(102,f"ERROR SINTÁCTICO - El token {t} no pertenece al primer elemento de una sentencia válida", "")
             
     #----------------------------------------------------------------------------------------
         elif nT == "S":
@@ -127,7 +127,7 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba un identificador de variable", "")
             
             elif tv in firstS2:
                 self.parse.append(9)
@@ -138,7 +138,7 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: print", "")
             
             elif tv in firstS3:
                 self.parse.append(10)
@@ -149,7 +149,7 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: input", "")
             
             elif tv in firstS4:
                 self.parse.append(11)
@@ -160,10 +160,10 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: return", "")
             
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                error=Error(103,f"ERROR SINTÁCTICO - Token {t} no pertenece al primer elemento de una sentencia simple válida", "")
             
                 
     #----------------------------------------------------------------------------------------
@@ -176,7 +176,7 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: =", "")
             
             elif tv in firstSprima2:
                 self.parse.append(13)
@@ -186,7 +186,7 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: *=", "")
             
             elif tv in firstSprima3:
                 self.parse.append(14)
@@ -197,10 +197,10 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: ( ", "")
 
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                error=Error(104,f"ERROR SINTÁCTICO - Token {t} no es una asignación válida o la llamada a una función", "")
             
     #----------------------------------------------------------------------------------------
         elif nT == "E":
@@ -210,7 +210,7 @@ class Tabla:
                 self.pila.append("R")
 
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                error=Error(105,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión valida", "")
             
     #----------------------------------------------------------------------------------------    
         elif nT == "E'":
@@ -226,10 +226,10 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")  
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: &&", "")  
             
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+               error=Error(106,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión lógica u otra expresión válida", "")
                 
     #---------------------------------------------------------------------------------------   
         elif nT == "R":
@@ -239,7 +239,7 @@ class Tabla:
                 self.pila.append("U")
                 
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")          
+                error=Error(107,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión válida", "")          
 
     #----------------------------------------------------------------------------------------             
         elif nT == "R'":
@@ -255,10 +255,10 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: ==", "")
             
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                error=Error(108,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión relacional u otra expresión válida", "")
                           
     #-----------------------------------------------------------------------------------------
         elif nT == "U":
@@ -268,7 +268,7 @@ class Tabla:
                 self.pila.append("V")
             
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                error=Error(109,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión válida", "")
     
     
     
@@ -286,10 +286,10 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: +", "")
 
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                error=Error(110,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión aritmética de suma u otra expresión válida", "")
     
     #-----------------------------------------------------------------------------------------
         elif nT == "V":
@@ -299,7 +299,7 @@ class Tabla:
                 self.pila.append("P")
                 
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                error=Error(111,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión válida", "")
         
     #-----------------------------------------------------------------------------------------
         elif nT == "V'":
@@ -315,10 +315,10 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: *", "")
 
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                error=Error(112,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión aritmética de multiplicacion u otra expresión válida", "")
         
     #-----------------------------------------------------------------------------------------   
         elif nT == "P":
@@ -330,7 +330,7 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba un identificador de variable", "")
 
             elif tv in firstP2:
                 self.parse.append(28)
@@ -341,7 +341,7 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: ( ", "")
 
             elif tv in firstP3:
                 self.parse.append(29)
@@ -350,7 +350,7 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba una constante entera", "")
 
 
             elif tv in firstP4:
@@ -360,7 +360,7 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba una cadena", "")
 
             elif tv in firstP5:
                 self.parse.append(31)
@@ -369,7 +369,7 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: true", "")
 
             elif tv in firstP6:
                 self.parse.append(32)
@@ -378,10 +378,10 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: false", "")
 
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                error=Error(113,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión válida", "")
         
     #-----------------------------------------------------------------------------------------               
         elif nT == "P'":
@@ -397,10 +397,10 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: (", "")
 
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                error=Error(114,f"ERROR SINTÁCTICO - Token {t} no es un identificador de variable o la llamada a una función", "")
         
     #-----------------------------------------------------------------------------------------   
         elif nT == "L":
@@ -413,7 +413,7 @@ class Tabla:
                 self.parse.append(36)
             
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                error=Error(115,f"ERROR SINTÁCTICO - Token {t} no es un argumento de función válido porque no pertenece a una expresión válida", "")
             
     #-----------------------------------------------------------------------------------------               
         elif nT == "Q":
@@ -426,13 +426,13 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: ,", "")
 
             elif tv in followQ:
                 self.parse.append(38)
             
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                error=Error(116,f"ERROR SINTÁCTICO - Token {t} de función válido porque no pertenece a una expresión válida", "")
             
     #-----------------------------------------------------------------------------------------   
         elif nT == "X":
@@ -444,7 +444,7 @@ class Tabla:
                 self.parse.append(40)
             
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                error=Error(117,f"ERROR SINTÁCTICO - Token {t} no es un valor de retorno de función válido porque no pertenece a una expresión válida", "")
             
     #-----------------------------------------------------------------------------------------               
         elif nT == "T":
@@ -455,7 +455,7 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: int", "")
             
             elif tv in firstT2:
                 self.parse.append(42)
@@ -464,7 +464,7 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: boolean", "")
              
             elif tv in firstT3:
                 self.parse.append(43)
@@ -473,10 +473,10 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: string", "")
                  
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no es un tipo de variable válido", "")         
     
     #-----------------------------------------------------------------------------------------   
         elif nT == "F":
@@ -495,9 +495,9 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")      
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: function", "")      
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+                error=Error(119,f"ERROR SINTÁCTICO - Token {t} no pertenece a una declaración válida de una función", "")         
     
     #-----------------------------------------------------------------------------------------               
         elif nT == "H":
@@ -509,7 +509,7 @@ class Tabla:
                 self.parse.append(46)
                 
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+                error=Error(120,f"ERROR SINTÁCTICO - Token {t} no es un tipo de valor de retorno de función válido", "")         
     
     #-----------------------------------------------------------------------------------------   
         elif nT == "D":
@@ -523,7 +523,7 @@ class Tabla:
                 self.parse.append(48)
                 
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+                error=Error(121,f"ERROR SINTÁCTICO - Token {t} no es una declaración válida de un argumento de una función", "")         
     
     #-----------------------------------------------------------------------------------------               
         elif nT == "K":
@@ -537,13 +537,13 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: ,", "")
             
             elif tv in followK:
                 self.parse.append(50)
                 
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+                error=Error(122,f"ERROR SINTÁCTICO - Token {t} no es una declaración válida de un argumento de una función", "")         
     
     #-----------------------------------------------------------------------------------------   
         elif nT == "C":
@@ -556,7 +556,7 @@ class Tabla:
                 self.parse.append(52)
                 
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+                error=Error(123,f"ERROR SINTÁCTICO - Token {t} no pertenece a una sentencia válida", "")         
     
         
     #-----------------------------------------------------------------------------------------               
@@ -568,7 +568,7 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: ;", "")
                 
             elif tv in firstN2:
                 self.parse.append(54)
@@ -578,7 +578,7 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: =", "")
                 
             elif tv in firstN3:
                 self.parse.append(55)
@@ -588,10 +588,10 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba *=", "")
                 
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+                error=Error(124,f"ERROR SINTÁCTICO - Token {t} no es una asignación válida", "")         
     
     #-----------------------------------------------------------------------------------------   
         elif nT == "Z":
@@ -606,7 +606,7 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")  
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: case", "")  
             
             elif tv in firstZ2:
                 self.parse.append(57)
@@ -617,10 +617,10 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")  
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: case", "")  
             
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+                error=Error(125,f"ERROR SINTÁCTICO - Token {t} no es un cuerpo válido para la condicional múltiple switch", "")         
     
     #-----------------------------------------------------------------------------------------               
         elif nT == "O":
@@ -637,10 +637,10 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")  
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: break", "")  
             
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+                error=Error(126,f"ERROR SINTÁCTICO - Token {t} no pertenece a una sentencia válida", "")         
             
     #-----------------------------------------------------------------------------------------   
         elif nT == "O'":
@@ -657,13 +657,13 @@ class Tabla:
                 if(self.pila.equipara(tv)):
                     pedirToken=True
                 else:
-                    error=Error(0,f"ERROR SINTÁCTICO - Token {t} no esperado", "")  
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: break", "")  
             
             elif tv in followOprima:
                 self.parse.append(62)
             
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")         
+                error=Error(127,f"ERROR SINTÁCTICO - Token {t} no pertenece a una sentencia válida", "")         
                  
     #-----------------------------------------------------------------------------------------               
         return pedirToken,error

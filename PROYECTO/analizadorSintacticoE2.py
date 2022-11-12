@@ -51,7 +51,7 @@ while(seguir):
                     pedirToken = True   # el token (terminal) coincide con la cima de la pila
                 else: 
                     # el token (terminal) no coincide con la cima de la pila
-                    error = Error(100,f"ERROR SINTÁCTICO - Token {siguienteToken} no esperado", "")
+                    error = Error(100,f"ERROR SINTÁCTICO - Token {siguienteToken} no esperado. Se esperaba {cimaPila}", "")
                 
     if(terminado or error != False):
         seguir = False    
@@ -62,9 +62,9 @@ if(error == False):
     
 else:
     ### GESTIONAR ERRORES ####
-    writerParse.writeParse("ERROR")
-    errores = analizadorLexico.errores
-    linea = analizadorLexico.readFicheroFuente.numLinea
-    error.linea = linea
+    writerParse.writeParse("ERROR")         # invalidar el fichero parse
+    errores = analizadorLexico.errores      # obtener el gestor de errores del AL
+    linea = analizadorLexico.readFicheroFuente.numLinea     # obtener el num de línea actual
+    error.linea = linea     # actualizar la linea del error obtenido
     
-    errores.crearError(error)
+    errores.crearError(error)   # crear el error agregándolo a la lista del gestor y al fichero errores
