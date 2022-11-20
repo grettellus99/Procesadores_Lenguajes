@@ -1,5 +1,6 @@
+Código fuente
 /*
-    CASO DE PRUEBA #6: Declarar una función como sentencia de un if
+    CASO DE PRUEBA #5: Estructura de funcion incorrecta
 */
 
 
@@ -11,7 +12,7 @@ input a_1;
 let num int = 5;
 
 
-if (true) function funcPrint string () {
+function funcPrint string (let) {
     print "Bien!!";
     print "Introduce un número para sumarle a 18: ";
     input num;
@@ -40,3 +41,4 @@ function Suma int (int a, int b) {
 
 print a_1 + " + " + num + " = ";
 print  Suma(a_1,num);
+

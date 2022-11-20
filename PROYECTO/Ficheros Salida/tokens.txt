@@ -1,59 +1,25 @@
 
 
+< print ,  >
+< cadena , "Introduce el resultado de 6+6*2: " >
+< ptoComa ,  >
 < let ,  >
 < id  , 0 >
 < int ,  >
-< ptoComa ,  >
-< let ,  >
-< id  , 1 >
-< int ,  >
-< ptoComa ,  >
-< let ,  >
-< id  , 2 >
-< int ,  >
-< ptoComa ,  >
-< print ,  >
-< cadena , "a" >
-< ptoComa ,  >
-< print ,  >
-< cadena , "Introduce el primer operando" >
-< ptoComa ,  >
-< input ,  >
-< id  , 0 >
-< ptoComa ,  >
-< print ,  >
-< cadena , "Introduce el segundo operando" >
-< ptoComa ,  >
-< input ,  >
-< id  , 1 >
-< ptoComa ,  >
-< function ,  >
-< id  , 3 >
-< int ,  >
-< abrirParentesis ,  >
-< int ,  >
-< id  , 4 >
-< coma ,  >
-< int ,  >
-< id  , 5 >
-< cerrarParentesis ,  >
-< abrirCorchete ,  >
-< return ,  >
-< id  , 4 >
-< opAritmetico , 1 >
-< id  , 5 >
-< ptoComa ,  >
-< cerrarCorchete ,  >
-< id  , 2 >
 < asignacion ,  >
-< id  , 3 >
-< abrirParentesis ,  >
+< cteEntera , 0 >
+< ptoComa ,  >
+< input ,  >
 < id  , 0 >
-< coma ,  >
+< ptoComa ,  >
+< let ,  >
 < id  , 1 >
+< int ,  >
+< asignacion ,  >
+< cteEntera , 5 >
+< ptoComa ,  >
+< if ,  >
+< abrirParentesis ,  >
+< true ,  >
 < cerrarParentesis ,  >
-< ptoComa ,  >
-< print ,  >
-< id  , 2 >
-< ptoComa ,  >
-< eof ,  >
+< function ,  >

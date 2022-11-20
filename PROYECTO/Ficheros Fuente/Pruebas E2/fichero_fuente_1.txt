@@ -1,7 +1,6 @@
 /*
-    CASO DE PRUEBA #6: Declarar una función como sentencia de un if
+    CASO DE PRUEBA #1
 */
-
 
 print "Introduce el resultado de 6+6*2: ";
 let a_1 int = 0;
@@ -10,14 +9,11 @@ input a_1;
 
 let num int = 5;
 
-
-if (true) function funcPrint string () {
+if (a_1 == 18) 
     print "Bien!!";
-    print "Introduce un número para sumarle a 18: ";
-    input num;
-}
+if (a_1 == 18)    print "Introduce un número para sumarle a 18: ";
+if (a_1 == 18)    input num;
 
-if (a_1 == 18) funcPrint();  
 
 switch (a_1) {
 

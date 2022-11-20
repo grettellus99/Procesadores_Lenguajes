@@ -45,6 +45,8 @@ while(seguir):
         estadoSiguiente=transicion[1]   # obtener el estado siguiente dado el carácter
         estadoFinal=transicion[2]       # es True si es un estado final
         error=transicion[3]             # NO es False si hay un error en las transiciones
+        
+       
         leer = False
         
         
@@ -66,7 +68,7 @@ while(seguir):
             estadoSiguiente = "S"        
             error= False 
         
-        elif(estadoFinal == False):   
+        elif(estadoFinal == False or accion != 0):   
             resAccion = accionesSemanticas(accion,c,listaTokens,tabla)    # realizar la accion semantica correspondiente
             leer=resAccion[0]
             error=resAccion[1]

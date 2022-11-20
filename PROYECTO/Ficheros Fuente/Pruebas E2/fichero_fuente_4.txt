@@ -1,5 +1,5 @@
 /*
-    CASO DE PRUEBA #6: Declarar una función como sentencia de un if
+    CASO DE PRUEBA #4: Estructura de switch incorrecta
 */
 
 
@@ -11,7 +11,7 @@ input a_1;
 let num int = 5;
 
 
-if (true) function funcPrint string () {
+function funcPrint string () {
     print "Bien!!";
     print "Introduce un número para sumarle a 18: ";
     input num;

@@ -1,27 +1,11 @@
 CONTENIDOS DE LA TABLA # 1 :
 
 
-	* LEXEMA :	'a'
+	* LEXEMA :	'a_1'
 	ATRIBUTOS :
 	+ despl :	0
 	----------- ----------
-	* LEXEMA :	'b'
+	* LEXEMA :	'num'
 	ATRIBUTOS :
 	+ despl :	1
-	----------- ----------
-	* LEXEMA :	'number'
-	ATRIBUTOS :
-	+ despl :	2
-	----------- ----------
-	* LEXEMA :	'operacion'
-	ATRIBUTOS :
-	+ despl :	3
-	----------- ----------
-	* LEXEMA :	'num1'
-	ATRIBUTOS :
-	+ despl :	4
-	----------- ----------
-	* LEXEMA :	'num2'
-	ATRIBUTOS :
-	+ despl :	5
 	----------- ----------

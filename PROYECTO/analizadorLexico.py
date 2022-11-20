@@ -27,6 +27,8 @@ class AnalizadorLexico():
     def pedirToken(self):
         self.terminado = False
         seguir = True
+        self.lenListaTokens =  len(self.listaTokens.tokens)
+        self.tokenGenerado = False
         while(seguir):
             if(self.leer):   # si la accion anterior no devuelve leer en true NO se lee el siguiente carácter
                 self.c=self.readFicheroFuente.readSigCaracter()
@@ -66,13 +68,20 @@ class AnalizadorLexico():
                     self.estadoSiguiente = "S"        
                     self.error = False 
         
-                elif(self.estadoFinal and len(self.listaTokens.tokens)>0):    # se llega a un estado final y hay tokens en la lista
+                elif(self.estadoFinal and self.tokenGenerado == True):    # se llega a un estado final y hay tokens en la lista
                     seguir = False # se para el bucle porque ya se generó el siguiente token
+                    self.tokenGenerado = False
                     
                 else:
                     resAccion = accionesSemanticas(self.accion,self.c,self.listaTokens,self.tabla)    # realizar la accion semantica correspondiente
                     self.leer=resAccion[0]
                     self.error=resAccion[1]
+                    
+                    # Definir cuando se genera un token
+                    if(len(self.listaTokens.tokens) > self.lenListaTokens):
+                        self.lenListaTokens+=1
+                        self.tokenGenerado = True
+                        
             
                     if(self.error):
                         #   Si hay un error y no ha terminado de leer --> Leer siguiente caracter hasta delimitador

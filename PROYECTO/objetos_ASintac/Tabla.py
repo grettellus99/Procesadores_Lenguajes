@@ -572,6 +572,7 @@ class Tabla:
                 
             elif tv in firstN2:
                 self.parse.append(54)
+                self.pila.append("ptoComa")
                 self.pila.append("E")
                 self.pila.append("asignacion")
                 
@@ -582,6 +583,7 @@ class Tabla:
                 
             elif tv in firstN3:
                 self.parse.append(55)
+                self.pila.append("ptoComa")
                 self.pila.append("E")
                 self.pila.append("asigMultiplicacion")
                 
@@ -599,7 +601,7 @@ class Tabla:
                 self.parse.append(56)
                 self.pila.append("Z")
                 self.pila.append("O")
-                self.pila.append(":")
+                self.pila.append("dosPuntos")
                 self.pila.append("cteEntera")
                 self.pila.append("case")
                 
@@ -611,7 +613,7 @@ class Tabla:
             elif tv in firstZ2:
                 self.parse.append(57)
                 self.pila.append("O")
-                self.pila.append(":")
+                self.pila.append("dosPuntos")
                 self.pila.append("default")
                 
                 if(self.pila.equipara(tv)):

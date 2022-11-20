@@ -2,27 +2,24 @@
     CASO DE PRUEBA #2: Probando todos los posibles tokens
 */
 
-let unaCadena64 string = "Si la vida te da limones haz limonada. Quieres limones ?????????"
+let unaCadena64 string = "Si la vida te da limones haz limonada. Quieres limones ?????????";
 
-let _un_num_1 int = 32767;  /* a una unidad del error */ 
+let _un_num_1 int = 2;
 
 let a int = _un_num_1; 
 
 let bool boolean = true;
 
-if (a == _un_num_1 &&bool) {
-    bool = false;
-}
+if (a == _un_num_1 &&bool) bool = false;
+
 
 function PrintRecursivo boolean (string cadena) {
 
     print cadena;
 
-    if(bool == false) {
-        bool = true;
-        PrintRecursivo(cadena);
-    }
-
+    if(bool == false) bool = true;
+    if(bool == false) PrintRecursivo(cadena);
+    
     return true;
 }
 
@@ -30,7 +27,7 @@ a *= a;
 _un_num_1 = a * a;
 
 switch(a){
-    case _un_num_1:
+    case 16:
         PrintRecursivo(unaCadena64);
         break;
     default:
