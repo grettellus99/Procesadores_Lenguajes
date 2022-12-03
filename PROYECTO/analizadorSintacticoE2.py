@@ -1,7 +1,7 @@
 from objetosGenerales.Reader import Reader
 from analizadorLexico import AnalizadorLexico
-from objetos_ASintac.Tabla import Tabla
-from objetos_ASintac.datos import noTerminales
+from objetosASintac.Tabla import Tabla
+from objetosASintac.datos import noTerminales
 from objetosGenerales.GestorError import Error
 
 #------------- Inicializaciones ---------------

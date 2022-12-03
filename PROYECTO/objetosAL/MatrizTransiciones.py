@@ -1,4 +1,4 @@
-from objetos_AL.datos import *
+from objetosAL.datos import *
 from objetosGenerales.GestorError import Error
 
 def matrizTransiciones(e,cct):

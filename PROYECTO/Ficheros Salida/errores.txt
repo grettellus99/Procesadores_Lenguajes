@@ -1,6 +1,2 @@
 
 
-Línea 14 - Código de error 103: 
-	 ERROR SINTÁCTICO - Token function no pertenece al primer elemento de una sentencia simple válida
-
-

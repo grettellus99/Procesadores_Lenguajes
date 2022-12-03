@@ -1,11 +1,35 @@
 CONTENIDOS DE LA TABLA # 1 :
 
 
-	* LEXEMA :	'a_1'
+	* LEXEMA :	'n1'
 	ATRIBUTOS :
 	+ despl :	0
 	----------- ----------
-	* LEXEMA :	'num'
+	* LEXEMA :	'n2'
 	ATRIBUTOS :
 	+ despl :	1
+	----------- ----------
+	* LEXEMA :	'l1'
+	ATRIBUTOS :
+	+ despl :	2
+	----------- ----------
+	* LEXEMA :	'l2'
+	ATRIBUTOS :
+	+ despl :	3
+	----------- ----------
+	* LEXEMA :	'cad'
+	ATRIBUTOS :
+	+ despl :	4
+	----------- ----------
+	* LEXEMA :	'ff'
+	ATRIBUTOS :
+	+ despl :	5
+	----------- ----------
+	* LEXEMA :	'ss'
+	ATRIBUTOS :
+	+ despl :	6
+	----------- ----------
+	* LEXEMA :	'varglobal'
+	ATRIBUTOS :
+	+ despl :	7
 	----------- ----------

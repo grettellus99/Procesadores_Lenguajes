@@ -1,8 +1,8 @@
-from objetos_AL.Acciones import accionesSemanticas
-from objetos_AL.MatrizTransiciones import matrizTransiciones
+from objetosAL.Acciones import accionesSemanticas
+from objetosAL.MatrizTransiciones import matrizTransiciones
 from objetosGenerales.Reader import Reader
-from objetos_AL.TS import TablaSimbolos
-from objetos_AL.Token import ListaTokens
+from TablaSimbolos.TS import TablaSimbolos
+from objetosAL.Token import ListaTokens
 from objetosGenerales.GestorError import *
 
 

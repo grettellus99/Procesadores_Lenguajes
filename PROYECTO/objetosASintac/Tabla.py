@@ -1,6 +1,6 @@
-from objetos_ASintac.datos import *
+from objetosASintac.datos import *
 from objetosGenerales.GestorError import Error
-from objetos_ASintac.Pila import Pila
+from objetosASintac.Pila import Pila
 
 
 # Reglas de grámatica Analizador Sintáctico
