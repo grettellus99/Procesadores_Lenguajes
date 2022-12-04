@@ -31,10 +31,8 @@ def accionesSemanticas (a,ctr,listaTokens,tabla):
         if lexema in palabrasReservadas:
             listaTokens.addTokenPalabraReservada(lexema)    # agrega token de tipo palabra reservada a la lista y el fichero
         else:          
-                resul = tabla.buscarLugarTSNombre(lexema)
-                pos=resul[0]
-                insertar=resul[1]
-                if(insertar==False):
+                pos = tabla.buscarLugarTSNombre(lexema)
+                if(pos==False):
                     listaTokens.addTokenIdentificador(pos) # agrega token id a la lista y el fichero
                 else:  # si no devuelve False lo encontró
                     pos = tabla.insertarValor(lexema)

@@ -1,52 +1,52 @@
-from objetosGenerales.Reader import Reader
-
-# Definir una entrada en la Tabla de Simbolos
-class EntradaTablaSimbolos():
-    def __init__(self,n,p):
-        self.pos=p
-        self.nombre=n
-        
+from TablaSimbolos.EntradaTS import EntradaTablaSimbolos
 
 # Tabla de Simbolos    
 class TablaSimbolos():
+    NTABLAS = 0
     def __init__(self):
-        self.identificadores=[]     # array de identificadores
-        self.writerFichero = Reader("../Ficheros Salida/tabla.txt")     # crear el reader al fichero de salida de la Tabla de Símbolos
+        TablaSimbolos.NTABLAS+=1
+        self.id = TablaSimbolos.NTABLAS
         
-        self.writerFichero.write("CONTENIDOS DE LA TABLA # 1 :\n\n",True)     # Borrar lo escrito por compilaciones anteriores
+        self.indices = {}
+        self.entradas = {}
         
-    def insertarValor(self,n):
-        pos= len(self.identificadores)      # la posicion a insertar será la última de la lista de identificadores
-                                            # determinado por la longitud actual del array
-        entrada=EntradaTablaSimbolos(n,pos)     # creacion de un objeto EntradaTS para definirle atributos internos nombre y posicion
-        self.identificadores.append(entrada)      # agregar el objeto crado al final del array de identificadores de la TS
+        self.ultimoDespl = 0
         
-        try:
-            self.writerFichero.write("\t* LEXEMA :\t" + f"'{n}'" + "\n" +"\tATRIBUTOS :\n" + "\t+ despl :\t"+str(pos) + "\n\t----------- ----------", False)      # escribir la nueva entrada en el fichero SIN sobrescribir
-        except OSError as err:
-            print("Error: {0}",format(err))
         
-        return pos      # devolver la posicion donde fue insertada la nueva entrada (final del array)
+    
+    def toString(self):
+        salida = f"CONTENIDOS DE LA TABLA # {self.id} :\n\n"
+        for e in self.entradas.items:
+            salida += e.toString()
+        return salida
+    
+    def getId(self):
+        return self.id
+    
+    def getUltimoDespl(self):
+        return self.ultimoDespl
+    
+    def setUltimoDespl(self,despl):
+        self.ultimoDespl = despl
+    
+    def insertarValor(self,lex,idTabla):
         
-    def buscarLugarTSNombre(self,nombre):
-        
-        entradas=self.identificadores
-        tamanoTS= len(entradas)
-        i=0;
-        pos=False;
-        encontrado=False
-        insertar=True
-        while(i<tamanoTS):
-            ## Como es case sensitive tiene que coincidir en mayúsculas y minúsculas
-            if(entradas[i].nombre == nombre):
-                encontrado = True
-            if(encontrado):
-                pos=i
-                i=tamanoTS  # terminar el bucle en la siguiente iteracion sin break
-                insertar=False            
-            else:
-                i+=1        # siguiente posicion        
-        
-        return pos,insertar  # devolver la posición del identificador. Si no lo encuentra retorna False
+        entrada = EntradaTablaSimbolos(lex)
+        entrada.setTabla(idTabla)
+        self.indices.__setitem__(lex,entrada.getId())
+        self.entradas.__setitem__(entrada.getId(),entrada)
 
+        return entrada.getID()
         
+    # Obtener el id (pos) del lexema en el mapa lexema --> pos
+    # Si no lo encuetra devuelve falso
+    def buscarLugarTSNombre(self,lexema):
+        keys = self.indices.keys
+        id = False
+        if lexema in keys:
+            id = self.indices.get(lexema)  
+        return id  # devolver el id del identificador. Si no lo encuentra retorna False
+
+    # Obtener el objeto EntradaTablaSimbolos dado el id (pos)
+    def buscarEntradaID(self,id):
+        return self.entradas.get(id)
