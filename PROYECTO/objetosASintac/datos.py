@@ -1,11 +1,14 @@
 #------- Simbolos No Terminales -------------
-noTerminales = ["A","B","S","S'","E","E'","R","R'","U","U'","V","V'","P","P'","L","Q","X","T","F","H","D","K","C","N","Z","O","O'"]
+noTerminales = ["A'","A","B","S","S'","E","E'","R","R'","U","U'","V","V'","P","P'","L","Q","X","T","F","H","D","K","C","C'","N","Z","O","O'"]
 
 #------- TokenOp -----------------------
 tokenOp = ["opRelacional1","opLogico1","opAritmetico1","opAritmetico2"]
 convertirOp = ["==","&&","*","+"]
 
 # --------- FIRST Y FOLLOW --------------------
+
+#---------- A' -----------------
+firstAprima=["if", "let","switch","id","print","input","return","function","eof"]
 
 #----------- A -------------
 firstA1 = ["if", "let","switch","id","print","input","return"]
@@ -158,7 +161,12 @@ followK = [] + followD
 
 firstC1 = ["if", "let", "switch", "id", "print", "input", "return"]
 
-followC = ["cerrarCorchete"]
+
+#---------- C' --------------------
+
+firstC1prima = ["if", "let", "switch", "id", "print", "input", "return"]
+
+followCprima = ["cerrarCorchete"]
 
 #---------- N --------------------
 
