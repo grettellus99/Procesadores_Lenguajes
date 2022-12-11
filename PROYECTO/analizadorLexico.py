@@ -1,7 +1,6 @@
 from objetosAL.Acciones import accionesSemanticas
 from objetosAL.MatrizTransiciones import matrizTransiciones
 from objetosGenerales.Reader import Reader
-from TablaSimbolos.TS import TablaSimbolos
 from objetosAL.Token import ListaTokens
 from objetosGenerales.GestorError import *
 
@@ -10,7 +9,7 @@ class AnalizadorLexico():
 
     def __init__(self):
         #------------ Inicializaciones ------------------  
-        self.tabla = TablaSimbolos()
+        self.tabla=False
         self.listaTokens = ListaTokens()
         self.errores = GestorError()
         self.leer=True
@@ -20,11 +19,20 @@ class AnalizadorLexico():
         self.error=False
         self.c=""    
         
+        self.zona_decl=False
+        self.decl_impl=False
+        
         #------------ path a partir de Reader.py ------------
         self.readFicheroFuente = Reader("../Ficheros Fuente/fichero_fuente.txt")  
     
     
-    def pedirToken(self):
+    def pedirToken(self,tabla,zona_decl, decl_impl):
+        # --- Analizador Semantico ----#
+        self.zona_decl = zona_decl
+        self.decl_impl = decl_impl
+        self.tabla = tabla
+        
+        
         self.terminado = False
         seguir = True
         self.lenListaTokens =  len(self.listaTokens.tokens)
@@ -73,7 +81,7 @@ class AnalizadorLexico():
                     self.tokenGenerado = False
                     
                 else:
-                    resAccion = accionesSemanticas(self.accion,self.c,self.listaTokens,self.tabla)    # realizar la accion semantica correspondiente
+                    resAccion = accionesSemanticas(self.accion,self.c,self.listaTokens,self.tabla,self.zona_decl,self.decl_impl)    # realizar la accion semantica correspondiente
                     self.leer=resAccion[0]
                     self.error=resAccion[1]
                     

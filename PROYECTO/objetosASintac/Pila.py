@@ -15,3 +15,7 @@ class Pila():
             return True
         else:
             return False
+    
+    def getFromTope(self,pos):
+        tope = len(self.pila) - 1  # ultima pos de la pila
+        return self.pila[tope - pos]

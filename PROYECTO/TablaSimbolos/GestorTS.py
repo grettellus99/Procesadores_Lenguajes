@@ -11,7 +11,7 @@ class GestorTablaSimbolos():
         self.writerFichero = Reader("../Ficheros Salida/tabla.txt")
         self.writerFichero.write("\n",True)  # sobreescribir la anterior compilacion
         
-        # dictionary (hash table) para obtener la pos
+        # dictionary (hash table) para obtener la pos o id
         self.bloqueTS = {}
         self.listaTS = {}
         
@@ -27,6 +27,7 @@ class GestorTablaSimbolos():
         return self.listaTS.get(self.currentTablaID)
            
     def removeTable(self):
+        # Escribir la tabla en el fichero
         self.writerFichero.write(self.getTablaActual().toString(),False)
         
         # Eliminar la tabla actual
@@ -94,26 +95,64 @@ class GestorTablaSimbolos():
         if entrada.getTabla() != self.currentTablaID:
             return False
         else:
-            return 
-
+            return entrada
+    
     def insertarEntrada(self,lexema):
         tabla = self.listaTS.get(self.currentTablaID)
         
         return tabla.insertarValor(lexema,tabla.getID())
     
-    def insertarTipoTS(self,entID, tipo, tamanho):
+    def insertarEntradaTG(self,lexema):
+        tabla= self.listaTS.get(1)
+        
+        return tabla.insertarValor(lexema,tabla.getID())
+    
+    def insertarTipoTamTS(self,entID, tipo, tamanho):
         entrada = self.buscarEntradaPorID(entID)
         
         if entrada != None and entrada != False:
+            
             entrada.setTipo(tipo)
+            
             if(tamanho != False):
+                self.ultimaTS = self.listaTS(entrada.getTabla())
+            
                 entrada.setDespl(self.ultimaTS.getUltimoDespl())
                 self.ultimaTS.setUltimoDespl(self.ultimaTS.getUltimoDespl() + tamanho)
+    
+    def insertarTipoParametros(self,entID, tipoLista):
+        entrada = self.buscarEntradaPorID(entID)
+        
+        if entrada != None and entrada != False:
+            for t in tipoLista:
+                entrada.setTipoParametros(t)
+    
+    def insertarTipoDevuelto(self,entID, tipo):
+        entrada = self.buscarEntradaPorID(entID)
+        
+        if entrada != None and entrada != False:
+            entrada.setTipoDevuelto(tipo) 
                 
     def buscarTipo(self,entID):
-        tipo = ""
+        tipo = False
         entrada = self.buscarEntradaPorID(entID)
         if entrada != None and entrada != False:
             tipo = entrada.getTipo()
+        
+        return tipo
+    
+    def buscarTipoParametros(self,entID):
+        tipo = False
+        entrada = self.buscarEntradaPorID(entID)
+        if entrada != None and entrada != False:
+            tipo = entrada.getTipoParametros()
+        
+        return tipo
+
+    def buscarTipoDevuelto(self,entID):
+        tipo = False
+        entrada = self.buscarEntradaPorID(entID)
+        if entrada != None and entrada != False:
+            tipo = entrada.getTipoDevuelto()
         
         return tipo

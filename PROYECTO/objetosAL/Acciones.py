@@ -5,7 +5,7 @@ from objetosGenerales.GestorError import Error
 
 
 #-----------------ACCIONES SEMANTICAS--------------------
-def accionesSemanticas (a,ctr,listaTokens,tabla):
+def accionesSemanticas (a,ctr,listaTokens,gestorTS,zona,decl_impl):
     global lexema       # para tokens de tipo palabra reservada, cadena e identidicador 
     global valor        # para tokens de tipo constante entera
     #global listaTokens  # lista de tokens para guardar los tokens una vez se creen
@@ -30,15 +30,35 @@ def accionesSemanticas (a,ctr,listaTokens,tabla):
     elif a == 4:
         if lexema in palabrasReservadas:
             listaTokens.addTokenPalabraReservada(lexema)    # agrega token de tipo palabra reservada a la lista y el fichero
-        else:          
-                pos = tabla.buscarLugarTSNombre(lexema)
-                if(pos==False):
-                    listaTokens.addTokenIdentificador(pos) # agrega token id a la lista y el fichero
-                else:  # si no devuelve False lo encontró
-                    pos = tabla.insertarValor(lexema)
-                    listaTokens.addTokenIdentificador(pos)
-                    print(f"No se ha encontrado el identificador {lexema}, se inserta en la pos: {pos}")     
-        
+        else:      
+            # Si se esta en zona de declaracion explicita
+            if zona:
+                entrada = gestorTS.buscarEntradaTablaActualLexema(lexema)   
+                if entrada != None and entrada != False:
+                    error=Error(200,f"ERROR SEMÁNTICO - El identificador {lexema} ya ha sido declarado", "")         
+                else:
+                    posId = gestorTS.insertarEntrada(lexema)
+                    listaTokens.addTokenIdentificador(posId)
+            elif decl_impl:
+                # Si se esta en zona de declaracion implicita
+                entrada = gestorTS.buscarEntradaTablaActualLexema (lexema)
+                
+                # Si no encuentra la entrada en la tabla actual
+                if entrada == None or entrada == False:  
+                    # Buscarlo por todas las tablas activas
+                    entrada =  gestorTS.buscarEntradaPorLexema(lexema)  
+                    # Si no lo encuentra en ninguna tabla 
+                    if entrada == None or entrada == False:
+                        # Agregarlo como variable global
+                        posId = gestorTS.insertarEntradaTG(lexema)
+                        listaTokens.addTokenIdentificador(posId)
+                    # encontro el identificador
+                    else:
+                        # ya ha sido declarado
+                        listaTokens.addTokenIdentificador(entrada.getID())
+                else:
+                    # ya ha sido declarado
+                    listaTokens.addTokenIdentificador(entrada.getID())
     elif a == 5:
         valor = int(c) 
         leer=True      # debe leerse el próximo carácter

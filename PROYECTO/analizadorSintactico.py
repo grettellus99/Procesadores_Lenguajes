@@ -3,18 +3,35 @@ from analizadorLexico import AnalizadorLexico
 from objetosASintac.Tabla import Tabla
 from objetosASintac.datos import noTerminales
 from objetosGenerales.GestorError import Error
+from objetosASemantico.Simbolo import Simbolo
+from objetosASemantico.Acciones import VarAnalizadorSemantico
+from TablaSimbolos.GestorTS import GestorTablaSimbolos
 
 
 class AnalizadorSintactico():
     def __init__(self) :
+        
         # Analizador lexico
         self.analizadorLexico = AnalizadorLexico()
-        # Tabla de transiciones 
+        
+        # Tabla de transiciones sintacticas 
         self.tablaAS = Tabla()
+        
         # Lista no terminales
-        self.listaNT = noTerminales
+        self.listaNT=[]
+        for nt in noTerminales:
+            simbolo = Simbolo(nt)
+            self.listaNT.append(simbolo)
+       
         # Error
         self.error =  False
+        
+        # Variables Aalizadador Semantico
+        self.zona_decl = VarAnalizadorSemantico("zona_decl",False)
+        self.decl_impl = VarAnalizadorSemantico("decl_impl",False)
+        
+        # Gestor Tabla Simbolos
+        self.gestorTS =  GestorTablaSimbolos()
         
         #----------- Parse ------------------
         #------------ path a partir de Reader.py ------------
@@ -27,7 +44,7 @@ class AnalizadorSintactico():
 
         while(seguir):
     
-            respAL = self.analizadorLexico.pedirToken()
+            respAL = self.analizadorLexico.pedirToken(self.zona_decl.valor, self.decl_impl.valor)
             siguienteToken = respAL[0]
             terminado = respAL[1]
     
