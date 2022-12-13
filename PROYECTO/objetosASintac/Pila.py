@@ -11,7 +11,7 @@ class Pila():
     
     def equipara(self,sim):
         elemPila= self.pop()
-        if(sim==elemPila):
+        if(sim.nombreSimbolo==elemPila.nombreSimbolo):
             return True
         else:
             return False

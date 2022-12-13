@@ -1,3 +1,5 @@
+from objetosASintac.datos import noTerminales
+
 
 # Clase Atributo para definir la estructura de un atributo de un simbolo
 class Atributo():
@@ -31,3 +33,4 @@ class Simbolo():
             if atributo.nombreAtributo == n:
                 return atributo.valorAtributo   # devolver el valor del atributo
         return None # devolver None porque no se encontro el atributo
+    

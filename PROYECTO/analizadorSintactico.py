@@ -2,10 +2,12 @@ from objetosGenerales.Reader import Reader
 from analizadorLexico import AnalizadorLexico
 from objetosASintac.Tabla import Tabla
 from objetosASintac.datos import noTerminales
+from objetosASemantico.datos import accionesSemanticas
 from objetosGenerales.GestorError import Error
 from objetosASemantico.Simbolo import Simbolo
 from objetosASemantico.Acciones import VarAnalizadorSemantico
 from TablaSimbolos.GestorTS import GestorTablaSimbolos
+from objetosASemantico.Acciones import accionesAnalizadorSemantico
 
 
 class AnalizadorSintactico():
@@ -16,12 +18,6 @@ class AnalizadorSintactico():
         
         # Tabla de transiciones sintacticas 
         self.tablaAS = Tabla()
-        
-        # Lista no terminales
-        self.listaNT=[]
-        for nt in noTerminales:
-            simbolo = Simbolo(nt)
-            self.listaNT.append(simbolo)
        
         # Error
         self.error =  False
@@ -55,20 +51,37 @@ class AnalizadorSintactico():
             while(pedirToken == False and error == False):
         
                 cimaPila = self.tablaAS.pila.pop() # obtener el último elemento de la pila
+                
+                if cimaPila is Simbolo and cimaPila.nombreSimbolo in noTerminales:
+                    self.tablaAS.aux.append(cimaPila) # añadir el simbolo a la pila auxiliar
         
-                if cimaPila in noTerminales:
                     resTabla = self.tablaAS.comprobarToken(cimaPila) # la cima de la pila es un no terminal y se necesita modificar
                                                             # la pila dado el token actual
             
                     pedirToken = resTabla[0] # determinar si se necesita pedir otro token
             
                     error = resTabla[1] # determinar si hubo un error sintáctico
-        
-            # si la cima de la pila no es un no Terminal (implica que es terminal)
+                elif (cimaPila is Simbolo) == False and cimaPila in accionesSemanticas:
+                    
+                    resAcciones = accionesAnalizadorSemantico(cimaPila,self.tablaAS.pila,self.tablaAS.aux)
+                    
+                    self.zona_decl.valor = resAcciones[0]
+                    self.decl_impl.valor = resAcciones[1]
+                    self.error = resAcciones[2]
+                    
+            # si la cima de la pila no es un no Terminal o una accion semantica (implica que es terminal)
                 else: 
                 # el token debe coincidir con la cima de la pila
-                    if(siguienteToken == cimaPila):
+                    if(cimaPila is Simbolo and siguienteToken == cimaPila.nombreSimbolo):
+
+                        self.tablaAS.aux.append(cimaPila) # añadir el simbolo a la pila auxiliar
                         pedirToken = True   # el token (terminal) coincide con la cima de la pila
+                        
+                    elif((cimaPila is Simbolo) == False and siguienteToken == cimaPila):
+                        
+                        self.tablaAS.aux.append(Simbolo(cimaPila)) # añadir el simbolo a la pila auxiliar
+                        pedirToken = True   # el token (terminal) coincide con la cima de la pila
+                    
                     else: 
                         # el token (terminal) no coincide con la cima de la pila
                         error = Error(100,f"ERROR SINTÁCTICO - Token {siguienteToken} no esperado. Se esperaba {cimaPila}", "")
