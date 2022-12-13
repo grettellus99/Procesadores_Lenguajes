@@ -923,6 +923,272 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         k = aux.getFromTope(0)
         
         k.setValorAtributo("tipo", Tipo.VACIO) 
+    
+    # ---------------- 52 -----------------
+    elif a == 52.1:
+        
+        b = pila.getFromTope(0)
+        
+        b.setValorAtributo("funcion", True)
+        
+    elif a == 52.2:
+        
+        b = aux.getFromTope(1)
+        cprima = aux.getFromTope(0)
+        c = aux.getFromTope(2)
+        
+        bTipo = b.getValorAtributo("tipo")
+        cprimaTipo = cprima.getValorAtributo("tipo")
+        
+        if(bTipo == Tipo.OK and cprimaTipo == Tipo.OK):
+            c.setValorAtributo("tipo",Tipo.OK)
+        else:
+            c.setValorAtributo("tipo",Tipo.ERROR)
+            error = Error(228,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
+        
+        bTipoRet = b.getValorAtributo("tipoRet")
+        cprimaTipoRet = cprima.getValorAtributo("tipoRet")
+        
+        if(bTipoRet != None and bTipoRet != Tipo.ERROR):
+            if(cprimaTipoRet == bTipoRet):
+                c.setValorAtributo("tipoRet", bTipoRet)
+            elif (cprimaTipoRet == None):
+                c.setValorAtributo("tipoRet", bTipoRet)
+            else:
+                c.setValorAtributo("tipoRet", Tipo.ERROR)
+                error = Error(229,f"ERROR SEMÁNTICO - Valores de retorno de la función son de un tipo distinto: {getTipoString(bTipoRet)} y {getTipoString(cprimaTipoRet)}", "") 
+        
+        elif (cprimaTipoRet != None and cprimaTipoRet != Tipo.ERROR):
+            c.setValorAtributo("tipoRet", cprimaTipoRet)
+        elif (bTipoRet == Tipo.ERROR or cprimaTipoRet == Tipo.ERROR):
+            c.setValorAtributo("tipoRet", Tipo.ERROR)
+            error = Error(230,f"ERROR SEMÁNTICO - Valor de retorno de la función incorrectos", "") 
+        
+            
+        aux.pop() # C'
+        aux.pop() # B  
 
+    # ---------------- 53 -----------------
+    elif a == 53.1:
+        
+        b = pila.getFromTope(0)
+        
+        b.setValorAtributo("funcion", True)
+        
+    elif a == 53.2:
+        
+        b = aux.getFromTope(1)
+        cprima1 = aux.getFromTope(0)
+        cprima = aux.getFromTope(2)
+        
+        bTipo = b.getValorAtributo("tipo")
+        cprima1Tipo = cprima1.getValorAtributo("tipo")
+        
+        if(bTipo == Tipo.OK and cprima1Tipo == Tipo.OK):
+            cprima.setValorAtributo("tipo",Tipo.OK)
+        else:
+            cprima.setValorAtributo("tipo",Tipo.ERROR)
+            error = Error(231,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
+        
+        bTipoRet = b.getValorAtributo("tipoRet")
+        cprima1TipoRet = cprima1.getValorAtributo("tipoRet")
+        
+        if(bTipoRet != None and bTipoRet != Tipo.ERROR):
+            if(cprima1TipoRet == bTipoRet):
+                cprima.setValorAtributo("tipoRet", bTipoRet)
+            elif (cprima1TipoRet == None):
+                cprima.setValorAtributo("tipoRet", bTipoRet)
+            else:
+                cprima.setValorAtributo("tipoRet", Tipo.ERROR)
+                error = Error(232,f"ERROR SEMÁNTICO - Valores de retorno de la función son de un tipo distinto: {getTipoString(bTipoRet)} y {getTipoString(cprima1TipoRet)}", "") 
+        
+        elif (cprima1TipoRet != None and cprima1TipoRet != Tipo.ERROR):
+            cprima.setValorAtributo("tipoRet", cprima1TipoRet)
+        elif (bTipoRet == Tipo.ERROR or cprima1TipoRet == Tipo.ERROR):
+            cprima.setValorAtributo("tipoRet", Tipo.ERROR)
+            error = Error(233,f"ERROR SEMÁNTICO - Valor de retorno de la función incorrectos", "") 
+        
+        
+        aux.pop() # C'1
+        aux.pop() # B
+    
+    # ---------------- 54 ------------------
+    elif a == 54.1:
+        
+        cprima = aux.getFromTope(0)
+        
+        cprima.setValorAtributo("tipo", Tipo.OK)
+    
+    # --------------- 55 ---------------------
+    elif a == 55.1:
+        n = aux.getFromTope(0)
+        
+        n.setValorAtributo("tipo",Tipo.VACIO)
+        
+    # ---------------- 56 ----------------------
+    elif a == 56.1:
+        n = aux.getFromTope(3)
+        e = aux.getFromTope(1)
+        
+        n.setValorAtributo("tipo",e.getValorAtributo("tipo"))
+    
+    # ---------------- 57 ----------------------
+    elif a == 57.1:
+        n = aux.getFromTope(3)
+        e = aux.getFromTope(1)
+        
+        eTipo = e.getValorAtributo("tipo")
+        
+        if(eTipo == Tipo.ENTERO):
+            n.setValorAtributo("tipo",eTipo)
+        else:
+            n.setValorAtributo("tipo",Tipo.ERROR)
+            error = Error(234,f"ERROR SEMÁNTICO - La expresión asignada a multiplicar debe ser de tipo entero, sin embargo es de tipo {getTipoString(eTipo)}", "") 
+        
+        aux.pop() # ;
+        aux.pop() # E
+        aux.pop() # *=
+        
+    # ---------------- 58 ------------------------
+    elif a == 58.1:
+        o = pila.getFromTope(0)
+        z = aux.getFromTope(3)
+        
+        o.setValorAtributo("funcion",z.getValorAtributo("funcion"))
+        
+    elif a == 58.2:
+        z1 = pila.getFromTope(0)
+        z = aux.getFromTope(4)
+        
+        z1.setValorAtributo("funcion",z.getValorAtributo("funcion"))
+    
+    elif a == 58.3:
+        o = aux.getFromTope(1)
+        z1 = aux.getFromTope(0)
+        z = aux.getFromTope(5)
+        
+        oTipo = o.getValorAtributo("tipo")
+        z1Tipo = z1.getValorAtributo("tipo")
+        
+        if(oTipo == z1Tipo and z1Tipo == Tipo.OK):
+            z.setValorAtributo("tipo",Tipo.OK)
+        else:
+            z.setValorAtributo("tipo",Tipo.ERROR)
+            error = Error(235,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
+        
+        aux.pop() # Z1
+        aux.pop() # O
+        aux.pop() # :
+        aux.pop() # cteEntera
+        aux.pop() # case
+    
+    # ----------- 59 ------------------
+    elif a == 59.1:
+        o = pila.getFromTope(0)
+        z = aux.getFromTope(2)
+        
+        o.setValorAtributo("funcion",z.getValorAtributo("funcion"))
+    
+    elif a == 59.2:
+        o = aux.getFromTope(0)
+        z = aux.getFromTope(3)
+        
+        oTipo = o.getValorAtributo("tipo")
+        
+        if(oTipo == Tipo.OK):
+            z.setValorAtributo("tipo",Tipo.OK)
+        else:
+            z.setValorAtributo("tipo",Tipo.ERROR)
+            error = Error(236,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
+        
+        aux.pop() # O
+        aux.pop() # :
+        aux.pop() # default
+    
+    # ------------- 60 -------------
+    elif a == 60.1:
+        b = pila.getFromTope(0)
+        o = aux.getFromTope(0)
+        
+        b.setValorAtributo("funcion",o.getValorAtributo("funcion"))
+
+    elif a == 60.2:
+        oprima = pila.getFromTope(0)
+        o = aux.getFromTope(1)
+        
+        oprima.setValorAtributo("funcion",o.getValorAtributo("funcion"))
+    
+    elif a == 60.3:
+        o = aux.getFromTope(2)
+        oprima = aux.getFromTope(0)
+        b = aux.getFromTope(1)
+        
+        oprimaTipo = oprima.getValorAtributo("tipo")
+        bTipo = b.getValorAtributo("tipo")
+        
+        if(bTipo == oprimaTipo and oprimaTipo == Tipo.OK):
+            o.setValorAtributo("tipo",Tipo.OK)
+        else:
+            o.setValorAtributo("tipo",Tipo.ERROR)
+            error = Error(237,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
+        
+        aux.pop() # O'
+        aux.pop() # B      
+    
+    # ------------- 61 -------------
+    elif a == 61.1:
+        o = aux.getFromTope(2)
+        
+        o.setValorAtributo("tipo",Tipo.OK)
+    
+        aux.pop() # ;
+        aux.pop() # break 
+    
+    
+    # ------------- 62 -------------
+    elif a == 62.1:
+        b = pila.getFromTope(0)
+        oprima = aux.getFromTope(0)
+        
+        b.setValorAtributo("funcion",oprima.getValorAtributo("funcion"))
+
+    elif a == 62.2:
+        oprima1 = pila.getFromTope(0)
+        oprima = aux.getFromTope(1)
+        
+        oprima1.setValorAtributo("funcion",oprima.getValorAtributo("funcion"))
+    
+    elif a == 62.3:
+        oprima = aux.getFromTope(2)
+        oprima1 = aux.getFromTope(0)
+        b = aux.getFromTope(1)
+        
+        oprima1Tipo = oprima1.getValorAtributo("tipo")
+        bTipo = b.getValorAtributo("tipo")
+        
+        if(bTipo == oprima1Tipo and oprima1Tipo == Tipo.OK):
+            oprima.setValorAtributo("tipo",Tipo.OK)
+        else:
+            oprima.setValorAtributo("tipo",Tipo.ERROR)
+            error = Error(238,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
+        
+        aux.pop() # O'1
+        aux.pop() # B
+    
+    # ---------- 63 --------------
+    elif a == 63.1:
+        oprima = aux.getFromTope(2)
+        
+        oprima.setValorAtributo("tipo",Tipo.OK)
+    
+        aux.pop() # ;
+        aux.pop() # break 
+    
+    # ---------- 63 --------------
+    elif a == 64.1:
+        oprima = aux.getFromTope(0)
+        
+        oprima.setValorAtributo("tipo",Tipo.OK)
+    
     return zona, dec_impl, error      
     
