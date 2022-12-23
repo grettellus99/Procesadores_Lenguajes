@@ -1,14 +1,13 @@
 
-F(A) = { if ; let ; switch ; id ; print ; input ; return ; function ; eof }			
+F(A) = { if ; let ; switch ; id ; print ; input ; return; break ; function ; eof }			
 Fo(A) = { eof }
 
-F(B) = { if ; let ; switch ; id ; print ; input ; return }
-Fo(B) =  { if ; let ; switch ; id ; print ; input ; return ; function ; eof ; 
-		Fo(C) ; break ; Fo(O); Fo(O')}
+F(B) = { if ; let ; switch ; id ; print ; input ; return; break }
+Fo(B) =  { if ; let ; switch ; id ; print ; input ; return; break ; function ; eof ; 
+		Fo(C') ; Fo(O)}
 	
-F(S) = { id ; print ; input ; return }	
+F(S) = { id ; print ; input ; return ; break }	
 Fo(S) = Fo(B)
-							
 
 F(S') = { = ; *= ; ( }
 Fo(S') = { ; } 
@@ -56,7 +55,7 @@ F(T) = { int ; boolean ; string }
 Fo(T) = { id ; Fo(H) ; ; ; = ; *= }
 
 F(F) = { function }
-Fo(F) = {  if ; let ; switch ; id ; print ; input ; return ; function ; eof }
+Fo(F) = {  if ; let ; switch ; id ; print ; input ; return ; break; function ; eof }
 
 F(H) = { int ; boolean ; string ; λ }
 Fo(H) = { ( }
@@ -67,8 +66,11 @@ Fo(D) =  { ) }
 F(K) = { , ; λ }
 Fo(K) = { Fo(D) }
 
-F(C) = { if ; let ; switch ; id ; print ; input ; return ; λ }
+F(C) = { if ; let ; switch ; id ; print ; input ; return ; break }
 Fo(C) = { } }
+
+F(C') = { if ; let ; switch ; id ; print ; input ; return ; break ; λ }
+Fo(C') = { Fo(C) }
 
 F(N) = { ; ; = ; *= }
 Fo(N) = { Fo(B) }
@@ -76,8 +78,8 @@ Fo(N) = { Fo(B) }
 F(Z) = { case ; default }
 Fo(Z) = { } }
 
-F(O) = { if ; let ; switch ; id ; print ; input ; return ; break }
-Fo(O) = { case ; default ; Fo(Z)}
+F(O) = { if ; let ; switch ; id ; print ; input ; return; break ; λ }
+Fo(O) = { case ; default ; Fo(Z) }
 
-F(O') = { if ; let ; switch ; id ; print ; input ; return ; break ; λ }
-Fo(O') = { Fo(O) }
+F(Z') = { case ; default ; λ }
+Fo(Z') = { F(Z) }
