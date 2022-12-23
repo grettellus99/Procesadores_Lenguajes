@@ -8,10 +8,10 @@ convertirOp = ["==","&&","*","+"]
 # --------- FIRST Y FOLLOW --------------------
 
 #---------- A' -----------------
-firstAprima=["if", "let","switch","id","print","input","return","function","eof"]
+firstAprima=["if", "let","switch","id","print","input","return","break","function","eof"]
 
 #----------- A -------------
-firstA1 = ["if", "let","switch","id","print","input","return"]
+firstA1 = ["if", "let","switch","id","print","input","return","break"]
 firstA2 = ["function"]
 firstA3 = ["eof"]
 
@@ -20,16 +20,17 @@ followA = ["eof"]
 #----------- B -------------
 firstB1 = ["if"]
 firstB2 = ["let"]
-firstB3 = ["id","print","input","return"]
+firstB3 = ["id","print","input","return","break"]
 firstB4 = ["switch"]
 
-followB = ["if", "let","switch","id","print","input","return", "function", "eof", "cerrarParentesis","break","case","default"]
+followB = ["if", "let","switch","id","print","input","return","break", "function", "eof", "cerrarParentesis","case","default"]
 
 #---------- S ------------------
 firstS1 = ["id"]
 firstS2 = ["print"]
 firstS3 = ["input"]
 firstS4 = ["return"]
+firstS5 = ["break"]
 
 followS = [] + followB
 
@@ -137,7 +138,7 @@ followT = ["id", "cerrarParentesis", "ptoComa", "asignacion", "asigMultiplicacio
 
 firstF1 = ["function"]
 
-followF = ["if", "let", "switch", "id", "print", "input", "return", "function", "eof"]
+followF = ["if", "let", "switch", "id", "print", "input", "return", "break", "function", "eof"]
 
 #---------- H --------------------
 
@@ -159,12 +160,12 @@ followK = [] + followD
 
 #---------- C --------------------
 
-firstC1 = ["if", "let", "switch", "id", "print", "input", "return"]
+firstC1 = ["if", "let", "switch", "id", "print", "input", "return", "break"]
 
 
 #---------- C' --------------------
 
-firstC1prima = ["if", "let", "switch", "id", "print", "input", "return"]
+firstC1prima = ["if", "let", "switch", "id", "print", "input", "return", "break"]
 
 followCprima = ["cerrarCorchete"]
 
@@ -176,7 +177,7 @@ firstN2 = ["asignacion"]
 
 firstN3 = ["asigMultiplicacion"]
 
-followN = ["if", "let","switch","id","print","input","return", "function", "eof", "cerrarParentesis","break","case","default"]
+followN = ["if", "let","switch","id","print","input","return", "break", "function", "eof", "cerrarParentesis","break","case","default"]
 
 #---------- Z --------------------
 
@@ -188,17 +189,12 @@ followZ= ["cerrarCorchete"]
 
 #---------- O --------------------
 
-firstO1 = ["if", "let", "switch", "id", "print", "input", "return"]
-
-firstO2 = ["break"]
+firstO1 = ["if", "let", "switch", "id", "print", "input", "return", "break"]
 
 followO = ["case", "default"] + followZ
 
 #---------- O' --------------------
 
-firstOprima1 = ["if", "let", "switch", "id", "print", "input", "return"]
+firstZprima1 = ["case", "default"]
 
-firstOprima2 = ["break"]
-
-followOprima = [] + followO
-
+followZprima = [] + followZ

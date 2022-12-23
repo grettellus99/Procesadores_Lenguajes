@@ -148,10 +148,11 @@ class Tabla:
                 self.pila.append(8.1)
                 self.pila.append("abrirCorchete")
                 self.pila.append("cerrarParentesis")
-                u = Simbolo("U")
-                self.pila.append(u)
+                e = Simbolo("E")
+                self.pila.append(e)
                 self.pila.append("abrirParentesis")
                 self.pila.append("switch")
+            
                 
                 if(self.pila.equipara(tv)):
                     pedirToken=True
@@ -223,6 +224,20 @@ class Tabla:
                 else:
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: return", "")
             
+            elif tv in firstS5:
+                self.parse.append(13)
+                self.pila.append(13.1)
+                self.pila.append("ptoComa")
+                self.pila.append("break")
+                
+                if(self.pila.equipara(tv)):
+                    pedirToken=True
+                    ts = Simbolo(tv)
+                    self.aux.append(ts)
+                else:
+                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: break", "")
+            
+            
             else:
                 error=Error(103,f"ERROR SINTÁCTICO - Token {t} no pertenece al primer elemento de una sentencia simple válida", "")
             
@@ -230,8 +245,8 @@ class Tabla:
     #----------------------------------------------------------------------------------------
         elif nT == "S'":
             if tv in firstSprima1:
-                self.parse.append(13)
-                self.pila.append(13.1)
+                self.parse.append(14)
+                self.pila.append(14.1)
                 e = Simbolo("E")
                 self.pila.append(e)
                 self.pila.append("asignacion")
@@ -244,10 +259,10 @@ class Tabla:
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: =", "")
             
             elif tv in firstSprima2:
-                self.parse.append(14)
-                self.pila.append(14.1)
-                u = Simbolo("U")
-                self.pila.append(u)
+                self.parse.append(15)
+                self.pila.append(15.1)
+                e = Simbolo("E")
+                self.pila.append(e)
                 self.pila.append("asigMultiplicacion")
                 
                 if(self.pila.equipara(tv)):
@@ -258,8 +273,8 @@ class Tabla:
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: *=", "")
             
             elif tv in firstSprima3:
-                self.parse.append(15)
-                self.pila.append(15.1)
+                self.parse.append(16)
+                self.pila.append(16.1)
                 self.pila.append("cerrarParentesis")
                 l = Simbolo("L")
                 self.pila.append(l)
@@ -278,8 +293,8 @@ class Tabla:
     #----------------------------------------------------------------------------------------
         elif nT == "E":
             if tv in firstE1:
-                self.parse.append(16)
-                self.pila.append(16.1)
+                self.parse.append(17)
+                self.pila.append(17.1)
                 ep = Simbolo("E'")
                 self.pila.append(ep)
                 self.pila.append("R")
@@ -290,12 +305,12 @@ class Tabla:
     #----------------------------------------------------------------------------------------    
         elif nT == "E'":
             if tv in followE:
-                self.parse.append(17)
-                self.pila.append(17.1)           
+                self.parse.append(18)
+                self.pila.append(18.1)           
             
             elif tv in firstEprima2:
-                self.parse.append(18)
-                self.pila.append(18.1)
+                self.parse.append(19)
+                self.pila.append(19.1)
                 ep = Simbolo("E'")
                 self.pila.append(ep)
                 r = Simbolo("R")
@@ -315,8 +330,8 @@ class Tabla:
     #---------------------------------------------------------------------------------------   
         elif nT == "R":
             if tv in firstR1 or tv in firstR1:
-                self.parse.append(19)
-                self.pila.append(19.1)
+                self.parse.append(20)
+                self.pila.append(20.1)
                 rp = Simbolo("R'")
                 self.pila.append(rp)
                 u = Simbolo("U")
@@ -328,12 +343,12 @@ class Tabla:
     #----------------------------------------------------------------------------------------             
         elif nT == "R'":
             if tv in followRprima:
-                self.parse.append(20)
-                self.pila.append(20.1)
-            
-            elif tv in firstRprima2:
                 self.parse.append(21)
                 self.pila.append(21.1)
+            
+            elif tv in firstRprima2:
+                self.parse.append(22)
+                self.pila.append(22.1)
                 rp = Simbolo("R'")
                 self.pila.append(rp)
                 u = Simbolo("U")
@@ -353,8 +368,8 @@ class Tabla:
     #-----------------------------------------------------------------------------------------
         elif nT == "U":
             if tv in firstU1:
-                self.parse.append(22)
-                self.pila.append(22.1)
+                self.parse.append(23)
+                self.pila.append(23.1)
                 up = Simbolo("U'")
                 self.pila.append(up)
                 v = Simbolo("V")
@@ -368,12 +383,12 @@ class Tabla:
     #----------------------------------------------------------------------------------------- 
         elif nT == "U'":
             if tv in followUprima:
-                self.parse.append(23)
-                self.pila.append(23.1)
-            
-            elif tv in firstUprima2:
                 self.parse.append(24)
                 self.pila.append(24.1)
+            
+            elif tv in firstUprima2:
+                self.parse.append(25)
+                self.pila.append(25.1)
                 up = Simbolo("U'")
                 self.pila.append(up)
                 v = Simbolo("V")
@@ -393,8 +408,8 @@ class Tabla:
     #-----------------------------------------------------------------------------------------
         elif nT == "V":
             if tv in firstV1:
-                self.parse.append(25)
-                self.pila.append(25.1)
+                self.parse.append(26)
+                self.pila.append(26.1)
                 vp = Simbolo("V'")
                 self.pila.append(vp)
                 p = Simbolo("P")
@@ -406,12 +421,12 @@ class Tabla:
     #-----------------------------------------------------------------------------------------
         elif nT == "V'":
             if tv in followVprima:
-                self.parse.append(26)
-                self.pila.append(26.1)
-            
-            elif tv in firstVprima2:
                 self.parse.append(27)
                 self.pila.append(27.1)
+            
+            elif tv in firstVprima2:
+                self.parse.append(28)
+                self.pila.append(28.1)
                 vp = Simbolo("V'")
                 self.pila.append(vp)
                 p = Simbolo("P")
@@ -431,18 +446,18 @@ class Tabla:
     #-----------------------------------------------------------------------------------------   
         elif nT == "P":
             if tv in firstP1:
-                self.parse.append(28)
-                self.pila.append(28.3)
+                self.parse.append(29)
+                self.pila.append(29.3)
                 pp = Simbolo("P'")
                 self.pila.append(pp)
-                self.pila.append(28.2)
+                self.pila.append(29.2)
                 id = Simbolo("id")
                 self.pila.append(id)
-                self.pila.append(28.1)
+                self.pila.append(29.1)
             
             elif tv in firstP2:
-                self.parse.append(29)
-                self.pila.append(29.1)
+                self.parse.append(30)
+                self.pila.append(30.1)
                 self.pila.append("cerrarParentesis")
                 e = Simbolo("E")
                 self.pila.append(e)
@@ -456,8 +471,8 @@ class Tabla:
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: ( ", "")
 
             elif tv in firstP3:
-                self.parse.append(30)
-                self.pila.append(30.1)
+                self.parse.append(31)
+                self.pila.append(31.1)
                 self.pila.append("cteEntera")
                 
                 if(self.pila.equipara(tv)):
@@ -469,8 +484,8 @@ class Tabla:
 
 
             elif tv in firstP4:
-                self.parse.append(31)
-                self.pila.append(31.1)
+                self.parse.append(32)
+                self.pila.append(32.1)
                 self.pila.append("cadena")
                 
                 if(self.pila.equipara(tv)):
@@ -481,8 +496,8 @@ class Tabla:
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba una cadena", "")
 
             elif tv in firstP5:
-                self.parse.append(32)
-                self.pila.append(32.1)
+                self.parse.append(33)
+                self.pila.append(33.1)
                 self.pila.append("true")
                 
                 if(self.pila.equipara(tv)):
@@ -493,8 +508,8 @@ class Tabla:
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: true", "")
 
             elif tv in firstP6:
-                self.parse.append(33)
-                self.pila.append(33.1)
+                self.parse.append(34)
+                self.pila.append(34.1)
                 self.pila.append("false")
                 
                 if(self.pila.equipara(tv)):
@@ -510,12 +525,12 @@ class Tabla:
     #-----------------------------------------------------------------------------------------               
         elif nT == "P'":
             if tv in followPprima:
-                self.parse.append(34)
-                self.pila.append(34.1)
-
-            elif tv in firstPprima2:
                 self.parse.append(35)
                 self.pila.append(35.1)
+
+            elif tv in firstPprima2:
+                self.parse.append(36)
+                self.pila.append(36.1)
                 self.pila.append("cerrarParentesis")
                 l = Simbolo("L")
                 self.pila.append(l)
@@ -534,16 +549,16 @@ class Tabla:
     #-----------------------------------------------------------------------------------------   
         elif nT == "L":
             if tv in firstL1:
-                self.parse.append(36)
-                self.pila.append(36.1)
+                self.parse.append(37)
+                self.pila.append(37.1)
                 q = Simbolo("Q")
                 self.pila.append(q)
                 e = Simbolo("E")
                 self.pila.append(e)
             
             elif tv in followL:
-                self.parse.append(37)
-                self.pila.append(37.1)
+                self.parse.append(38)
+                self.pila.append(38.1)
             
             else:
                 error=Error(115,f"ERROR SINTÁCTICO - Token {t} no es un argumento de función válido porque no pertenece a una expresión válida", "")
@@ -551,8 +566,8 @@ class Tabla:
     #-----------------------------------------------------------------------------------------               
         elif nT == "Q":
             if tv in firstQ1:
-                self.parse.append(38)
-                self.pila.append(38.1)
+                self.parse.append(39)
+                self.pila.append(39.1)
                 q = Simbolo("Q")
                 self.pila.append(q)
                 e = Simbolo("E")
@@ -568,8 +583,8 @@ class Tabla:
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: ,", "")
 
             elif tv in followQ:
-                self.parse.append(39)
-                self.pila.append(39.1)
+                self.parse.append(40)
+                self.pila.append(40.1)
             
             else:
                 error=Error(116,f"ERROR SINTÁCTICO - Token {t} de función válido porque no pertenece a una expresión válida", "")
@@ -577,14 +592,14 @@ class Tabla:
     #-----------------------------------------------------------------------------------------   
         elif nT == "X":
             if tv in firstX1:
-                self.parse.append(40)
-                self.pila.append(40.1)
+                self.parse.append(41)
+                self.pila.append(41.1)
                 e = Simbolo("E")
                 self.pila.append(e)
             
             elif tv in followX:
-                self.parse.append(41)
-                self.pila.append(41.1)
+                self.parse.append(42)
+                self.pila.append(42.1)
             
             else:
                 error=Error(117,f"ERROR SINTÁCTICO - Token {t} no es un valor de retorno de función válido porque no pertenece a una expresión válida", "")
@@ -592,8 +607,8 @@ class Tabla:
     #-----------------------------------------------------------------------------------------               
         elif nT == "T":
             if tv in firstT1:
-                self.parse.append(42)
-                self.pila.append(42.1)
+                self.parse.append(43)
+                self.pila.append(43.1)
                 self.pila.append("int")
                 
                 if(self.pila.equipara(tv)):
@@ -604,8 +619,8 @@ class Tabla:
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: int", "")
             
             elif tv in firstT2:
-                self.parse.append(43)
-                self.pila.append(43.1)
+                self.parse.append(44)
+                self.pila.append(44.1)
                 self.pila.append("boolean")
                 
                 if(self.pila.equipara(tv)):
@@ -616,8 +631,8 @@ class Tabla:
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: boolean", "")
              
             elif tv in firstT3:
-                self.parse.append(44)
-                self.pila.append(44.1)
+                self.parse.append(45)
+                self.pila.append(45.1)
                 self.pila.append("string")
                 
                 if(self.pila.equipara(tv)):
@@ -628,28 +643,28 @@ class Tabla:
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: string", "")
                  
             else:
-                error=Error(100,f"ERROR SINTÁCTICO - Token {t} no es un tipo de variable válido", "")         
+                error=Error(118,f"ERROR SINTÁCTICO - Token {t} no es un tipo de variable válido", "")         
     
     #-----------------------------------------------------------------------------------------   
         elif nT == "F":
             if tv in firstF1:
-                self.parse.append(45)
-                self.pila.append(45.4)
+                self.parse.append(46)
+                self.pila.append(46.4)
                 self.pila.append("cerrarCorchete")
                 c = Simbolo("C")
                 self.pila.append(c)
                 self.pila.append("abrirCorchete")
-                self.pila.append(45.3)
+                self.pila.append(46.3)
                 self.pila.append("cerrarParentesis")
                 d = Simbolo("D")
                 self.pila.append(d)
                 self.pila.append("abrirParentesis")
-                self.pila.append(45.2)
+                self.pila.append(46.2)
                 h = Simbolo("H")
                 self.pila.append(h)
                 id = Simbolo("id")
                 self.pila.append(id)
-                self.pila.append(45.1)
+                self.pila.append(46.1)
                 self.pila.append("function")
                 
                 if(self.pila.equipara(tv)):
@@ -664,14 +679,14 @@ class Tabla:
     #-----------------------------------------------------------------------------------------               
         elif nT == "H":
             if tv in firstH1:
-                self.parse.append(46)
-                self.pila.append(46.1)
+                self.parse.append(47)
+                self.pila.append(47.1)
                 t = Simbolo("T")
                 self.pila.append(t)
             
             elif tv in followH:
-                self.parse.append(47)
-                self.pila.append(47.1)
+                self.parse.append(48)
+                self.pila.append(48.1)
                 
             else:
                 error=Error(120,f"ERROR SINTÁCTICO - Token {t} no es un tipo de valor de retorno de función válido", "")         
@@ -679,8 +694,8 @@ class Tabla:
     #-----------------------------------------------------------------------------------------   
         elif nT == "D":
             if tv in firstD1:
-                self.parse.append(48)
-                self.pila.append(48.1)
+                self.parse.append(49)
+                self.pila.append(49.1)
                 k = Simbolo("K")
                 self.pila.append(k)
                 id = Simbolo("id")
@@ -689,8 +704,8 @@ class Tabla:
                 self.pila.append(t)
             
             elif tv in followD:
-                self.parse.append(49)
-                self.pila.append(49.1)
+                self.parse.append(50)
+                self.pila.append(50.1)
                 
             else:
                 error=Error(121,f"ERROR SINTÁCTICO - Token {t} no es una declaración válida de un argumento de una función", "")         
@@ -698,8 +713,8 @@ class Tabla:
     #-----------------------------------------------------------------------------------------               
         elif nT == "K":
             if tv in firstK1:
-                self.parse.append(50)
-                self.pila.append(50.1)
+                self.parse.append(51)
+                self.pila.append(51.1)
                 k = Simbolo("K")
                 self.pila.append(k)
                 id = Simbolo("id")
@@ -716,8 +731,8 @@ class Tabla:
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: ,", "")
             
             elif tv in followK:
-                self.parse.append(51)
-                self.pila.append(51.1)
+                self.parse.append(52)
+                self.pila.append(52.1)
                 
             else:
                 error=Error(122,f"ERROR SINTÁCTICO - Token {t} no es una declaración válida de un argumento de una función", "")         
@@ -725,13 +740,13 @@ class Tabla:
     #-----------------------------------------------------------------------------------------   
         elif nT == "C":
             if tv in firstC1:
-                self.parse.append(52)
-                self.pila.append(52.2)
+                self.parse.append(53)
+                self.pila.append(53.2)
                 cp = Simbolo("C'")
                 self.pila.append(cp)
                 b = Simbolo("B")
                 self.pila.append(b)
-                self.pila.append(52.1)
+                self.pila.append(53.1)
                     
             else:
                 error=Error(123,f"ERROR SINTÁCTICO - Token {t} no pertenece a una sentencia válida", "")         
@@ -740,17 +755,17 @@ class Tabla:
     #-----------------------------------------------------------------------------------------  
         elif nT == "C'":
             if tv in firstC1prima:
-                self.parse.append(53)
-                self.pila.append(53.2)
+                self.parse.append(54)
+                self.pila.append(54.2)
                 cp = Simbolo("C'")
                 self.pila.append(cp)
                 b = Simbolo("B")
                 self.pila.append(b)
-                self.pila.append(53.1)
+                self.pila.append(54.1)
                 
             elif tv in followCprima:
-                self.parse.append(54)
-                self.pila.append(54.1)
+                self.parse.append(55)
+                self.pila.append(55.1)
                 
             else:
                 error=Error(124,f"ERROR SINTÁCTICO - Token {t} no pertenece a una sentencia válida", "")         
@@ -759,8 +774,8 @@ class Tabla:
     #-----------------------------------------------------------------------------------------              
         elif nT == "N":
             if tv in firstN1:
-                self.parse.append(55)
-                self.pila.append(55.1)
+                self.parse.append(56)
+                self.pila.append(56.1)
                 self.pila.append("ptoComa")
                 
                 if(self.pila.equipara(tv)):
@@ -771,8 +786,8 @@ class Tabla:
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: ;", "")
                 
             elif tv in firstN2:
-                self.parse.append(56)
-                self.pila.append(56.1)
+                self.parse.append(57)
+                self.pila.append(57.1)
                 self.pila.append("ptoComa")
                 e = Simbolo("E")
                 self.pila.append(e)
@@ -786,8 +801,8 @@ class Tabla:
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: =", "")
                 
             elif tv in firstN3:
-                self.parse.append(57)
-                self.pila.append(57.1)
+                self.parse.append(58)
+                self.pila.append(58.1)
                 self.pila.append("ptoComa")
                 e = Simbolo("E")
                 self.pila.append(e)
@@ -807,14 +822,14 @@ class Tabla:
     #-----------------------------------------------------------------------------------------   
         elif nT == "Z":
             if tv in firstZ1:
-                self.parse.append(58)
-                self.pila.append(58.3)
-                z = Simbolo("Z")
-                self.pila.append(z)
-                self.pila.append(58.2)
+                self.parse.append(59)
+                self.pila.append(59.3)
+                zp = Simbolo("Z'")
+                self.pila.append(zp)
+                self.pila.append(59.2)
                 o = Simbolo("O")
                 self.pila.append(o)
-                self.pila.append(58.1)
+                self.pila.append(59.1)
                 self.pila.append("dosPuntos")
                 self.pila.append("cteEntera")
                 self.pila.append("case")
@@ -827,11 +842,11 @@ class Tabla:
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: case", "")  
             
             elif tv in firstZ2:
-                self.parse.append(59)
-                self.pila.append(59.2)
+                self.parse.append(60)
+                self.pila.append(60.2)
                 o = Simbolo("O")
                 self.pila.append(o)
-                self.pila.append(59.1)
+                self.pila.append(60.1)
                 self.pila.append("dosPuntos")
                 self.pila.append("default")
                 
@@ -848,57 +863,31 @@ class Tabla:
     #-----------------------------------------------------------------------------------------               
         elif nT == "O":
             if tv in firstO1:
-                self.parse.append(60)
-                self.pila.append(60.3)
+                self.parse.append(61)
+                self.pila.append(61.3)
                 op = Simbolo("O'")
                 self.pila.append(op)
-                self.pila.append(60.2) 
+                self.pila.append(61.2) 
                 b = Simbolo("B") 
                 self.pila.append(b)
-                self.pila.append(60.1) 
+                self.pila.append(61.1) 
             
-            elif tv in firstO2:
-                self.parse.append(61)
-                self.pila.append(61.1)
-                self.pila.append("ptoComa")  
-                self.pila.append("break")
+            elif tv in followO:
+                self.parse.append(62)
+                self.pila.append(62.1)
                 
-                if(self.pila.equipara(tv)):
-                    pedirToken=True
-                    ts = Simbolo(tv)
-                    self.aux.append(ts)
-                else:
-                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: break", "")  
-            
             else:
                 error=Error(127,f"ERROR SINTÁCTICO - Token {t} no pertenece a una sentencia válida", "")         
             
     #-----------------------------------------------------------------------------------------   
-        elif nT == "O'":
-            if tv in firstOprima1:
-                self.parse.append(62)
-                self.pila.append(62.3)
-                op = Simbolo("O'")
-                self.pila.append(op)
-                self.pila.append(62.2)
-                b = Simbolo("B") 
-                self.pila.append(b)
-                self.pila.append(62.1) 
-            
-            elif tv in firstOprima2:
+        elif nT == "Z'":
+            if tv in firstZprima1:
                 self.parse.append(63)
                 self.pila.append(63.1)
-                self.pila.append("ptoComa")  
-                self.pila.append("break")
-                
-                if(self.pila.equipara(tv)):
-                    pedirToken=True
-                    ts = Simbolo(tv)
-                    self.aux.append(ts)
-                else:
-                    error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: break", "")  
+                z = Simbolo("Z")
+                self.pila.append(z)
             
-            elif tv in followOprima:
+            elif tv in followZprima:
                 self.parse.append(64)
                 self.pila.append(64.1)
             

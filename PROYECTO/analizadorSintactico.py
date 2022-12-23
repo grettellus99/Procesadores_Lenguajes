@@ -2,6 +2,8 @@ from objetosGenerales.Reader import Reader
 from analizadorLexico import AnalizadorLexico
 from objetosASintac.Tabla import Tabla
 from objetosASintac.datos import noTerminales
+from objetosASintac.datos import tokenOp
+from objetosASintac.datos import convertirOp
 from objetosASemantico.datos import accionesSemanticas
 from objetosGenerales.GestorError import Error
 from objetosASemantico.Simbolo import Simbolo
@@ -84,6 +86,14 @@ class AnalizadorSintactico():
                     
                     else: 
                         # el token (terminal) no coincide con la cima de la pila
+                        
+                        # Convertir los tokens de operadores en su valor para mejorar el mensaje de error
+                        if siguienteToken in tokenOp:
+                            siguienteToken = convertirOp[tokenOp.index(siguienteToken)]
+                         
+                        if (cimaPila is Simbolo) == False and cimaPila in tokenOp:
+                            cimaPila = convertirOp[tokenOp.index(cimaPila)]
+                        
                         error = Error(100,f"ERROR SINTÁCTICO - Token {siguienteToken} no esperado. Se esperaba {cimaPila}", "")
                 
                     if(terminado or error != False):

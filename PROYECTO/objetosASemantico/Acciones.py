@@ -84,7 +84,8 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         s = pila.getFromTope(0)
         b = aux.getFromTope(4)
         # S.funcion = B.funcion
-        s.setValorAtributo("funcion",b.getValorAtributo("funcion")) 
+        s.setValorAtributo("funcion",b.getValorAtributo("funcion"))
+        s.setValorAtributo("switch",b.getValorAtributo("switch")) 
     
     elif a == 5.2:
         b = aux.getFromTope(5)
@@ -115,8 +116,8 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         t = aux.getFormTope(0)
         gestorTS.insertarTipoTamTS(id.getValorAtributo("pos"),t.getValorAtributo("tipo"),t.getValorAtributo("tamanho"))   
         
-        
-    
+        zona = False
+            
     elif a == 6.3:
         
         b = aux.getFromTope(4)
@@ -144,6 +145,7 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         b = aux.getFromTope(0)
         
         s.setValorAtributo("funcion",b.getValorAtributo("funcion"))
+        s.setValorAtributo("switch",b.getValorAtributo("switch"))
     
     elif a == 7.2:
         
@@ -163,6 +165,7 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         z = pila.getfromTope(0)
         
         z.setValorAtributo("funcion",b.getValorAtributo("funcion"))
+        z.setValorAtributo("switch",True)
         
     
     elif a == 8.2:
@@ -183,6 +186,8 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         else:
             b.setValorAtributo("tipo",Tipo.ERROR)
             error = Error(204,f"ERROR SEMÁNTICO - La expresión que se evalúa debe ser de tipo entero. La expresión es de tipo {getTipoString(uTipo)}", "")
+        
+        b.setValorAtributo("tipoRet",z.getValorAtributo("tipoRet"))
         
         aux.pop() # cerrarCorchete
         aux.pop() # Z
@@ -322,9 +327,21 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         aux.pop() # ptoComa
         aux.pop() # X
         aux.pop() # return
-        
+    
     # --------------- 13 ----------------
     elif a == 13.1:
+        s = aux.getFromTope(2)
+
+        sSwt = s.getValorAtributo("switch")
+        
+        if sSwt:
+            s.setValorAtributo("tipo", Tipo.OK)
+        else:
+            s.setValorAtributo("tipo", Tipo.ERROR)
+            error = Error(211,f"ERROR SEMÁNTICO - La sentencia BREAK solo puede declararse dentro del CASE O DEFAULT de un SWITCH", "")
+
+    # --------------- 14 ----------------
+    elif a == 14.1:
         
         sprima = aux.getFromTope(2)
         e = aux.getFromTope(0)
@@ -334,23 +351,23 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         aux.pop() # =
         aux.pop() # E
     
-    # -------------- 14 ------------------
-    elif a == 14.1:
+    # -------------- 15 ------------------
+    elif a == 15.1:
         
         sprima = aux.getFromTope(2)
-        u = aux.getFromTope(0)
+        e = aux.getFromTope(0)
         
-        if(u.getValorAtributo("tipo") == Tipo.ENTERO):
+        if(e.getValorAtributo("tipo") == Tipo.ENTERO):
             sprima.setValorAtributo("tipo", Tipo.ENTERO)
         else:
             sprima.setValorAtributo("tipo", Tipo.ERROR)
-            error = Error(211,f"ERROR SEMÁNTICO - La expresión debe ser de tipo entero", "")
+            error = Error(212,f"ERROR SEMÁNTICO - La expresión debe ser de tipo entero", "")
 
         aux.pop() # *=
-        aux.pop() # U
+        aux.pop() # E
     
-    # ----------------- 15 -----------------
-    elif a == 15.1:
+    # ----------------- 16 -----------------
+    elif a == 16.1:
         
         sprima = aux.getFromTope(3)
         l = aux.getFromTope(1)
@@ -361,8 +378,8 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         aux.pop() # L
         aux.pop() # abrirParentesis
         
-    # --------------- 16 -----------------
-    elif a == 16.1:
+    # --------------- 17 -----------------
+    elif a == 17.1:
         
         e = aux.getFromTope(2)
         r = aux.getFromTope(1)
@@ -375,20 +392,20 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
             e.setValorAtributo("tipo", rTipo)
         else:
             e.setValorAtributo("tipo", Tipo.ERROR)
-            error = Error(212,f"ERROR SEMÁNTICO - La expresiones son de tipos diferentes", "")
+            error = Error(213,f"ERROR SEMÁNTICO - La expresiones son de tipos diferentes", "")
         
         aux.pop() # E'
         aux.pop() # R
         
-    # --------------- 17 -------------------
-    elif a == 17.1:
+    # --------------- 18 -------------------
+    elif a == 18.1:
         
         eprima = aux.getFromTope(0)
         
         eprima.setValorAtributo("tipo", Tipo.VACIO)
     
-    # --------------- 18 ---------------------
-    elif a == 18.1:
+    # --------------- 19 ---------------------
+    elif a == 19.1:
        
         eprima = aux.getFromTope(3)
         eprima1 = aux.getFromTope(0)
@@ -401,14 +418,14 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
             r.setValorAtributo("tipo", rTipo)
         else:
             r.setValorAtributo("tipo", Tipo.ERROR)
-            error = Error(213,f"ERROR SEMÁNTICO - La expresión debe ser de tipo lógico", "")
+            error = Error(214,f"ERROR SEMÁNTICO - La expresión debe ser de tipo lógico", "")
 
         aux.pop() # E'1
         aux.pop() # R
         aux.pop() # &&
         
-    # ---------------- 19 ----------------
-    elif a == 19.1:
+    # ---------------- 20 ----------------
+    elif a == 20.1:
 
         rprima = aux.getFromTope(0)
         u = aux.getFromTope(1)
@@ -421,20 +438,20 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
             r.setValorAtributo("tipo", uTipo)
         else:
             r.setValorAtributo("tipo", Tipo.ERROR)
-            error = Error(214,f"ERROR SEMÁNTICO - La expresiones son de tipos diferentes", "")
+            error = Error(215,f"ERROR SEMÁNTICO - La expresiones son de tipos diferentes", "")
 
         aux.pop() # R'
         aux.pop() # U
     
-    # ------------- 20 ---------   
-    elif a == 20.1:
+    # ------------- 21 ---------   
+    elif a == 21.1:
         
         rprima = aux.getFromTope(0)
         
         rprima.setValorAtributo("tipo", Tipo.VACIO)
     
-    # ----------- 21 ---------------
-    elif a == 21.1:
+    # ----------- 22 ---------------
+    elif a == 22.1:
 
         rprima = aux.getFromTope(3)
         u = aux.getFromTope(1)
@@ -447,14 +464,14 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
             rprima.setValorAtributo("tipo", uTipo)
         else:
             rprima.setValorAtributo("tipo", Tipo.ERROR)
-            error = Error(215,f"ERROR SEMÁNTICO - La expresiones son de tipos diferentes", "")
+            error = Error(216,f"ERROR SEMÁNTICO - La expresiones son de tipos diferentes", "")
 
         aux.pop() # R'1
         aux.pop() # U
         aux.pop() # ==
         
-    # --------------- 22 -------------
-    elif a == 22.1:
+    # --------------- 23 -------------
+    elif a == 23.1:
         
         uprima = aux.getFromTope(0)
         v = aux.getFromTope(1)
@@ -467,20 +484,20 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
             u.setValorAtributo("tipo", vTipo)
         else:
             u.setValorAtributo("tipo", Tipo.ERROR)
-            error = Error(216,f"ERROR SEMÁNTICO - La expresiones son de tipos diferentes", "")
+            error = Error(217,f"ERROR SEMÁNTICO - La expresiones son de tipos diferentes", "")
 
         aux.pop() # U'
         aux.pop() # V
         
-    # ------------- 23 --------------
-    elif a == 23.1:
+    # ------------- 24 --------------
+    elif a == 24.1:
         
         uprima = aux.getFromTope(0)
         
         uprima.setValorAtributo("tipo", Tipo.VACIO)
     
-    # ------------ 24 ---------------
-    elif a == 24.1:
+    # ------------ 25 ---------------
+    elif a == 25.1:
         
         v = aux.getFromTope(1)
         uprima1 = aux.getFromTope(0)
@@ -493,14 +510,14 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
             v.setValorAtributo("tipo", vTipo)
         else:
             v.setValorAtributo("tipo", Tipo.ERROR)
-            error = Error(217,f"ERROR SEMÁNTICO - La expresiones no son de tipo entero", "")
+            error = Error(218,f"ERROR SEMÁNTICO - La expresiones no son de tipo entero", "")
 
         aux.pop() # U'1
         aux.pop() # V  
         aux.pop() # +
     
-    # --------------- 25 -------------------      
-    elif a == 25.1:
+    # --------------- 26 -------------------      
+    elif a == 26.1:
         
         vprima = aux.getFromTope(0)
         v = aux.getFromTope(2)
@@ -513,20 +530,20 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
             v.setValorAtributo("tipo", pTipo)
         else:
             v.setValorAtributo("tipo", Tipo.ERROR)
-            error = Error(218,f"ERROR SEMÁNTICO - La expresiones son de tipos diferentes", "")
+            error = Error(219,f"ERROR SEMÁNTICO - La expresiones son de tipos diferentes", "")
 
         aux.pop() # V'
         aux.pop() # P
         
-    # ------------- 26 --------------
-    elif a == 26.1:
+    # ------------- 27 --------------
+    elif a == 27.1:
         
         vprima = aux.getFromTope(0)
         
         vprima.setValorAtributo("tipo", Tipo.VACIO)
 
-    # --------------- 27 -------------------      
-    elif a == 27.1:
+    # --------------- 28 -------------------      
+    elif a == 28.1:
         
         vprima1 = aux.getFromTope(0)
         vprima = aux.getFromTope(2)
@@ -539,17 +556,17 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
             vprima.setValorAtributo("tipo", pTipo)
         else:
             vprima.setValorAtributo("tipo", Tipo.ERROR)
-            error = Error(219,f"ERROR SEMÁNTICO - La expresiones no son de tipo entero", "")
+            error = Error(220,f"ERROR SEMÁNTICO - La expresiones no son de tipo entero", "")
 
         aux.pop() # V'1
         aux.pop() # P
         aux.pop() # *
     
-    # --------------- 28 -----------------
-    elif a == 28.1:
+    # --------------- 29 -----------------
+    elif a == 29.1:
         dec_impl = True
 
-    elif a == 28.2:
+    elif a == 29.2:
         
         id = aux.getFromTope(0)
         
@@ -560,7 +577,7 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         
         dec_impl = False
     
-    elif a == 28.3:
+    elif a == 29.3:
         
         pprima = aux.getFromTope(0)
         id = aux.getFromTope(1)
@@ -577,15 +594,15 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
             else:
                 idTipoPar = gestorTS.buscarTipoDevuelto(idPos)
                 p.setValorAtributo("tipo", Tipo.ERROR)
-                error = Error(220,f"ERROR SEMÁNTICO - Los parámetros pasados a la función deben ser de tipo {getTipoString(idTipoPar)}. Los parámetros pasados son de tipo {getTipoString(pprimaTipo)}", "")
+                error = Error(221,f"ERROR SEMÁNTICO - Los parámetros pasados a la función deben ser de tipo {getTipoString(idTipoPar)}. Los parámetros pasados son de tipo {getTipoString(pprimaTipo)}", "")
         else:
             p.setValorAtributo("tipo", idTipo)
           
         aux.pop() # P'
         aux.pop() # id
         
-    # ----------------- 29 ----------------------
-    elif a == 29.1:
+    # ----------------- 30 ----------------------
+    elif a == 30.1:
         
         p = aux.getFromTope(3)
         e = aux.getFromTope(1)
@@ -596,8 +613,8 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         aux.pop() # E
         aux.pop() # abrirParentesis
     
-    # ----------------- 30 ----------------------
-    elif a == 30.1:
+    # ----------------- 31 ----------------------
+    elif a == 31.1:
         
         p = aux.getFromTope(1)
         
@@ -605,8 +622,8 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
     
         aux.pop() # cteEntera
 
-    # ----------------- 31 ----------------------
-    elif a == 31.1:
+    # ----------------- 32 ----------------------
+    elif a == 32.1:
         
         p = aux.getFromTope(1)
         
@@ -614,15 +631,6 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
     
         aux.pop() # cadena
     
-    # ----------------- 32 ----------------------
-    elif a == 32.1:
-        
-        p = aux.getFromTope(1)
-        
-        p.setValorAtributo("tipo", Tipo.LOGICO) 
-    
-        aux.pop() # true
-
     # ----------------- 33 ----------------------
     elif a == 33.1:
         
@@ -630,17 +638,26 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         
         p.setValorAtributo("tipo", Tipo.LOGICO) 
     
-        aux.pop() # false
-    
+        aux.pop() # true
+
     # ----------------- 34 ----------------------
     elif a == 34.1:
+        
+        p = aux.getFromTope(1)
+        
+        p.setValorAtributo("tipo", Tipo.LOGICO) 
+    
+        aux.pop() # false
+    
+    # ----------------- 35 ----------------------
+    elif a == 35.1:
         
         pprima = aux.getFromTope(0)
         
         pprima.setValorAtributo("tipo", Tipo.VACIO) 
     
-    # ----------------- 35 ----------------------
-    elif a == 35.1:
+    # ----------------- 36 ----------------------
+    elif a == 36.1:
         
         pprima = aux.getFromTope(3)
         l = aux.getFromTope(1)
@@ -651,8 +668,8 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         aux.pop() # L
         aux.pop() # abrirParentesis    
     
-    # ---------------- 36 --------------------------
-    elif a == 36.1:
+    # ---------------- 37 --------------------------
+    elif a == 37.1:
         
         q = aux.getFromTope(0)
         e = aux.getFromTope(1)
@@ -668,7 +685,7 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
                 l.setValorAtributo("tipo",lTipo)
             else:
                 l.setValorAtributo("tipo", Tipo.ERROR)
-                error = Error(221,f"ERROR SEMÁNTICO - Expresión incorrecta", "")
+                error = Error(222,f"ERROR SEMÁNTICO - Expresión incorrecta", "")
         
         elif(eTipo != Tipo.ERROR and qTipo != Tipo.ERROR):
             lTipo = [eTipo]
@@ -676,20 +693,20 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         
         else:
             l.setValorAtributo("tipo", Tipo.ERROR)
-            error = Error(222,f"ERROR SEMÁNTICO - Expresión incorrecta", "")
+            error = Error(223,f"ERROR SEMÁNTICO - Expresión incorrecta", "")
     
         aux.pop() # Q
         aux.pop() # E
 
-    # ----------------- 37 ----------------------
-    elif a == 37.1:
+    # ----------------- 38 ----------------------
+    elif a == 38.1:
         
         l = aux.getFromTope(0)
         
         l.setValorAtributo("tipo", Tipo.VACIO)
         
-    # ---------------- 38 --------------------------
-    elif a == 38.1:
+    # ---------------- 39 --------------------------
+    elif a == 39.1:
         
         q = aux.getFromTope(3)
         e = aux.getFromTope(1)
@@ -706,7 +723,7 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
                 q.setValorAtributo("tipo",qTipo)
             else:
                 q.setValorAtributo("tipo", Tipo.ERROR)
-                error = Error(223,f"ERROR SEMÁNTICO - Expresión incorrecta", "")
+                error = Error(224,f"ERROR SEMÁNTICO - Expresión incorrecta", "")
         
         elif(eTipo != Tipo.ERROR and q1Tipo != Tipo.ERROR):
             qTipo = [eTipo]
@@ -714,37 +731,38 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         
         else:
             q.setValorAtributo("tipo", Tipo.ERROR)
-            error = Error(224,f"ERROR SEMÁNTICO - Expresión incorrecta", "")
+            error = Error(225,f"ERROR SEMÁNTICO - Expresión incorrecta", "")
     
         aux.pop() # Q
         aux.pop() # E
         aux.pop() # ,
 
-    # ----------------- 39 ----------------------
-    elif a == 39.1:
+    # ----------------- 40 ----------------------
+    elif a == 40.1:
         
         q = aux.getFromTope(0)
         
         q.setValorAtributo("tipo", Tipo.VACIO)
     
-    # ----------------- 40 ---------------------
-    elif a == 40.1:
+    # ----------------- 41 ---------------------
+    elif a == 41.1:
         x = aux.getFromTope(1)
         e = aux.getFromTope(0)
         
         x.setValorAtributo("tipo", e.getValorAtributo("tipo"))
+        
 
         aux.pop() # E
     
-    # ---------------- 41 --------------------
-    elif a == 41.1:
+    # ---------------- 42 --------------------
+    elif a == 42.1:
 
         x = aux.getFromTope(0)
         
         x.setValorAtributo("tipo", Tipo.VACIO)
     
-    # --------------- 42 ----------------------
-    elif a == 42.1:
+    # --------------- 43 ----------------------
+    elif a == 43.1:
         
         t = aux.getFromTope(1)
         
@@ -753,8 +771,8 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         
         aux.pop() # int      
 
-    # --------------- 43 ----------------------
-    elif a == 43.1:
+    # --------------- 44 ----------------------
+    elif a == 44.1:
         
         t = aux.getFromTope(1)
         
@@ -763,8 +781,8 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         
         aux.pop() # boolean   
 
-    # --------------- 44 ----------------------
-    elif a == 44.1:
+    # --------------- 45 ----------------------
+    elif a == 45.1:
         
         t = aux.getFromTope(1)
         
@@ -773,15 +791,15 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         
         aux.pop() # string
     
-    # ------------- 45 ------------------------
-    elif a == 45.1:
+    # ------------- 46 ------------------------
+    elif a == 46.1:
         zona = True
     
-    elif a == 45.2:
+    elif a == 46.2:
         # Creacion Tabla Local
         gestorTS.crearTabla()
     
-    elif a == 45.3:
+    elif a == 46.3:
         
         id = aux.getFromTope(4)
         d = aux.getFromTope(1)
@@ -795,7 +813,7 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         gestorTS.insertarTipoParametros(dTipo)
         gestorTS.insertarTipoDevuelto(hTipo)
         
-    elif a == 45.4:
+    elif a == 46.4:
         c = aux.getFromTope(1)
         h = aux.gatFromTope(6)
         
@@ -804,8 +822,7 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         
         if(cTipoRet != hTipo):
             if(cTipoRet == None and hTipo != Tipo.VACIO):
-                error = Error(225,f"ERROR SEMÁNTICO - El tipo del valor de retorno {getTipoString(cTipoRet)} no coincide con el tipo valor de retorno declarado {getTipoString(hTipo)}", "") 
-        
+                error = Error(226,f"ERROR SEMÁNTICO - El tipo del valor de retorno {getTipoString(cTipoRet)} no coincide con el tipo valor de retorno declarado {getTipoString(hTipo)}", "") 
         # Liberacion Tabla Local
         gestorTS.removeTabla()
     
@@ -819,8 +836,8 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         aux.pop() # id
         aux.pop() # function
     
-    # --------------- 46 ------------------ 
-    elif a == 46.1:
+    # --------------- 47 ------------------ 
+    elif a == 47.1:
 
         t = aux.getFromTope(0)
         h = aux.getFromTope(1)
@@ -831,15 +848,15 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         
         aux.pop() # T
         
-    # --------------- 47 -----------------
-    elif a == 47.1:
+    # --------------- 48 -----------------
+    elif a == 48.1:
 
         h = aux.getFromTope(0)
         
         h.setValorAtributo("tipo", Tipo.VACIO)
         
-    # --------------- 48 -----------------
-    elif a == 48.1:
+    # --------------- 49 -----------------
+    elif a == 49.1:
 
         k = aux.getFromTope(0)
         id = aux.getFromTope(1)
@@ -865,7 +882,7 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         
         else: 
             d.setValorAtributo("tipo", Tipo.ERROR)
-            error = Error(226,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
+            error = Error(227,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
         
         gestorTS.insertarTipoTamTS(idPos,tTipo,tTamanho)
         
@@ -873,15 +890,15 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         aux.pop() # id
         aux.pop() # T
         
-    # --------------- 49 -----------------
-    elif a == 49.1:
+    # --------------- 50 -----------------
+    elif a == 50.1:
 
         d = aux.getFromTope(0)
         
         d.setValorAtributo("tipo", Tipo.VACIO) 
         
-    # --------------- 50 -----------------
-    elif a == 50.1:
+    # --------------- 51 -----------------
+    elif a == 51.1:
 
         k1 = aux.getFromTope(0)
         id = aux.getFromTope(1)
@@ -907,7 +924,7 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         
         else:
             k.setValorAtributo("tipo", Tipo.ERROR)
-            error = Error(227,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
+            error = Error(228,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
         
             
         gestorTS.insertarTipoTamTS(idPos,tTipo,tTamanho)
@@ -917,21 +934,21 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
         aux.pop() # T
         aux.pop() # coma
         
-    # --------------- 51 -----------------
-    elif a == 51.1:
+    # --------------- 52 -----------------
+    elif a == 52.1:
 
         k = aux.getFromTope(0)
         
         k.setValorAtributo("tipo", Tipo.VACIO) 
     
-    # ---------------- 52 -----------------
-    elif a == 52.1:
+    # ---------------- 53 -----------------
+    elif a == 53.1:
         
         b = pila.getFromTope(0)
         
         b.setValorAtributo("funcion", True)
         
-    elif a == 52.2:
+    elif a == 53.2:
         
         b = aux.getFromTope(1)
         cprima = aux.getFromTope(0)
@@ -944,7 +961,7 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
             c.setValorAtributo("tipo",Tipo.OK)
         else:
             c.setValorAtributo("tipo",Tipo.ERROR)
-            error = Error(228,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
+            error = Error(229,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
         
         bTipoRet = b.getValorAtributo("tipoRet")
         cprimaTipoRet = cprima.getValorAtributo("tipoRet")
@@ -956,26 +973,26 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
                 c.setValorAtributo("tipoRet", bTipoRet)
             else:
                 c.setValorAtributo("tipoRet", Tipo.ERROR)
-                error = Error(229,f"ERROR SEMÁNTICO - Valores de retorno de la función son de un tipo distinto: {getTipoString(bTipoRet)} y {getTipoString(cprimaTipoRet)}", "") 
+                error = Error(230,f"ERROR SEMÁNTICO - Valores de retorno de la función son de un tipo distinto: {getTipoString(bTipoRet)} y {getTipoString(cprimaTipoRet)}", "") 
         
         elif (cprimaTipoRet != None and cprimaTipoRet != Tipo.ERROR):
             c.setValorAtributo("tipoRet", cprimaTipoRet)
         elif (bTipoRet == Tipo.ERROR or cprimaTipoRet == Tipo.ERROR):
-            c.setValorAtributo("tipoRet", Tipo.ERROR)
-            error = Error(230,f"ERROR SEMÁNTICO - Valor de retorno de la función incorrectos", "") 
+            c.setValorAtributo("tipo", Tipo.ERROR)
+            error = Error(231,f"ERROR SEMÁNTICO - Valor de retorno de la función incorrectos", "") 
         
             
         aux.pop() # C'
         aux.pop() # B  
 
-    # ---------------- 53 -----------------
-    elif a == 53.1:
+    # ---------------- 54 -----------------
+    elif a == 54.1:
         
         b = pila.getFromTope(0)
         
         b.setValorAtributo("funcion", True)
         
-    elif a == 53.2:
+    elif a == 54.2:
         
         b = aux.getFromTope(1)
         cprima1 = aux.getFromTope(0)
@@ -988,7 +1005,7 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
             cprima.setValorAtributo("tipo",Tipo.OK)
         else:
             cprima.setValorAtributo("tipo",Tipo.ERROR)
-            error = Error(231,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
+            error = Error(232,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
         
         bTipoRet = b.getValorAtributo("tipoRet")
         cprima1TipoRet = cprima1.getValorAtributo("tipoRet")
@@ -1000,40 +1017,40 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
                 cprima.setValorAtributo("tipoRet", bTipoRet)
             else:
                 cprima.setValorAtributo("tipoRet", Tipo.ERROR)
-                error = Error(232,f"ERROR SEMÁNTICO - Valores de retorno de la función son de un tipo distinto: {getTipoString(bTipoRet)} y {getTipoString(cprima1TipoRet)}", "") 
+                error = Error(233,f"ERROR SEMÁNTICO - Valores de retorno de la función son de un tipo distinto: {getTipoString(bTipoRet)} y {getTipoString(cprima1TipoRet)}", "") 
         
         elif (cprima1TipoRet != None and cprima1TipoRet != Tipo.ERROR):
             cprima.setValorAtributo("tipoRet", cprima1TipoRet)
         elif (bTipoRet == Tipo.ERROR or cprima1TipoRet == Tipo.ERROR):
             cprima.setValorAtributo("tipoRet", Tipo.ERROR)
-            error = Error(233,f"ERROR SEMÁNTICO - Valor de retorno de la función incorrectos", "") 
+            error = Error(234,f"ERROR SEMÁNTICO - Valor de retorno de la función incorrectos", "") 
         
         
         aux.pop() # C'1
         aux.pop() # B
     
-    # ---------------- 54 ------------------
-    elif a == 54.1:
+    # ---------------- 55 ------------------
+    elif a == 55.1:
         
         cprima = aux.getFromTope(0)
         
         cprima.setValorAtributo("tipo", Tipo.OK)
     
-    # --------------- 55 ---------------------
-    elif a == 55.1:
+    # --------------- 56 ---------------------
+    elif a == 56.1:
         n = aux.getFromTope(0)
         
         n.setValorAtributo("tipo",Tipo.VACIO)
         
-    # ---------------- 56 ----------------------
-    elif a == 56.1:
+    # ---------------- 57 ----------------------
+    elif a == 57.1:
         n = aux.getFromTope(3)
         e = aux.getFromTope(1)
         
         n.setValorAtributo("tipo",e.getValorAtributo("tipo"))
     
-    # ---------------- 57 ----------------------
-    elif a == 57.1:
+    # ---------------- 58 ----------------------
+    elif a == 58.1:
         n = aux.getFromTope(3)
         e = aux.getFromTope(1)
         
@@ -1043,26 +1060,28 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
             n.setValorAtributo("tipo",eTipo)
         else:
             n.setValorAtributo("tipo",Tipo.ERROR)
-            error = Error(234,f"ERROR SEMÁNTICO - La expresión asignada a multiplicar debe ser de tipo entero, sin embargo es de tipo {getTipoString(eTipo)}", "") 
+            error = Error(235,f"ERROR SEMÁNTICO - La expresión asignada a multiplicar debe ser de tipo entero, sin embargo es de tipo {getTipoString(eTipo)}", "") 
         
         aux.pop() # ;
         aux.pop() # E
         aux.pop() # *=
         
-    # ---------------- 58 ------------------------
-    elif a == 58.1:
+    # ---------------- 59 ------------------------
+    elif a == 59.1:
         o = pila.getFromTope(0)
         z = aux.getFromTope(3)
         
         o.setValorAtributo("funcion",z.getValorAtributo("funcion"))
+        o.setValorAtributo("switch",z.getValorAtributo("switch"))
         
-    elif a == 58.2:
+    elif a == 59.2:
         z1 = pila.getFromTope(0)
         z = aux.getFromTope(4)
         
         z1.setValorAtributo("funcion",z.getValorAtributo("funcion"))
+        z1.setValorAtributo("switch",z.getValorAtributo("switch"))
     
-    elif a == 58.3:
+    elif a == 59.3:
         o = aux.getFromTope(1)
         z1 = aux.getFromTope(0)
         z = aux.getFromTope(5)
@@ -1074,22 +1093,22 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
             z.setValorAtributo("tipo",Tipo.OK)
         else:
             z.setValorAtributo("tipo",Tipo.ERROR)
-            error = Error(235,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
+            error = Error(236,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
         
-        aux.pop() # Z1
+        aux.pop() # Z'
         aux.pop() # O
         aux.pop() # :
         aux.pop() # cteEntera
         aux.pop() # case
     
-    # ----------- 59 ------------------
-    elif a == 59.1:
+    # ----------- 60 ------------------
+    elif a == 60.1:
         o = pila.getFromTope(0)
         z = aux.getFromTope(2)
         
         o.setValorAtributo("funcion",z.getValorAtributo("funcion"))
     
-    elif a == 59.2:
+    elif a == 60.2:
         o = aux.getFromTope(0)
         z = aux.getFromTope(3)
         
@@ -1099,26 +1118,28 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
             z.setValorAtributo("tipo",Tipo.OK)
         else:
             z.setValorAtributo("tipo",Tipo.ERROR)
-            error = Error(236,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
+            error = Error(237,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
         
         aux.pop() # O
         aux.pop() # :
         aux.pop() # default
     
-    # ------------- 60 -------------
-    elif a == 60.1:
+    # ------------- 61 -------------
+    elif a == 61.1:
         b = pila.getFromTope(0)
         o = aux.getFromTope(0)
         
         b.setValorAtributo("funcion",o.getValorAtributo("funcion"))
+        b.setValorAtributo("switch",o.getValorAtributo("switch"))
 
-    elif a == 60.2:
+    elif a == 61.2:
         oprima = pila.getFromTope(0)
         o = aux.getFromTope(1)
         
         oprima.setValorAtributo("funcion",o.getValorAtributo("funcion"))
+        oprima.setValorAtributo("switch",o.getValorAtributo("switch"))
     
-    elif a == 60.3:
+    elif a == 61.3:
         o = aux.getFromTope(2)
         oprima = aux.getFromTope(0)
         b = aux.getFromTope(1)
@@ -1130,65 +1151,38 @@ def accionesAnalizadorSemantico(a,gestorTS,pila,aux):
             o.setValorAtributo("tipo",Tipo.OK)
         else:
             o.setValorAtributo("tipo",Tipo.ERROR)
-            error = Error(237,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
+            error = Error(238,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
         
         aux.pop() # O'
         aux.pop() # B      
     
-    # ------------- 61 -------------
-    elif a == 61.1:
+    # ------------- 62 -------------
+    elif a == 62.1:
         o = aux.getFromTope(2)
         
         o.setValorAtributo("tipo",Tipo.OK)
     
-        aux.pop() # ;
-        aux.pop() # break 
-    
-    
-    # ------------- 62 -------------
-    elif a == 62.1:
-        b = pila.getFromTope(0)
-        oprima = aux.getFromTope(0)
-        
-        b.setValorAtributo("funcion",oprima.getValorAtributo("funcion"))
-
-    elif a == 62.2:
-        oprima1 = pila.getFromTope(0)
-        oprima = aux.getFromTope(1)
-        
-        oprima1.setValorAtributo("funcion",oprima.getValorAtributo("funcion"))
-    
-    elif a == 62.3:
-        oprima = aux.getFromTope(2)
-        oprima1 = aux.getFromTope(0)
-        b = aux.getFromTope(1)
-        
-        oprima1Tipo = oprima1.getValorAtributo("tipo")
-        bTipo = b.getValorAtributo("tipo")
-        
-        if(bTipo == oprima1Tipo and oprima1Tipo == Tipo.OK):
-            oprima.setValorAtributo("tipo",Tipo.OK)
-        else:
-            oprima.setValorAtributo("tipo",Tipo.ERROR)
-            error = Error(238,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
-        
-        aux.pop() # O'1
-        aux.pop() # B
-    
-    # ---------- 63 --------------
+    # ------------- 63 -------------
     elif a == 63.1:
-        oprima = aux.getFromTope(2)
+        z = aux.getFromTope(1)
+        zprima = aux.getFromTope(0)
         
-        oprima.setValorAtributo("tipo",Tipo.OK)
-    
-        aux.pop() # ;
-        aux.pop() # break 
-    
-    # ---------- 63 --------------
+        zprima.setValorAtributo("switch",z.getValorAtributo("switch"))
+        zprima.setValorAtributo("funcion",z.getValorAtributo("funcion"))
+        
+        zTipo = z.getValorAtributo("tipo")
+        
+        if(zTipo == Tipo.OK):
+            zprima.setValorAtributo("tipo",Tipo.OK)
+        else:
+            zprima.setValorAtributo("tipo",Tipo.ERROR)
+            error = Error(239,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
+        
+    # ------------- 64 -------------
     elif a == 64.1:
-        oprima = aux.getFromTope(0)
+        zprima = aux.getFromTope(0)
         
-        oprima.setValorAtributo("tipo",Tipo.OK)
-    
+        zprima.setValorAtributo("tipo",Tipo.OK)
+   
     return zona, dec_impl, error      
     
