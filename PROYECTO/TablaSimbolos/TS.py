@@ -16,7 +16,7 @@ class TablaSimbolos():
     
     def toString(self):
         salida = f"CONTENIDOS DE LA TABLA # {self.id} :\n\n"
-        for e in self.entradas.items:
+        for e in self.entradas.values():
             salida += e.toString()
         return salida
     
@@ -36,16 +36,16 @@ class TablaSimbolos():
         self.indices.__setitem__(lex,entrada.getId())
         self.entradas.__setitem__(entrada.getId(),entrada)
 
-        return entrada.getID()
+        return entrada.getId()
         
-    # Obtener el id (pos) del lexema en el mapa lexema --> pos
+    # Obtener el id (pos) del lexema en el mapa lexema --> pos y con este la entrada 
     # Si no lo encuetra devuelve falso
     def buscarLugarTSNombre(self,lexema):
-        keys = self.indices.keys
-        id = False
+        keys = list(self.indices.keys())
+        entrada = False
         if lexema in keys:
-            id = self.indices.get(lexema)  
-        return id  # devolver el id del identificador. Si no lo encuentra retorna False
+            entrada = self.entradas.get(self.indices.get(lexema)) 
+        return entrada  # devolver la entrada correspondiente al id del identificador. Si no lo encuentra retorna False
 
     # Obtener el objeto EntradaTablaSimbolos dado el id (pos)
     def buscarEntradaID(self,id):

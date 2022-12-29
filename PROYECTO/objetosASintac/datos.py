@@ -1,5 +1,5 @@
 #------- Simbolos No Terminales -------------
-noTerminales = ["A'","A","B","S","S'","E","E'","R","R'","U","U'","V","V'","P","P'","L","Q","X","T","F","H","D","K","C","C'","N","Z","O","O'"]
+noTerminales = ["A'","A","B","S","S'","E","E'","R","R'","U","U'","V","V'","P","P'","L","Q","X","T","F","H","D","K","C","C'","N","Z","O","Z'"]
 
 #------- TokenOp -----------------------
 tokenOp = ["opRelacional1","opLogico1","opAritmetico1","opAritmetico2"]

@@ -7,11 +7,13 @@ class Pila():
         self.pila.append(t)
         
     def pop(self):
-        return self.pila.pop()     
+        if len(self.pila) > 0:
+            return self.pila.pop()
+        return False    
     
     def equipara(self,sim):
         elemPila= self.pop()
-        if(sim.nombreSimbolo==elemPila.nombreSimbolo):
+        if(sim==elemPila):
             return True
         else:
             return False

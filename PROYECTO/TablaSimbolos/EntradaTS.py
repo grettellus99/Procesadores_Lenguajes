@@ -114,7 +114,7 @@ class EntradaTablaSimbolos():
         salida += "\t+ tipo :\t"+str(self.tipo) + "\n"
         
         if self.tipo != Tipo.FUNCION:    
-            salida += "\t+ despl :\t"+str(self.despl) + + "\n\t----------- ----------\n"
+            salida += "\t+ despl :\t"+str(self.despl) + "\n\t----------- ----------\n"
         else:
             salida += "\t\t+ numPar :\t"+str(self.numParametros) + "\n"
             

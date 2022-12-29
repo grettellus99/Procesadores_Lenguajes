@@ -15,13 +15,20 @@ class GestorTablaSimbolos():
         self.bloqueTS = {}
         self.listaTS = {}
         
+        self.noCrear = False
+        
         self.ultimaTS = False
 
     def crearTabla(self):
-        ts = TablaSimbolos()
-        self.listaTS.__setitem__(ts.getId(),ts)
-        self.bloqueTS.__setitem__(ts.getId(),self.currentTablaID)
-        self.currentTablaID = ts.getId()
+        
+        if self.noCrear == False:
+            ts = TablaSimbolos()
+            self.listaTS.__setitem__(ts.getId(),ts)
+            self.bloqueTS.__setitem__(ts.getId(),self.currentTablaID)
+            self.currentTablaID = ts.getId()
+        else:
+            self.noCrear = False
+        
         
     def getTablaActual(self):
         return self.listaTS.get(self.currentTablaID)
@@ -46,7 +53,7 @@ class GestorTablaSimbolos():
         tablaID = self.currentTablaID
         self.ultimaTS = self.listaTS.get(tablaID)
         
-        entrada = self.ultimaTS.buscarEntradaID(entId)
+        entrada = self.ultimaTS.buscarEntradaID(int(entId))
         
         seguir = True
         # Buscar la entrada en todas las tablas disponibles
@@ -55,7 +62,7 @@ class GestorTablaSimbolos():
             if (tablaID == None):
                 seguir = False
             else:
-                self.ultimaTS = self.listaTS(tablaID)
+                self.ultimaTS = self.listaTS.get(tablaID)
                 
                 if self.ultimaTS == None:
                     seguir = False
@@ -68,6 +75,12 @@ class GestorTablaSimbolos():
         entrada = None
         
         tablaID = self.currentTablaID
+        
+        if tablaID == -1:
+            self.crearTabla()
+            self.noCrear = True
+            tablaID = self.currentTablaID
+        
         self.ultimaTS = self.listaTS.get(tablaID)
         
         entrada = self.ultimaTS.buscarLugarTSNombre(lexema)
@@ -79,7 +92,7 @@ class GestorTablaSimbolos():
             if (tablaID == None):
                 seguir = False 
             else:
-                self.ultimaTS = self.listaTS(tablaID)
+                self.ultimaTS = self.listaTS.get(tablaID)
                 
                 if self.ultimaTS == None:
                     seguir = False
@@ -92,7 +105,9 @@ class GestorTablaSimbolos():
     def buscarEntradaTablaActualLexema(self,lexema):
         entrada = self.buscarEntradaPorLexema(lexema)
         
-        if entrada.getTabla() != self.currentTablaID:
+        if entrada == False or entrada == None:
+            return False
+        elif entrada.getTabla() != self.currentTablaID:
             return False
         else:
             return entrada
@@ -100,12 +115,12 @@ class GestorTablaSimbolos():
     def insertarEntrada(self,lexema):
         tabla = self.listaTS.get(self.currentTablaID)
         
-        return tabla.insertarValor(lexema,tabla.getID())
+        return tabla.insertarValor(lexema,tabla.getId())
     
     def insertarEntradaTG(self,lexema):
         tabla= self.listaTS.get(1)
         
-        return tabla.insertarValor(lexema,tabla.getID())
+        return tabla.insertarValor(lexema,tabla.getId())
     
     def insertarTipoTamTS(self,entID, tipo, tamanho):
         entrada = self.buscarEntradaPorID(entID)
@@ -115,7 +130,7 @@ class GestorTablaSimbolos():
             entrada.setTipo(tipo)
             
             if(tamanho != False):
-                self.ultimaTS = self.listaTS(entrada.getTabla())
+                self.ultimaTS = self.listaTS.get(entrada.getTabla())
             
                 entrada.setDespl(self.ultimaTS.getUltimoDespl())
                 self.ultimaTS.setUltimoDespl(self.ultimaTS.getUltimoDespl() + tamanho)

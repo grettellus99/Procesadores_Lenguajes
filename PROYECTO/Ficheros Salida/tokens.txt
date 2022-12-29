@@ -1,2 +1,92 @@
 
 
+< id  , 0 >
+< asignacion ,  >
+< id  , 1 >
+< opAritmetico , 2 >
+< id  , 2 >
+< ptoComa ,  >
+< print ,  >
+< cadena , "Introduce el resultado de 6+6*2: " >
+< ptoComa ,  >
+< let ,  >
+< id  , 3 >
+< int ,  >
+< asignacion ,  >
+< cteEntera , 0 >
+< ptoComa ,  >
+< input ,  >
+< id  , 3 >
+< ptoComa ,  >
+< let ,  >
+< id  , 4 >
+< int ,  >
+< asignacion ,  >
+< cteEntera , 5 >
+< ptoComa ,  >
+< if ,  >
+< abrirParentesis ,  >
+< id  , 3 >
+< opRelacional , 1 >
+< cteEntera , 18 >
+< cerrarParentesis ,  >
+< print ,  >
+< cadena , "Bien!!" >
+< ptoComa ,  >
+< if ,  >
+< abrirParentesis ,  >
+< id  , 3 >
+< opRelacional , 1 >
+< cteEntera , 18 >
+< cerrarParentesis ,  >
+< print ,  >
+< cadena , "Introduce un número para sumarle a 18: " >
+< ptoComa ,  >
+< if ,  >
+< abrirParentesis ,  >
+< id  , 3 >
+< opRelacional , 1 >
+< cteEntera , 18 >
+< cerrarParentesis ,  >
+< input ,  >
+< id  , 4 >
+< ptoComa ,  >
+< switch ,  >
+< abrirParentesis ,  >
+< id  , 3 >
+< cerrarParentesis ,  >
+< abrirCorchete ,  >
+< case ,  >
+< cteEntera , 24 >
+< dosPuntos ,  >
+< print ,  >
+< cadena , ":( es 6*2 = 12 y luego 12 + 6 = 18 no 24" >
+< ptoComa ,  >
+< print ,  >
+< cadena , "Introduce un número para sumarle a 24: " >
+< ptoComa ,  >
+< input ,  >
+< id  , 4 >
+< ptoComa ,  >
+< break ,  >
+< ptoComa ,  >
+< default ,  >
+< dosPuntos ,  >
+< print ,  >
+< cadena , "Vaya no es correcto." >
+< ptoComa ,  >
+< cerrarCorchete ,  >
+< function ,  >
+< id  , 5 >
+< int ,  >
+< abrirParentesis ,  >
+< int ,  >
+< id  , 6 >
+< coma ,  >
+< int ,  >
+< id  , 7 >
+< cerrarParentesis ,  >
+< abrirCorchete ,  >
+< id  , 8 >
+< asignacion ,  >
+< opAritmetico , 2 >

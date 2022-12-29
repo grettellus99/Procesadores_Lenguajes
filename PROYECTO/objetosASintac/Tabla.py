@@ -14,7 +14,8 @@ class Tabla:
         self.pila= Pila() # pila principal Analizador Sintactico
         self.aux = Pila() # pila auxiliar para Analizador Semantico
          
-        self.pila.append("A'")    # inicializar la pila con el axioma
+        ap = Simbolo("A'") 
+        self.pila.append(ap)    # inicializar la pila con el axioma
         
     
     # Establecer el token actual
@@ -79,8 +80,7 @@ class Tabla:
             
             elif tv in firstA3:
                 self.parse.append(4)
-                eof = Simbolo("eof")
-                self.pila.append(eof)
+                self.pila.append("eof")
                 
                 if(self.pila.equipara(tv)):
                     pedirToken=True
@@ -194,7 +194,7 @@ class Tabla:
             
             elif tv in firstS3:
                 self.parse.append(11)
-                self.pila.append(11.1)
+                self.pila.append(11.3)
                 self.pila.append("ptoComa")
                 self.pila.append(11.2)
                 id = Simbolo("id")
@@ -297,14 +297,15 @@ class Tabla:
                 self.pila.append(17.1)
                 ep = Simbolo("E'")
                 self.pila.append(ep)
-                self.pila.append("R")
+                r = Simbolo("R")
+                self.pila.append(r)
 
             else:
                 error=Error(105,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión valida", "")
             
     #----------------------------------------------------------------------------------------    
         elif nT == "E'":
-            if tv in followE:
+            if tv in followEprima:
                 self.parse.append(18)
                 self.pila.append(18.1)           
             
@@ -329,7 +330,7 @@ class Tabla:
                 
     #---------------------------------------------------------------------------------------   
         elif nT == "R":
-            if tv in firstR1 or tv in firstR1:
+            if tv in firstR1:
                 self.parse.append(20)
                 self.pila.append(20.1)
                 rp = Simbolo("R'")
@@ -865,7 +866,7 @@ class Tabla:
             if tv in firstO1:
                 self.parse.append(61)
                 self.pila.append(61.3)
-                op = Simbolo("O'")
+                op = Simbolo("O")
                 self.pila.append(op)
                 self.pila.append(61.2) 
                 b = Simbolo("B") 

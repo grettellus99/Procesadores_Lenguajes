@@ -39,9 +39,9 @@ def accionesSemanticas (a,ctr,listaTokens,gestorTS,zona,decl_impl):
                 else:
                     posId = gestorTS.insertarEntrada(lexema)
                     listaTokens.addTokenIdentificador(posId)
-            elif decl_impl:
+            elif decl_impl or zona==False:
                 # Si se esta en zona de declaracion implicita
-                entrada = gestorTS.buscarEntradaTablaActualLexema (lexema)
+                entrada = gestorTS.buscarEntradaTablaActualLexema(lexema)
                 
                 # Si no encuentra la entrada en la tabla actual
                 if entrada == None or entrada == False:  
@@ -55,10 +55,10 @@ def accionesSemanticas (a,ctr,listaTokens,gestorTS,zona,decl_impl):
                     # encontro el identificador
                     else:
                         # ya ha sido declarado
-                        listaTokens.addTokenIdentificador(entrada.getID())
+                        listaTokens.addTokenIdentificador(entrada.getId())
                 else:
                     # ya ha sido declarado
-                    listaTokens.addTokenIdentificador(entrada.getID())
+                    listaTokens.addTokenIdentificador(entrada.getId())
     elif a == 5:
         valor = int(c) 
         leer=True      # debe leerse el próximo carácter
@@ -76,7 +76,7 @@ def accionesSemanticas (a,ctr,listaTokens,gestorTS,zona,decl_impl):
             listaTokens.addTokenConstEntera(valor) # agrega token cteEntera a la lista y el fichero
 
     elif a == 8 or a == 9 or a == 10 or a == 11 or a == 12 or a == 13 or a == 14:    # acciones correspondientes a comentarios
-        print("LEER")
+        #print("LEER")
         leer=True      # debe leerse el próximo carácter   
     
     elif a == 15:

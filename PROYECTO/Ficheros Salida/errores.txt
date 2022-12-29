@@ -1,2 +1,10 @@
 
 
+Línea 33 - Código de error 200: 
+	 ERROR SEMÁNTICO - El identificador a ya ha sido declarado
+
+
+Línea 33 - Código de error 105: 
+	 ERROR SINTÁCTICO - Token + no pertenece a una expresión valida
+
+
