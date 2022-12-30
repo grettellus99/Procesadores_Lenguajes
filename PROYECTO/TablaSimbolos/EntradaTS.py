@@ -28,7 +28,7 @@ class EntradaTablaSimbolos():
         # ( entero | cadena | logico )
         self.despl = -1
         
-        # Num Parametros inicial negaativo (funcion)
+        # Num Parametros inicial negativo (funcion)
         self.numParametros = -1
         
         # Tipo parametros inicial vacio (funcion)
@@ -71,7 +71,7 @@ class EntradaTablaSimbolos():
     def setTipo (self,tipo):
         if(tipo == Tipo.FUNCION):
             self.numParametros += 1 # inicializar el numero de parametros a 0
-            self.etiqueta = "Et"+self.getLexema()+str(self.getId()) # darle valor a la etiqueta
+            self.setEtiqueta()  # darle valor a la etiqueta
         self.tipo = tipo
     
     def getDespl(self):

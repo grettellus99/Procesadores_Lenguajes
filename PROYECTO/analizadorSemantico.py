@@ -2,10 +2,10 @@ from analizadorSintactico import AnalizadorSintactico
 
 analizadorSintactico = AnalizadorSintactico()
 
-terminado = False
+terminado = None
 
-
-while(terminado == False):
+while(terminado == None):
     terminado = analizadorSintactico.analisisSintactico()
 
-
+if terminado == False:
+    print("Error detectado")

@@ -19,6 +19,8 @@ class AnalizadorLexico():
         self.error=False
         self.c=""    
         
+        self.lineaPrincipioBloque = 0
+        
         self.zona_decl=False
         self.decl_impl=False
         
@@ -106,4 +108,8 @@ class AnalizadorLexico():
                 #   print(str(i.nombre) +"\t"+ str(i.valor) + "\n")
           
         t = self.listaTokens.getLastToken()
+        
+        if t.n == "function":
+            self.lineaPrincipioBloque = self.readFicheroFuente.numLinea
+        
         return t,self.terminado

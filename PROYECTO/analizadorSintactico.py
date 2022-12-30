@@ -44,7 +44,6 @@ class AnalizadorSintactico():
         error = False
         pedirToken = True
         while(seguir):
-        
             if(pedirToken):
                 respAL = self.analizadorLexico.pedirToken(self.gestorTS,self.zona_decl.valor, self.decl_impl.valor)
                 siguienteToken = respAL[0]
@@ -120,17 +119,29 @@ class AnalizadorSintactico():
                 if(terminado or (error != False)):
                     seguir = False    
 
+        # Termina el bucle porque detecta un error LEXICO | SINTACTICO | SEMANTICO o porque llega al final del analisis
         if(error == False):
             parse = self.tablaAS.parse
-            self.writerParse.writeParse(parse)
+            self.writerParse.writeParse(parse) # Escribir el parse en el fichero parse.txt
+            
         else:
+            
             ### GESTIONAR ERRORES ####
             self.writerParse.writeParse("ERROR")         # invalidar el fichero parse
             errores = self.analizadorLexico.errores      # obtener el gestor de errores del AL
-            linea = self.analizadorLexico.readFicheroFuente.numLinea     # obtener el num de línea actual
+            
+            if error.cod == 226: # error producido por comparar el valor de retorno declarado de la funcion con el valor de retorno actual y estos no son iguales
+                                # Como se hace al final del bloque el numLinea actual no sería correcto
+                linea = self.analizadorLexico.lineaPrincipioBloque # Obtener la linea donde estaba el token function
+            else:
+                linea = self.analizadorLexico.readFicheroFuente.numLinea     # obtener el num de línea actual
+            
             error.linea = linea     # actualizar la linea del error obtenido
     
             errores.crearError(error)   # crear el error agregándolo a la lista del gestor y al fichero errores
         
+        # Terminar la ejecucion del A. Sintactico + Semantico.
         if(terminado):
             return True
+        else:
+            return False

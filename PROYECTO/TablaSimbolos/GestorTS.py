@@ -19,6 +19,7 @@ class GestorTablaSimbolos():
         
         self.ultimaTS = False
 
+    # crear una tabla
     def crearTabla(self):
         
         if self.noCrear == False:
@@ -29,10 +30,11 @@ class GestorTablaSimbolos():
         else:
             self.noCrear = False
         
-        
+    # devuelve la tabla actual
     def getTablaActual(self):
         return self.listaTS.get(self.currentTablaID)
-           
+      
+    # elimina la tabla actual y cambia la tabla actual a la anterior      
     def removeTable(self):
         # Escribir la tabla en el fichero
         self.writerFichero.write(self.getTablaActual().toString(),False)
@@ -46,7 +48,8 @@ class GestorTablaSimbolos():
         
         # Eliminar del registro tabla actual
         self.bloqueTS.__delitem__(antID)
-        
+    
+    # busca la entrada en las tablas activas por id    
     def buscarEntradaPorID(self, entId):
         entrada = None
         
@@ -71,6 +74,7 @@ class GestorTablaSimbolos():
         
         return entrada
     
+    # busca la entrada en las tablas activas por lexema 
     def buscarEntradaPorLexema(self, lexema):
         entrada = None
         
@@ -83,7 +87,7 @@ class GestorTablaSimbolos():
         
         self.ultimaTS = self.listaTS.get(tablaID)
         
-        entrada = self.ultimaTS.buscarLugarTSNombre(lexema)
+        entrada = self.ultimaTS.buscarTSNombre(lexema)
         
         seguir = True
         # Buscar la entrada en todas las tablas disponibles
@@ -97,7 +101,7 @@ class GestorTablaSimbolos():
                 if self.ultimaTS == None:
                     seguir = False
                 else:
-                    entrada = self.ultimaTS.buscarLugarTSNombre(lexema)
+                    entrada = self.ultimaTS.buscarTSNombre(lexema)
         
         return entrada
     
@@ -112,16 +116,19 @@ class GestorTablaSimbolos():
         else:
             return entrada
     
+    # inserta la entrada en la tabla actual
     def insertarEntrada(self,lexema):
         tabla = self.listaTS.get(self.currentTablaID)
         
         return tabla.insertarValor(lexema,tabla.getId())
     
+    # inserta la entrada en la tabla global
     def insertarEntradaTG(self,lexema):
         tabla= self.listaTS.get(1)
         
         return tabla.insertarValor(lexema,tabla.getId())
     
+    # insertar el tipo de un id y actualizar el valor de proximo desplazamiento con el tamaño
     def insertarTipoTamTS(self,entID, tipo, tamanho):
         entrada = self.buscarEntradaPorID(int(entID))
         
@@ -135,6 +142,7 @@ class GestorTablaSimbolos():
                 entrada.setDespl(self.ultimaTS.getUltimoDespl())
                 self.ultimaTS.setUltimoDespl(self.ultimaTS.getUltimoDespl() + tamanho)
     
+    # insertar el tipo de parametros de una entrada de tipo funcion
     def insertarTipoParametros(self,entID, tipoLista):
         entrada = self.buscarEntradaPorID(int(entID))
         
@@ -143,12 +151,14 @@ class GestorTablaSimbolos():
                 entrada.setTipoParametros(t)
                 entrada.setModoParametros("1")
     
+    # insertar el tipo de retorno de una entrada de tipo funcion
     def insertarTipoDevuelto(self,entID, tipo):
         entrada = self.buscarEntradaPorID(int(entID))
         
         if entrada != None and entrada != False:
             entrada.setTipoDevuelto(tipo) 
-                
+     
+    # buscar el tipo de una entrada           
     def buscarTipo(self,entID):
         tipo = False
         entrada = self.buscarEntradaPorID(int(entID))
@@ -157,6 +167,7 @@ class GestorTablaSimbolos():
         
         return tipo
     
+    # buscar el tipo de parametros de una entrada   
     def buscarTipoParametros(self,entID):
         tipo = False
         entrada = self.buscarEntradaPorID(int(entID))
@@ -165,6 +176,7 @@ class GestorTablaSimbolos():
         
         return tipo
 
+    # buscar el tipo de retorno de una entrada  
     def buscarTipoDevuelto(self,entID):
         tipo = False
         entrada = self.buscarEntradaPorID(int(entID))

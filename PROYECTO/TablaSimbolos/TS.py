@@ -13,7 +13,6 @@ class TablaSimbolos():
         self.ultimoDespl = 0
         
         
-    
     def toString(self):
         salida = f"CONTENIDOS DE LA TABLA # {self.id} :\n\n"
         for e in self.entradas.values():
@@ -40,7 +39,7 @@ class TablaSimbolos():
         
     # Obtener el id (pos) del lexema en el mapa lexema --> pos y con este la entrada 
     # Si no lo encuetra devuelve falso
-    def buscarLugarTSNombre(self,lexema):
+    def buscarTSNombre(self,lexema):
         keys = list(self.indices.keys())
         entrada = False
         if lexema in keys:
