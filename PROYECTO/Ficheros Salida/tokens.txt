@@ -87,6 +87,22 @@
 < id  , 7 >
 < cerrarParentesis ,  >
 < abrirCorchete ,  >
-< id  , 8 >
+< id  , 0 >
 < asignacion ,  >
+< id  , 6 >
 < opAritmetico , 2 >
+< id  , 7 >
+< ptoComa ,  >
+< return ,  >
+< id  , 0 >
+< ptoComa ,  >
+< cerrarCorchete ,  >
+< print ,  >
+< id  , 5 >
+< abrirParentesis ,  >
+< id  , 3 >
+< coma ,  >
+< id  , 4 >
+< cerrarParentesis ,  >
+< ptoComa ,  >
+< eof ,  >

@@ -1,2 +1,54 @@
 
 
+CONTENIDOS DE LA TABLA # 2 :
+
+	* LEXEMA :	'a'
+	ATRIBUTOS :
+	+ tipo :	tipo_entero
+	+ despl :	0
+	----------- ----------
+	* LEXEMA :	'b'
+	ATRIBUTOS :
+	+ tipo :	tipo_entero
+	+ despl :	2
+	----------- ----------
+
+CONTENIDOS DE LA TABLA # 1 :
+
+	* LEXEMA :	'j'
+	ATRIBUTOS :
+	+ tipo :	tipo_entero
+	+ despl :	0
+	----------- ----------
+	* LEXEMA :	'a'
+	ATRIBUTOS :
+	+ tipo :	tipo_entero
+	+ despl :	2
+	----------- ----------
+	* LEXEMA :	'b'
+	ATRIBUTOS :
+	+ tipo :	tipo_entero
+	+ despl :	4
+	----------- ----------
+	* LEXEMA :	'a_1'
+	ATRIBUTOS :
+	+ tipo :	tipo_entero
+	+ despl :	6
+	----------- ----------
+	* LEXEMA :	'num'
+	ATRIBUTOS :
+	+ tipo :	tipo_entero
+	+ despl :	8
+	----------- ----------
+	* LEXEMA :	'Suma'
+	ATRIBUTOS :
+	+ tipo :	tipo_funcion
+		+ numPar :	2
+			+ tipoParam1 :	tipo_entero
+				+ modoParam1 :	1
+			+ tipoParam2 :	tipo_entero
+				+ modoParam2 :	1
+			+ tipoRetorno :	tipo_entero
+		+ etiqFuncion :	EtSuma5
+	----------- ----------
+

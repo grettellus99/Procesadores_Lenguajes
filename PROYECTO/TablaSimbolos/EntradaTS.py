@@ -69,6 +69,9 @@ class EntradaTablaSimbolos():
         return self.tipo
     
     def setTipo (self,tipo):
+        if(tipo == Tipo.FUNCION):
+            self.numParametros += 1 # inicializar el numero de parametros a 0
+            self.etiqueta = "Et"+self.getLexema()+str(self.getId()) # darle valor a la etiqueta
         self.tipo = tipo
     
     def getDespl(self):
@@ -87,6 +90,7 @@ class EntradaTablaSimbolos():
         return self.tipoParametros
     
     def setTipoParametros(self,tp):
+        self.numParametros += 1
         self.tipoParametros.append(tp)
     
     def getModoParametros(self):

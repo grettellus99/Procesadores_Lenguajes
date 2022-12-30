@@ -59,7 +59,7 @@ class GestorTablaSimbolos():
         # Buscar la entrada en todas las tablas disponibles
         while(entrada == None and seguir):
             tablaID = self.bloqueTS.get(tablaID)
-            if (tablaID == None):
+            if (tablaID == -1):
                 seguir = False
             else:
                 self.ultimaTS = self.listaTS.get(tablaID)
@@ -67,7 +67,7 @@ class GestorTablaSimbolos():
                 if self.ultimaTS == None:
                     seguir = False
                 else:
-                    entrada = self.ultimaTS.buscarEntradaID(entId)
+                    entrada = self.ultimaTS.buscarEntradaID(int(entId))
         
         return entrada
     
@@ -87,7 +87,7 @@ class GestorTablaSimbolos():
         
         seguir = True
         # Buscar la entrada en todas las tablas disponibles
-        while((entrada == None and entrada == False) and seguir):
+        while((entrada == None or entrada == False) and seguir):
             tablaID = self.bloqueTS.get(tablaID)
             if (tablaID == None):
                 seguir = False 
@@ -123,7 +123,7 @@ class GestorTablaSimbolos():
         return tabla.insertarValor(lexema,tabla.getId())
     
     def insertarTipoTamTS(self,entID, tipo, tamanho):
-        entrada = self.buscarEntradaPorID(entID)
+        entrada = self.buscarEntradaPorID(int(entID))
         
         if entrada != None and entrada != False:
             
@@ -136,21 +136,22 @@ class GestorTablaSimbolos():
                 self.ultimaTS.setUltimoDespl(self.ultimaTS.getUltimoDespl() + tamanho)
     
     def insertarTipoParametros(self,entID, tipoLista):
-        entrada = self.buscarEntradaPorID(entID)
+        entrada = self.buscarEntradaPorID(int(entID))
         
         if entrada != None and entrada != False:
             for t in tipoLista:
                 entrada.setTipoParametros(t)
+                entrada.setModoParametros("1")
     
     def insertarTipoDevuelto(self,entID, tipo):
-        entrada = self.buscarEntradaPorID(entID)
+        entrada = self.buscarEntradaPorID(int(entID))
         
         if entrada != None and entrada != False:
             entrada.setTipoDevuelto(tipo) 
                 
     def buscarTipo(self,entID):
         tipo = False
-        entrada = self.buscarEntradaPorID(entID)
+        entrada = self.buscarEntradaPorID(int(entID))
         if entrada != None and entrada != False:
             tipo = entrada.getTipo()
         
@@ -158,7 +159,7 @@ class GestorTablaSimbolos():
     
     def buscarTipoParametros(self,entID):
         tipo = False
-        entrada = self.buscarEntradaPorID(entID)
+        entrada = self.buscarEntradaPorID(int(entID))
         if entrada != None and entrada != False:
             tipo = entrada.getTipoParametros()
         
@@ -166,7 +167,7 @@ class GestorTablaSimbolos():
 
     def buscarTipoDevuelto(self,entID):
         tipo = False
-        entrada = self.buscarEntradaPorID(entID)
+        entrada = self.buscarEntradaPorID(int(entID))
         if entrada != None and entrada != False:
             tipo = entrada.getTipoDevuelto()
         

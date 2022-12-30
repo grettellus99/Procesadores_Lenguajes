@@ -823,9 +823,11 @@ def accionesAnalizadorSemantico(a,zona,dec_impl,gestorTS,pila,aux):
         gestorTS.insertarTipoParametros(idPos,dTipo)
         gestorTS.insertarTipoDevuelto(idPos,hTipo)
         
+        zona = False
+        
     elif a == 46.4:
         c = aux.getFromTope(1)
-        h = aux.gatFromTope(6)
+        h = aux.getFromTope(6)
         
         cTipoRet = c.getValorAtributo("tipoRet")
         hTipo = h.getValorAtributo("tipo")
@@ -896,6 +898,11 @@ def accionesAnalizadorSemantico(a,zona,dec_impl,gestorTS,pila,aux):
         
         gestorTS.insertarTipoTamTS(idPos,tTipo,tTamanho)
         
+        kLista = k.getValorAtributo("listaTT")
+        if type(kLista) is list:
+            for el in kLista:
+                gestorTS.insertarTipoTamTS(el[0],el[1],el[2])
+        
         aux.pop() # K
         aux.pop() # id
         aux.pop() # T
@@ -936,8 +943,15 @@ def accionesAnalizadorSemantico(a,zona,dec_impl,gestorTS,pila,aux):
             k.setValorAtributo("tipo", Tipo.ERROR)
             error = Error(228,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
         
-            
-        gestorTS.insertarTipoTamTS(idPos,tTipo,tTamanho)
+        lista = []
+        lista.append([idPos,tTipo,tTamanho])
+        
+        k1Lista = k1.getValorAtributo("listaTT")
+        if type(k1Lista) is list:
+            for el in k1Lista:
+                lista.append(el)
+        
+        k.setValorAtributo("listaTT",lista)   
         
         aux.pop() # K
         aux.pop() # id
