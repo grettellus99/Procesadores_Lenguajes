@@ -9,3 +9,5 @@ while(terminado == None):
 
 if terminado == False:
     print("Error detectado")
+else:
+    print("Programa correcto")
