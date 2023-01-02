@@ -147,8 +147,12 @@ class GestorTablaSimbolos():
         entrada = self.buscarEntradaPorID(int(entID))
         
         if entrada != None and entrada != False:
-            for t in tipoLista:
-                entrada.setTipoParametros(t)
+            if type(tipoLista) is list:
+                for t in tipoLista:
+                    entrada.setTipoParametros(t)
+                    entrada.setModoParametros("1")
+            else:
+                entrada.setTipoParametros(tipoLista)
                 entrada.setModoParametros("1")
     
     # insertar el tipo de retorno de una entrada de tipo funcion

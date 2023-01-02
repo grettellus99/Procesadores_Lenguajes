@@ -1,0 +1,49 @@
+/*
+    CASO DE PRUEBA #1
+*/
+
+if (a_1==a_1==a_1) 
+    print "Bien!!";
+
+let cadena string;
+j= a + b;
+
+print "Introduce el resultado de 6+6*2: ";
+/*let a_1 int;*/
+
+input a_1;
+
+let num int = 5;
+
+if (a_1 == 18) 
+    print "Bien!!";
+if (a_1 == 18)    print "Introduce un número para sumarle a 18: ";
+
+switch (a_1) {
+
+    case 24:
+        print ":( es 6*2 = 12 y luego 12 + 6 = 18 no 24";
+        print "Introduce un número para sumarle a 24: "; 
+        input num;
+        break;
+    default:
+        print "Vaya no es correcto.";
+}
+
+
+/*function Suma int (int a, int b) {
+    
+    j= a + b;
+    return j;
+}*/
+
+function Suma2 int (string cadena) {
+    
+    cadena  = "Hola buenas";
+    let cadena2 string = cadena;
+    j = a + b;
+    return j;
+}
+
+print j;
+print  Suma2(cadena);

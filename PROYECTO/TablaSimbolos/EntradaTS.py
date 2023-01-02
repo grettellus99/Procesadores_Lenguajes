@@ -115,19 +115,19 @@ class EntradaTablaSimbolos():
     
     def toString(self):
         salida = "\t* LEXEMA :\t" + f"'{self.lexema}'" + "\n" + "\tATRIBUTOS :\n"
-        salida += "\t+ tipo :\t"+str(self.tipo) + "\n"
+        salida += "\t+ Tipo :\t'"+str(self.tipo) + "'\n"
         
         if self.tipo != Tipo.FUNCION:    
-            salida += "\t+ despl :\t"+str(self.despl) + "\n\t----------- ----------\n"
+            salida += "\t+ Despl :\t"+str(self.despl) + "\n\t----------- ----------\n"
         else:
-            salida += "\t\t+ numPar :\t"+str(self.numParametros) + "\n"
+            salida += "\t\t+ numParam :\t"+str(self.numParametros) + "\n"
             
             cont = 1
             for t in self.tipoParametros:
-               salida += f"\t\t\t+ tipoParam{str(cont)} :\t"+ str(t) + "\n"
-               salida += f"\t\t\t\t+ modoParam{str(cont)} :\t"+ str(self.modoParametros[cont-1]) + "\n"
+               salida += f"\t\t\t+ TipoParam{str(cont)} :\t'"+ str(t) + "'\n"
+               #salida += f"\t\t\t\t+ ModoParam{str(cont)} :\t"+ str(self.modoParametros[cont-1]) + "\n"
                cont+=1
-            salida += f"\t\t\t+ tipoRetorno :\t"+ str(self.tipoDevuelto) + "\n"
-            salida += f"\t\t+ etiqFuncion :\t"+ str(self.etiqueta) + "\n\t----------- ----------\n"
+            salida += f"\t\t\t+ TipoRetorno :\t'"+ str(self.tipoDevuelto) + "'\n"
+            salida += f"\t\t+ EtiqFuncion :\t'"+ str(self.etiqueta) + "'\n\t----------- ----------\n"
               
         return salida

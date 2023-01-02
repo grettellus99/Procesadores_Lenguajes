@@ -41,13 +41,17 @@ class AnalizadorSintactico():
         #------------- Analizador Sintáctico -----------------
         seguir = True
         terminado = False
-        error = False
+        self.error = False
         pedirToken = True
         while(seguir):
             if(pedirToken):
                 respAL = self.analizadorLexico.pedirToken(self.gestorTS,self.zona_decl.valor, self.decl_impl.valor)
                 siguienteToken = respAL[0]
                 terminado = respAL[1]
+                # Recuperar errores en la T.S
+                self.error = respAL[2] 
+                if self.error != False:
+                    seguir = False
                 
                 self.tablaAS.setTokenActual(siguienteToken)
                 siguienteToken = self.tablaAS.getTokenActual()
@@ -56,7 +60,7 @@ class AnalizadorSintactico():
             
             peticionToken = False
             
-            while(pedirToken == False and error == False):
+            while(pedirToken == False and self.error == False):
         
                 cimaPila = self.tablaAS.pila.pop() # obtener el último elemento de la pila       
                 if type(cimaPila) is Simbolo and cimaPila.nombreSimbolo in noTerminales:
@@ -67,7 +71,7 @@ class AnalizadorSintactico():
             
                     peticionToken = resTabla[0] # determinar si se necesita pedir otro token
             
-                    error = resTabla[1] # determinar si hubo un error sintáctico
+                    self.error = resTabla[1] # determinar si hubo un error sintáctico
                 elif (type(cimaPila) is Simbolo) == False and cimaPila in accionesSemanticas:
                     
                     resAcciones = accionesAnalizadorSemantico(cimaPila,self.zona_decl.valor,self.decl_impl.valor,self.gestorTS,self.tablaAS.pila,self.tablaAS.aux)
@@ -101,8 +105,10 @@ class AnalizadorSintactico():
                          
                         if (type(cimaPila) is Simbolo) == False and cimaPila in tokenOp:
                             cimaPila = convertirOp[tokenOp.index(cimaPila)]
+                        elif (type(cimaPila) is Simbolo):
+                            cimaPila = cimaPila.nombreSimbolo
                         
-                        error = Error(100,f"ERROR SINTÁCTICO - Token {siguienteToken} no esperado. Se esperaba {cimaPila}", "")
+                        self.error = Error(100,f"ERROR SINTÁCTICO - Token {siguienteToken} no esperado. Se esperaba {cimaPila}", "")
 
                 if peticionToken:
                     anteriorElemento = cimaPila
@@ -116,29 +122,29 @@ class AnalizadorSintactico():
                         self.tablaAS.pila.append(cimaPila)
                         cimaPila = anteriorElemento
                     
-                if(terminado or (error != False)):
+                if(terminado or (self.error != False)):
                     seguir = False    
 
         # Termina el bucle porque detecta un error LEXICO | SINTACTICO | SEMANTICO o porque llega al final del analisis
-        if(error == False):
+        if(self.error == False):
             parse = self.tablaAS.parse
             self.writerParse.writeParse(parse) # Escribir el parse en el fichero parse.txt
             
-        else:
+        elif self.error.cod != 200: # Si es 200 ya se escribio en errores.txt por el A.L
             
             ### GESTIONAR ERRORES ####
             self.writerParse.writeParse("ERROR")         # invalidar el fichero parse
             errores = self.analizadorLexico.errores      # obtener el gestor de errores del AL
             
-            if error.cod == 226: # error producido por comparar el valor de retorno declarado de la funcion con el valor de retorno actual y estos no son iguales
+            if self.error.cod == 225: # error producido por comparar el valor de retorno declarado de la funcion con el valor de retorno actual y estos no son iguales
                                 # Como se hace al final del bloque el numLinea actual no sería correcto
                 linea = self.analizadorLexico.lineaPrincipioBloque # Obtener la linea donde estaba el token function
             else:
                 linea = self.analizadorLexico.readFicheroFuente.numLinea     # obtener el num de línea actual
             
-            error.linea = linea     # actualizar la linea del error obtenido
+            self.error.linea = linea     # actualizar la linea del error obtenido
     
-            errores.crearError(error)   # crear el error agregándolo a la lista del gestor y al fichero errores
+            errores.crearError(self.error)   # crear el error agregándolo a la lista del gestor y al fichero errores
         
         # Terminar la ejecucion del A. Sintactico + Semantico.
         if(terminado):

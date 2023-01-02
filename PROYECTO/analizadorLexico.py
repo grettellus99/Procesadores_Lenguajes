@@ -17,6 +17,7 @@ class AnalizadorLexico():
         self.estadoFinal=False
         self.accion=0
         self.error=False
+        self.errorSemantico = False
         self.c=""    
         
         self.lineaPrincipioBloque = 0
@@ -33,7 +34,6 @@ class AnalizadorLexico():
         self.zona_decl = zona_decl
         self.decl_impl = decl_impl
         self.tabla = tabla
-        
         
         self.terminado = False
         seguir = True
@@ -92,24 +92,25 @@ class AnalizadorLexico():
                         self.lenListaTokens+=1
                         self.tokenGenerado = True
                         
-            
+
                     if(self.error):
-                        #   Si hay un error y no ha terminado de leer --> Leer siguiente caracter hasta delimitador
                         self.error.linea = f"{self.readFicheroFuente.numLinea}"
                         self.errores.crearError(self.error)  
-             
-                        self.error= False
+                        
+                        # Si es un error lexico y no semantico ( Tabla de Simbolos )
+                        if self.error.cod == 200:
+                            self.errorSemantico = self.error
+                            
+                        self.error = False
                   
             else:   # si c es FALSE el fichero ha terminado
                 seguir=False
                 self.readFicheroFuente.close()
                 self.listaTokens.addEndOfFile()
-                #for i in self.listaTokens.tokens:
-                #   print(str(i.nombre) +"\t"+ str(i.valor) + "\n")
           
         t = self.listaTokens.getLastToken()
         
-        if t.n == "function":
-            self.lineaPrincipioBloque = self.readFicheroFuente.numLinea
+        if t.nombre == "function":
+            self.lineaPrincipioBloque = self.readFicheroFuente.numLinea 
         
-        return t,self.terminado
+        return t,self.terminado,self.errorSemantico
