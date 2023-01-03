@@ -1,25 +1,2 @@
 
 
-CONTENIDOS DE LA TABLA # 1 :
-
-	* LEXEMA :	'a'
-	ATRIBUTOS :
-	+ Tipo :	'tipo_entero'
-	+ Despl :	0
-	----------- ----------
-	* LEXEMA :	'b'
-	ATRIBUTOS :
-	+ Tipo :	'tipo_entero'
-	+ Despl :	2
-	----------- ----------
-	* LEXEMA :	'bbb'
-	ATRIBUTOS :
-	+ Tipo :	'tipo_logico'
-	+ Despl :	4
-	----------- ----------
-	* LEXEMA :	'c'
-	ATRIBUTOS :
-	+ Tipo :	'tipo_logico'
-	+ Despl :	6
-	----------- ----------
-

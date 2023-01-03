@@ -218,7 +218,7 @@ def accionesAnalizadorSemantico(a,zona,dec_impl,gestorTS,pila,aux):
         idTipo = gestorTS.buscarTipo(idPos)
         
         if(idTipo == False or idTipo == Tipo.UNDEFINED):
-            gestorTS.insertarTipoTamTS(idPos, Tipo.ENTERO, 2)  
+            gestorTS.insertarTipoTamTS(idPos, Tipo.ENTERO, 1)  
         
         dec_impl = False
           
@@ -289,7 +289,7 @@ def accionesAnalizadorSemantico(a,zona,dec_impl,gestorTS,pila,aux):
         idTipo = gestorTS.buscarTipo(idPos)
         
         if(idTipo == False or idTipo == Tipo.UNDEFINED):
-            gestorTS.insertarTipoTamTS(idPos, Tipo.ENTERO, 2) 
+            gestorTS.insertarTipoTamTS(idPos, Tipo.ENTERO, 1) 
              
         dec_impl = False
     
@@ -608,7 +608,7 @@ def accionesAnalizadorSemantico(a,zona,dec_impl,gestorTS,pila,aux):
         idTipo = gestorTS.buscarTipo(idPos)
         
         if(idTipo == False or idTipo == Tipo.UNDEFINED):
-            gestorTS.insertarTipoTamTS(idPos, Tipo.ENTERO, 2)  
+            gestorTS.insertarTipoTamTS(idPos, Tipo.ENTERO, 1)  
         
         dec_impl = False
     
@@ -812,7 +812,7 @@ def accionesAnalizadorSemantico(a,zona,dec_impl,gestorTS,pila,aux):
         t = aux.getFromTope(1)
         
         t.setValorAtributo("tipo",Tipo.ENTERO)
-        t.setValorAtributo("tamanho",2)
+        t.setValorAtributo("tamanho",1)
         
         aux.pop() # int      
 
@@ -822,7 +822,7 @@ def accionesAnalizadorSemantico(a,zona,dec_impl,gestorTS,pila,aux):
         t = aux.getFromTope(1)
         
         t.setValorAtributo("tipo",Tipo.LOGICO)
-        t.setValorAtributo("tamanho",2)
+        t.setValorAtributo("tamanho",1)
         
         aux.pop() # boolean   
 
@@ -832,7 +832,7 @@ def accionesAnalizadorSemantico(a,zona,dec_impl,gestorTS,pila,aux):
         t = aux.getFromTope(1)
         
         t.setValorAtributo("tipo",Tipo.CADENA)
-        t.setValorAtributo("tamanho",128)
+        t.setValorAtributo("tamanho",64)
         
         aux.pop() # string
     

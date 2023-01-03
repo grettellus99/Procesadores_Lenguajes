@@ -1,2 +1,6 @@
 
 
+Línea 8 - Código de error 201: 
+	 ERROR SEMÁNTICO - La expresión evaluada como condición no es de tipo lógico. Es tipo entero
+
+

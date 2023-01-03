@@ -2,11 +2,13 @@
     CASO DE PRUEBA #1
 */
 
+j= a + b;
+
 if (a_1==a_1==a_1) 
     print "Bien!!";
 
 let cadena string;
-j= a + b;
+
 
 print "Introduce el resultado de 6+6*2: ";
 /*let a_1 int;*/

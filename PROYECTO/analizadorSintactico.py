@@ -48,6 +48,7 @@ class AnalizadorSintactico():
                 respAL = self.analizadorLexico.pedirToken(self.gestorTS,self.zona_decl.valor, self.decl_impl.valor)
                 siguienteToken = respAL[0]
                 terminado = respAL[1]
+                
                 # Recuperar errores en la T.S
                 self.error = respAL[2] 
                 if self.error != False:

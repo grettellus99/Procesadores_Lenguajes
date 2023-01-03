@@ -15,10 +15,9 @@ class GestorError():
         self.writeFichero.write("\n",True)
         self.listaErrores=[]
         
-        
     def addFichero(self,mensaje):
         try:
-            self.writeFichero.write(mensaje,False)    # escribir el nuevo token en el fichero
+            self.writeFichero.write(mensaje,False)    # escribir el nuevo error en el fichero
         except OSError as err:
             print("Error: {0}",format(err)) 
     
