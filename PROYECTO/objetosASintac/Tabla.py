@@ -61,6 +61,8 @@ class Tabla:
                 self.pila.append(a)
                 self.pila.append(1.1)
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado", "")
                 
         if nT == "A":
@@ -87,9 +89,13 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba fin de fichero", "")
             
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(101,f"ERROR SINTÁCTICO - El token {t} no pertenece al primer elemento de una sentencia válida, una función o es fin de fichero", "")
     #----------------------------------------------------------------------------------------  
         elif nT == "B":
@@ -110,6 +116,8 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: if", "")
             
             elif tv in firstB2:
@@ -130,6 +138,8 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: let", "")
             
             elif tv in firstB3:
@@ -159,9 +169,13 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: switch", "")
             
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(102,f"ERROR SINTÁCTICO - El token {t} no pertenece al primer elemento de una sentencia válida", "")
             
     #----------------------------------------------------------------------------------------
@@ -190,6 +204,8 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: print", "")
             
             elif tv in firstS3:
@@ -207,6 +223,8 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: input", "")
             
             elif tv in firstS4:
@@ -222,6 +240,8 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: return", "")
             
             elif tv in firstS5:
@@ -235,10 +255,14 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: break", "")
             
             
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(103,f"ERROR SINTÁCTICO - Token {t} no pertenece al primer elemento de una sentencia simple válida", "")
             
                 
@@ -256,6 +280,8 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: =", "")
             
             elif tv in firstSprima2:
@@ -270,6 +296,8 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: *=", "")
             
             elif tv in firstSprima3:
@@ -285,9 +313,13 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: ( ", "")
 
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(104,f"ERROR SINTÁCTICO - Token {t} no es una asignación válida o la llamada a una función", "")
             
     #----------------------------------------------------------------------------------------
@@ -301,7 +333,9 @@ class Tabla:
                 self.pila.append(r)
 
             else:
-                error=Error(105,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión valida", "")
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
+                error=Error(105,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión válida", "")
             
     #----------------------------------------------------------------------------------------    
         elif nT == "E'":
@@ -323,10 +357,14 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: &&", "")  
             
             else:
-               error=Error(106,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión lógica u otra expresión válida", "")
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
+                error=Error(106,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión lógica u otra expresión válida", "")
                 
     #---------------------------------------------------------------------------------------   
         elif nT == "R":
@@ -339,6 +377,8 @@ class Tabla:
                 self.pila.append(u)
                 
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(107,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión válida", "")          
 
     #----------------------------------------------------------------------------------------             
@@ -361,9 +401,13 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: ==", "")
             
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(108,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión relacional u otra expresión válida", "")
                           
     #-----------------------------------------------------------------------------------------
@@ -377,6 +421,8 @@ class Tabla:
                 self.pila.append(v)
             
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(109,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión válida", "")
     
     
@@ -401,9 +447,13 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: +", "")
 
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(110,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión aritmética de suma u otra expresión válida", "")
     
     #-----------------------------------------------------------------------------------------
@@ -417,6 +467,8 @@ class Tabla:
                 self.pila.append(p)
                 
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(111,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión válida", "")
         
     #-----------------------------------------------------------------------------------------
@@ -439,9 +491,13 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: *", "")
 
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(112,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión aritmética de multiplicacion u otra expresión válida", "")
         
     #-----------------------------------------------------------------------------------------   
@@ -469,6 +525,8 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: ( ", "")
 
             elif tv in firstP3:
@@ -481,6 +539,8 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba una constante entera", "")
 
 
@@ -494,6 +554,8 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba una cadena", "")
 
             elif tv in firstP5:
@@ -506,6 +568,8 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: true", "")
 
             elif tv in firstP6:
@@ -518,9 +582,13 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: false", "")
 
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(113,f"ERROR SINTÁCTICO - Token {t} no pertenece a una expresión válida", "")
         
     #-----------------------------------------------------------------------------------------               
@@ -542,9 +610,13 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: (", "")
 
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(114,f"ERROR SINTÁCTICO - Token {t} no es un identificador de variable o la llamada a una función", "")
         
     #-----------------------------------------------------------------------------------------   
@@ -562,6 +634,8 @@ class Tabla:
                 self.pila.append(38.1)
             
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(115,f"ERROR SINTÁCTICO - Token {t} no es un argumento de función válido porque no pertenece a una expresión válida", "")
             
     #-----------------------------------------------------------------------------------------               
@@ -581,6 +655,8 @@ class Tabla:
                     self.aux.append(ts)
                     
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: ,", "")
 
             elif tv in followQ:
@@ -588,6 +664,8 @@ class Tabla:
                 self.pila.append(40.1)
             
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(116,f"ERROR SINTÁCTICO - Token {t} de función válido porque no pertenece a una expresión válida", "")
             
     #-----------------------------------------------------------------------------------------   
@@ -603,6 +681,8 @@ class Tabla:
                 self.pila.append(42.1)
             
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(117,f"ERROR SINTÁCTICO - Token {t} no es un valor de retorno de función válido porque no pertenece a una expresión válida", "")
             
     #-----------------------------------------------------------------------------------------               
@@ -617,6 +697,8 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: int", "")
             
             elif tv in firstT2:
@@ -629,6 +711,8 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: boolean", "")
              
             elif tv in firstT3:
@@ -641,9 +725,13 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: string", "")
                  
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(118,f"ERROR SINTÁCTICO - Token {t} no es un tipo de variable válido", "")         
     
     #-----------------------------------------------------------------------------------------   
@@ -673,8 +761,12 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: function", "")      
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(119,f"ERROR SINTÁCTICO - Token {t} no pertenece a una declaración válida de una función", "")         
     
     #-----------------------------------------------------------------------------------------               
@@ -690,6 +782,8 @@ class Tabla:
                 self.pila.append(48.1)
                 
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(120,f"ERROR SINTÁCTICO - Token {t} no es un tipo de valor de retorno de función válido", "")         
     
     #-----------------------------------------------------------------------------------------   
@@ -709,6 +803,8 @@ class Tabla:
                 self.pila.append(50.1)
                 
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(121,f"ERROR SINTÁCTICO - Token {t} no es una declaración válida de un argumento de una función", "")         
     
     #-----------------------------------------------------------------------------------------               
@@ -729,6 +825,8 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: ,", "")
             
             elif tv in followK:
@@ -736,6 +834,8 @@ class Tabla:
                 self.pila.append(52.1)
                 
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(122,f"ERROR SINTÁCTICO - Token {t} no es una declaración válida de un argumento de una función", "")         
     
     #-----------------------------------------------------------------------------------------   
@@ -750,6 +850,8 @@ class Tabla:
                 self.pila.append(53.1)
                     
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(123,f"ERROR SINTÁCTICO - Token {t} no pertenece a una sentencia válida", "")         
     
         
@@ -769,6 +871,8 @@ class Tabla:
                 self.pila.append(55.1)
                 
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(124,f"ERROR SINTÁCTICO - Token {t} no pertenece a una sentencia válida", "")         
     
         
@@ -784,6 +888,8 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: ;", "")
                 
             elif tv in firstN2:
@@ -799,6 +905,8 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: =", "")
                 
             elif tv in firstN3:
@@ -815,9 +923,13 @@ class Tabla:
                     self.aux.append(ts)
                     
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba *=", "")
                 
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(125,f"ERROR SINTÁCTICO - Token {t} no es una asignación válida", "")         
     
     #-----------------------------------------------------------------------------------------   
@@ -840,6 +952,8 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: case", "")  
             
             elif tv in firstZ2:
@@ -856,9 +970,13 @@ class Tabla:
                     ts = Simbolo(tv)
                     self.aux.append(ts)
                 else:
+                    if t in tokenOp:
+                        t = convertirOp[tokenOp.index(t)]
                     error=Error(100,f"ERROR SINTÁCTICO - Token {t} no esperado. Se esperaba: case", "")  
             
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(126,f"ERROR SINTÁCTICO - Token {t} no es un cuerpo válido para la condicional múltiple switch", "")         
     
     #-----------------------------------------------------------------------------------------               
@@ -878,21 +996,26 @@ class Tabla:
                 self.pila.append(62.1)
                 
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(127,f"ERROR SINTÁCTICO - Token {t} no pertenece a una sentencia válida", "")         
             
     #-----------------------------------------------------------------------------------------   
         elif nT == "Z'":
             if tv in firstZprima1:
                 self.parse.append(63)
-                self.pila.append(63.1)
+                self.pila.append(63.2)
                 z = Simbolo("Z")
                 self.pila.append(z)
+                self.pila.append(63.1)
             
             elif tv in followZprima:
                 self.parse.append(64)
                 self.pila.append(64.1)
             
             else:
+                if t in tokenOp:
+                    t = convertirOp[tokenOp.index(t)]
                 error=Error(128,f"ERROR SINTÁCTICO - Token {t} no pertenece a una sentencia válida", "")         
                  
     #-----------------------------------------------------------------------------------------               

@@ -1,0 +1,33 @@
+/*
+    CASO DE PRUEBA #3 : Probando if, switch y function
+*/
+
+let XX int = 9;
+let YY boolean = true;
+
+if(XX==9 && YY&&true)
+    print "Hola";
+
+function fun string (boolean x, int y, string cad) {
+    switch (y) {
+        case 1:
+            return "y es 1";
+        case 2:
+        case 3:
+            break;
+        case 9:
+            return "y es 9";
+            break;
+    }
+
+    if (y == 8)
+        return "y es 8";
+
+    if(x)
+        return cad;
+    
+    let cadena2 string = "Buenas";
+    return cadena2;
+}
+
+print fun(YY,10,"Hola");

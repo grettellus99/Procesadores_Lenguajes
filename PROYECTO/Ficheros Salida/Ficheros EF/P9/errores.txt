@@ -1,0 +1,6 @@
+
+
+Línea 26 - Código de error 229: 
+	 ERROR SEMÁNTICO - El tipo del valor de retorno ( entero ) no coincide con el tipo valor de retorno declarado ( logico )
+
+

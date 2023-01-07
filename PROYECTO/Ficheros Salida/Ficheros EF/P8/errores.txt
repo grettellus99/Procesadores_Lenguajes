@@ -1,0 +1,6 @@
+
+
+Línea 16 - Código de error 236: 
+	 ERROR SEMÁNTICO - Valores de retorno de la función son de un tipo distinto: entero y cadena
+
+

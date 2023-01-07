@@ -1,0 +1,46 @@
+
+
+CONTENIDOS DE LA TABLA # 2 :
+
+
+CONTENIDOS DE LA TABLA # 1 :
+
+	* LEXEMA :	'a'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	0
+	----------- ----------
+	* LEXEMA :	'b'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	1
+	----------- ----------
+	* LEXEMA :	'c'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	2
+	----------- ----------
+	* LEXEMA :	'cadena'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_cadena'
+	+ Despl :	3
+	----------- ----------
+	* LEXEMA :	'x'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_logico'
+	+ Despl :	67
+	----------- ----------
+	* LEXEMA :	'y'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_logico'
+	+ Despl :	68
+	----------- ----------
+	* LEXEMA :	'printCadena'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_funcion'
+		+ numParam :	1
+			+ TipoParam1 :	'tipo_vacio'
+			+ TipoRetorno :	'tipo_vacio'
+		+ EtiqFuncion :	'EtprintCadena1'
+	----------- ----------
+

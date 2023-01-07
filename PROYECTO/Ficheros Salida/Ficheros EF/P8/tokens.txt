@@ -1,0 +1,56 @@
+
+
+< let ,  >
+< id  , 0 >
+< int ,  >
+< asignacion ,  >
+< cteEntera , 9 >
+< ptoComa ,  >
+< let ,  >
+< id  , 1 >
+< boolean ,  >
+< asignacion ,  >
+< true ,  >
+< ptoComa ,  >
+< if ,  >
+< abrirParentesis ,  >
+< id  , 0 >
+< opRelacional , 1 >
+< cteEntera , 9 >
+< opLogico , 1 >
+< id  , 1 >
+< opLogico , 1 >
+< true ,  >
+< cerrarParentesis ,  >
+< print ,  >
+< cadena , "Hola" >
+< ptoComa ,  >
+< function ,  >
+< id  , 2 >
+< string ,  >
+< abrirParentesis ,  >
+< boolean ,  >
+< id  , 3 >
+< coma ,  >
+< int ,  >
+< id  , 4 >
+< coma ,  >
+< string ,  >
+< id  , 5 >
+< cerrarParentesis ,  >
+< abrirCorchete ,  >
+< switch ,  >
+< abrirParentesis ,  >
+< id  , 4 >
+< cerrarParentesis ,  >
+< abrirCorchete ,  >
+< case ,  >
+< cteEntera , 1 >
+< dosPuntos ,  >
+< return ,  >
+< id  , 6 >
+< ptoComa ,  >
+< return ,  >
+< cadena , "y es 1" >
+< ptoComa ,  >
+< case ,  >

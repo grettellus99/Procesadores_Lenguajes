@@ -2,8 +2,8 @@
 noTerminales = ["A'","A","B","S","S'","E","E'","R","R'","U","U'","V","V'","P","P'","L","Q","X","T","F","H","D","K","C","C'","N","Z","O","Z'"]
 
 #------- TokenOp -----------------------
-tokenOp = ["opRelacional1","opLogico1","opAritmetico1","opAritmetico2"]
-convertirOp = ["==","&&","*","+"]
+tokenOp = ["opRelacional1","opLogico1","opAritmetico1","opAritmetico2","abrirCorchete","cerrarCorchete","abrirParentesis","cerrarParentesis","ptoComa","coma","asigMultiplicacion","asignacion"]
+convertirOp = ["==","&&","*","+","{","}","(",")",";",",","*=","="]
 
 # --------- FIRST Y FOLLOW --------------------
 

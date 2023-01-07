@@ -120,13 +120,16 @@ class EntradaTablaSimbolos():
         if self.tipo != Tipo.FUNCION:    
             salida += "\t+ Despl :\t"+str(self.despl) + "\n\t----------- ----------\n"
         else:
-            salida += "\t\t+ numParam :\t"+str(self.numParametros) + "\n"
-            
+            parametros = ""
             cont = 1
             for t in self.tipoParametros:
-               salida += f"\t\t\t+ TipoParam{str(cont)} :\t'"+ str(t) + "'\n"
-               #salida += f"\t\t\t\t+ ModoParam{str(cont)} :\t"+ str(self.modoParametros[cont-1]) + "\n"
-               cont+=1
+                if t != Tipo.VACIO:
+                    parametros += f"\t\t\t+ TipoParam{str(cont)} :\t'"+ str(t) + "'\n"
+                    #parametros += f"\t\t\t\t+ ModoParam{str(cont)} :\t"+ str(self.modoParametros[cont-1]) + "\n"
+                    cont+=1
+            
+            salida += "\t\t+ numParam :\t"+str(cont-1) + "\n"
+            salida += parametros
             salida += f"\t\t\t+ TipoRetorno :\t'"+ str(self.tipoDevuelto) + "'\n"
             salida += f"\t\t+ EtiqFuncion :\t'"+ str(self.etiqueta) + "'\n\t----------- ----------\n"
               

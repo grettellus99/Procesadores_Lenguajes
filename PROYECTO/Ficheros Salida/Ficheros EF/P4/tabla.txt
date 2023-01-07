@@ -1,0 +1,58 @@
+
+
+CONTENIDOS DE LA TABLA # 2 :
+
+	* LEXEMA :	'a'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	0
+	----------- ----------
+	* LEXEMA :	'b'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	1
+	----------- ----------
+
+CONTENIDOS DE LA TABLA # 3 :
+
+	* LEXEMA :	'a'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	0
+	----------- ----------
+
+CONTENIDOS DE LA TABLA # 1 :
+
+	* LEXEMA :	'num'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	0
+	----------- ----------
+	* LEXEMA :	'b'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_logico'
+	+ Despl :	1
+	----------- ----------
+	* LEXEMA :	'Suma'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_funcion'
+		+ numParam :	2
+			+ TipoParam1 :	'tipo_entero'
+			+ TipoParam2 :	'tipo_entero'
+			+ TipoRetorno :	'tipo_entero'
+		+ EtiqFuncion :	'EtSuma1'
+	----------- ----------
+	* LEXEMA :	'j'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	2
+	----------- ----------
+	* LEXEMA :	'Multiplicacion'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_funcion'
+		+ numParam :	1
+			+ TipoParam1 :	'tipo_entero'
+			+ TipoRetorno :	'tipo_logico'
+		+ EtiqFuncion :	'EtMultiplicacion2'
+	----------- ----------
+

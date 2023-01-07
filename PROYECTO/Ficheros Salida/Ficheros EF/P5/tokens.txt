@@ -1,0 +1,90 @@
+
+
+< let ,  >
+< id  , 0 >
+< string ,  >
+< ptoComa ,  >
+< function ,  >
+< id  , 1 >
+< int ,  >
+< abrirParentesis ,  >
+< string ,  >
+< id  , 2 >
+< cerrarParentesis ,  >
+< abrirCorchete ,  >
+< print ,  >
+< id  , 2 >
+< ptoComa ,  >
+< id  , 2 >
+< asignacion ,  >
+< cadena , "Vamos a multiplicar" >
+< ptoComa ,  >
+< let ,  >
+< id  , 3 >
+< string ,  >
+< asignacion ,  >
+< id  , 2 >
+< ptoComa ,  >
+< print ,  >
+< id  , 3 >
+< ptoComa ,  >
+< id  , 4 >
+< asignacion ,  >
+< id  , 5 >
+< opAritmetico , 1 >
+< id  , 6 >
+< ptoComa ,  >
+< return ,  >
+< id  , 4 >
+< ptoComa ,  >
+< cerrarCorchete ,  >
+< function ,  >
+< id  , 7 >
+< abrirParentesis ,  >
+< int ,  >
+< id  , 8 >
+< cerrarParentesis ,  >
+< abrirCorchete ,  >
+< if ,  >
+< abrirParentesis ,  >
+< id  , 9 >
+< opRelacional , 1 >
+< cteEntera , 0 >
+< cerrarParentesis ,  >
+< id  , 7 >
+< abrirParentesis ,  >
+< id  , 8 >
+< cerrarParentesis ,  >
+< ptoComa ,  >
+< id  , 9 >
+< asignacion ,  >
+< id  , 9 >
+< opAritmetico , 2 >
+< cteEntera , 1 >
+< ptoComa ,  >
+< print ,  >
+< id  , 8 >
+< ptoComa ,  >
+< cerrarCorchete ,  >
+< switch ,  >
+< abrirParentesis ,  >
+< id  , 4 >
+< cerrarParentesis ,  >
+< abrirCorchete ,  >
+< case ,  >
+< cteEntera , 10 >
+< dosPuntos ,  >
+< id  , 7 >
+< abrirParentesis ,  >
+< id  , 1 >
+< abrirParentesis ,  >
+< id  , 0 >
+< cerrarParentesis ,  >
+< cerrarParentesis ,  >
+< ptoComa ,  >
+< default ,  >
+< dosPuntos ,  >
+< break ,  >
+< ptoComa ,  >
+< cerrarCorchete ,  >
+< eof ,  >

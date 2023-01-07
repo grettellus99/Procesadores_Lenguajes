@@ -1,0 +1,20 @@
+
+
+CONTENIDOS DE LA TABLA # 1 :
+
+	* LEXEMA :	'cadena'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_cadena'
+	+ Despl :	0
+	----------- ----------
+	* LEXEMA :	'x'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	64
+	----------- ----------
+	* LEXEMA :	'edad'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	65
+	----------- ----------
+

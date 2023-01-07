@@ -1,0 +1,67 @@
+
+
+CONTENIDOS DE LA TABLA # 2 :
+
+	* LEXEMA :	'saludo'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_cadena'
+	+ Despl :	0
+	----------- ----------
+	* LEXEMA :	'saludo2'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_cadena'
+	+ Despl :	64
+	----------- ----------
+
+CONTENIDOS DE LA TABLA # 3 :
+
+	* LEXEMA :	'x'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	0
+	----------- ----------
+
+CONTENIDOS DE LA TABLA # 1 :
+
+	* LEXEMA :	'saludo'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_cadena'
+	+ Despl :	0
+	----------- ----------
+	* LEXEMA :	'Multiplica'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_funcion'
+		+ numParam :	1
+			+ TipoParam1 :	'tipo_cadena'
+			+ TipoRetorno :	'tipo_entero'
+		+ EtiqFuncion :	'EtMultiplica1'
+	----------- ----------
+	* LEXEMA :	'j'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	64
+	----------- ----------
+	* LEXEMA :	'a'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	65
+	----------- ----------
+	* LEXEMA :	'b'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	66
+	----------- ----------
+	* LEXEMA :	'printResultado'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_funcion'
+		+ numParam :	1
+			+ TipoParam1 :	'tipo_entero'
+			+ TipoRetorno :	'tipo_vacio'
+		+ EtiqFuncion :	'EtprintResultado2'
+	----------- ----------
+	* LEXEMA :	'cont'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	67
+	----------- ----------
+

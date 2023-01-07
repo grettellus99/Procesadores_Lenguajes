@@ -1,0 +1,78 @@
+
+
+< let ,  >
+< id  , 0 >
+< string ,  >
+< ptoComa ,  >
+< let ,  >
+< id  , 1 >
+< int ,  >
+< ptoComa ,  >
+< print ,  >
+< cadena , "Introduce un numero del 1 al 5 :" >
+< ptoComa ,  >
+< input ,  >
+< id  , 1 >
+< ptoComa ,  >
+< switch ,  >
+< abrirParentesis ,  >
+< id  , 1 >
+< cerrarParentesis ,  >
+< abrirCorchete ,  >
+< case ,  >
+< cteEntera , 1 >
+< dosPuntos ,  >
+< print ,  >
+< cadena , "Tienes un 1!!" >
+< ptoComa ,  >
+< break ,  >
+< ptoComa ,  >
+< case ,  >
+< cteEntera , 2 >
+< dosPuntos ,  >
+< case ,  >
+< cteEntera , 3 >
+< dosPuntos ,  >
+< case ,  >
+< cteEntera , 4 >
+< dosPuntos ,  >
+< print ,  >
+< cadena , "Tienes un 2, un 3 o un 4!!" >
+< ptoComa ,  >
+< break ,  >
+< ptoComa ,  >
+< default ,  >
+< dosPuntos ,  >
+< print ,  >
+< cadena , "Tienes un 5!!" >
+< ptoComa ,  >
+< cerrarCorchete ,  >
+< print ,  >
+< cadena , "Escribe tu nombre: " >
+< ptoComa ,  >
+< input ,  >
+< id  , 0 >
+< ptoComa ,  >
+< print ,  >
+< cadena , "Hola: " >
+< ptoComa ,  >
+< print ,  >
+< id  , 0 >
+< ptoComa ,  >
+< let ,  >
+< id  , 2 >
+< int ,  >
+< ptoComa ,  >
+< print ,  >
+< cadena , "Escribe tu edad: " >
+< ptoComa ,  >
+< input ,  >
+< id  , 2 >
+< ptoComa ,  >
+< print ,  >
+< cadena , "Tienes: " >
+< ptoComa ,  >
+< print ,  >
+< id  , 2 >
+< ptoComa ,  >
+< eof ,  >

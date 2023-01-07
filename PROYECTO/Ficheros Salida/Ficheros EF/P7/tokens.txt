@@ -1,0 +1,58 @@
+
+
+< id  , 0 >
+< asignacion ,  >
+< id  , 1 >
+< opAritmetico , 2 >
+< id  , 2 >
+< ptoComa ,  >
+< if ,  >
+< abrirParentesis ,  >
+< id  , 0 >
+< opRelacional , 1 >
+< id  , 1 >
+< cerrarParentesis ,  >
+< print ,  >
+< cadena , "Iguales" >
+< ptoComa ,  >
+< let ,  >
+< id  , 3 >
+< string ,  >
+< asignacion ,  >
+< cadena , "HEY" >
+< ptoComa ,  >
+< let ,  >
+< id  , 4 >
+< boolean ,  >
+< asignacion ,  >
+< true ,  >
+< ptoComa ,  >
+< let ,  >
+< id  , 5 >
+< boolean ,  >
+< asignacion ,  >
+< true ,  >
+< ptoComa ,  >
+< function ,  >
+< id  , 6 >
+< abrirParentesis ,  >
+< cerrarParentesis ,  >
+< abrirCorchete ,  >
+< print ,  >
+< id  , 3 >
+< ptoComa ,  >
+< cerrarCorchete ,  >
+< if ,  >
+< abrirParentesis ,  >
+< id  , 4 >
+< opLogico , 1 >
+< id  , 5 >
+< opLogico , 1 >
+< id  , 4 >
+< opLogico , 1 >
+< id  , 5 >
+< opLogico , 1 >
+< id  , 5 >
+< opRelacional , 1 >
+< id  , 4 >
+< cerrarParentesis ,  >

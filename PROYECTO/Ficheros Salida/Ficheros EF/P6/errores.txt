@@ -1,0 +1,6 @@
+
+
+Línea 38 - Código de error 211: 
+	 ERROR SEMÁNTICO - La sentencia BREAK solo puede declararse dentro del CASE O DEFAULT de un SWITCH
+
+

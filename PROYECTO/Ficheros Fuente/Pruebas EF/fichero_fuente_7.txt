@@ -1,0 +1,20 @@
+/*
+    CASO DE PRUEBA #7: Error de operador relacional
+*/
+
+a = b + c;  /* Sumando variables con declaración implicita */
+
+if (a == b) 
+    print "Iguales";
+
+let cadena string = "HEY";
+let x boolean = true;
+let y boolean = true;
+
+/* Usando variables globales dentro de la funcion */
+function printCadena () {
+    print cadena;
+}
+
+if (x&&y&&x&&y&&y==x)
+    printCadena();

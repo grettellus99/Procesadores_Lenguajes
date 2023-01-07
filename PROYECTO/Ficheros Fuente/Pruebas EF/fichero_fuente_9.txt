@@ -1,0 +1,34 @@
+/* 
+    CASO DE PRUEBA #9 : valor de retorno distinto al declarado
+*/
+
+let num int = 5;
+let b boolean = true;
+
+function Suma int (int a, int b) {
+    
+    j= a + b;
+    return j;
+    /* La función finaliza y devuelve el valor entero de la expresión */
+}
+
+if (num == 5) 
+    print "Bien!!";
+
+print "Introduce un número para sumarle 18: ";
+input num;
+
+print "El resultado es: ";
+
+if (b) 
+    print Suma(num,18);
+
+function Multiplicacion boolean (int a) {
+    a *= 100;
+    if (a == 1000)
+        return a;
+    return a;
+}
+
+if(Multiplicacion(10))
+    j = num + 40; 

@@ -1,0 +1,23 @@
+
+
+CONTENIDOS DE LA TABLA # 2 :
+
+	* LEXEMA :	'a'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	0
+	----------- ----------
+	* LEXEMA :	'b'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	1
+	----------- ----------
+
+CONTENIDOS DE LA TABLA # 3 :
+
+	* LEXEMA :	'a'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	0
+	----------- ----------
+

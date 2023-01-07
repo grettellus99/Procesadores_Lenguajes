@@ -1,0 +1,39 @@
+/*
+    CASO DE PRUEBA #6: Probando un break fuera del switch.
+*/
+
+let cadena string;
+
+let x int;
+print "Introduce un numero del 1 al 5 :";
+input  x;
+
+switch (x) {
+
+    case 1:
+        print "Tienes un 1!!";
+        break;
+    case 2:
+    case 3:
+    case 4:
+        print "Tienes un 2, un 3 o un 4!!";
+        break;
+    default:
+        print "Tienes un 5!!";
+}
+
+print "Escribe tu nombre: ";
+input cadena;
+print "Hola: ";
+print cadena;
+
+let edad int;
+
+print "Escribe tu edad: ";
+input edad;
+print "Tienes: ";
+print edad;
+
+if(x==5){
+    break;
+}

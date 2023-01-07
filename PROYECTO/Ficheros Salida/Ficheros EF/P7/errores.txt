@@ -1,0 +1,6 @@
+
+
+Línea 19 - Código de error 216: 
+	 ERROR SEMÁNTICO - Las expresiones a comparar con == deben ser de tipo entero. Son de tipo logico y logico respectivamente
+
+

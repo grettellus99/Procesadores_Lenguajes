@@ -1,0 +1,48 @@
+
+
+CONTENIDOS DE LA TABLA # 2 :
+
+	* LEXEMA :	'x'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_logico'
+	+ Despl :	0
+	----------- ----------
+	* LEXEMA :	'y'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	1
+	----------- ----------
+	* LEXEMA :	'cad'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_cadena'
+	+ Despl :	2
+	----------- ----------
+	* LEXEMA :	'cadena2'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_cadena'
+	+ Despl :	66
+	----------- ----------
+
+CONTENIDOS DE LA TABLA # 1 :
+
+	* LEXEMA :	'XX'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	0
+	----------- ----------
+	* LEXEMA :	'YY'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_logico'
+	+ Despl :	1
+	----------- ----------
+	* LEXEMA :	'fun'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_funcion'
+		+ numParam :	3
+			+ TipoParam1 :	'tipo_logico'
+			+ TipoParam2 :	'tipo_entero'
+			+ TipoParam3 :	'tipo_cadena'
+			+ TipoRetorno :	'tipo_cadena'
+		+ EtiqFuncion :	'Etfun1'
+	----------- ----------
+

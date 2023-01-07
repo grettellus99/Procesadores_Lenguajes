@@ -1,0 +1,30 @@
+/*
+    CASO DE PRUEBA #10 : probando llamada a funcion y recursividad
+*/
+
+let saludo [ string;
+
+function Multiplica int (string saludo) {
+    print saludo;
+    saludo  = "Vamos a multiplicar";
+    let saludo2 string = saludo;
+    print saludo2;
+    j = a * b;
+    return j;
+}
+
+function - printResultado (int x) {
+    if (cont == 0)
+        printResultado(x);
+    cont = cont + 1;
+    print x;
+}
+
+switch (j){
+    case 10:
+        printResultado(Multiplica(saludo));
+    default:
+        break;
+}
+
+a = 90000;

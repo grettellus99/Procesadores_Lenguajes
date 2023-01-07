@@ -1,0 +1,36 @@
+/*
+    CASO DE PRUEBA #8 : Probando error T.S
+*/
+
+let XX int = 9;
+let YY boolean = true;
+
+if(XX==9 && YY&&true)
+    print "Hola";
+
+function fun string (boolean x, int y, string cad) {
+    switch (y) {
+        case 1:
+            return "y es 1";
+        case 2:
+        case 3:
+            break;
+        case 9:
+            return "y es 1";
+            break;
+    }
+
+    let XX boolean = false;
+    let XX boolean = true;
+
+    if (y == 8)
+        return "y es 8";
+
+    if(x)
+        return cad;
+    
+    let cadena2 string = "Buenas";
+    return cadena2;
+}
+
+print fun(YY,10,"Hola");

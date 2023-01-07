@@ -137,7 +137,7 @@ class AnalizadorSintactico():
             self.writerParse.writeParse("ERROR")         # invalidar el fichero parse
             errores = self.analizadorLexico.errores      # obtener el gestor de errores del AL
             
-            if self.error.cod == 225: # error producido por comparar el valor de retorno declarado de la funcion con el valor de retorno actual y estos no son iguales
+            if self.error.cod == 229: # error producido por comparar el valor de retorno declarado de la funcion con el valor de retorno actual y estos no son iguales
                                 # Como se hace al final del bloque el numLinea actual no sería correcto
                 linea = self.analizadorLexico.lineaPrincipioBloque # Obtener la linea donde estaba el token function
             else:
@@ -149,6 +149,9 @@ class AnalizadorSintactico():
         
         # Terminar la ejecucion del A. Sintactico + Semantico.
         if(terminado):
-            return True
+            if len(self.analizadorLexico.errores.listaErrores) > 0:
+                return False
+            else: 
+                return True
         else:
             return False

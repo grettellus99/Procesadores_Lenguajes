@@ -100,7 +100,7 @@ def accionesAnalizadorSemantico(a,zona,dec_impl,gestorTS,pila,aux):
         e = aux.getFromTope(2)
         
         if(e.getValorAtributo("tipo") == Tipo.LOGICO):
-           b.setValorAtributo("tipo",s.getValorAtributo("tipo"))
+            b.setValorAtributo("tipo",s.getValorAtributo("tipo"))
         else:
             b.setValorAtributo("tipo",Tipo.ERROR)
             eTipo = e.getValorAtributo("tipo")
@@ -113,7 +113,6 @@ def accionesAnalizadorSemantico(a,zona,dec_impl,gestorTS,pila,aux):
         aux.pop() # E
         aux.pop() # abrirParentesis
         aux.pop() # if
-        #aux.pop() # B
         
     # --------------- 6 ----------------
     elif a == 6.1:
@@ -163,7 +162,6 @@ def accionesAnalizadorSemantico(a,zona,dec_impl,gestorTS,pila,aux):
         b.setValorAtributo("tipoRet",s.getValorAtributo("tipoRet"))
     
         aux.pop() # S
-        #aux.pop() # B
         
     # ---------------- 8 ------------------
     elif a == 8.1:
@@ -1139,25 +1137,44 @@ def accionesAnalizadorSemantico(a,zona,dec_impl,gestorTS,pila,aux):
         o.setValorAtributo("switch",z.getValorAtributo("switch"))
         
     elif a == 59.2:
-        z1 = pila.getFromTope(0)
+        zp = pila.getFromTope(0)
         z = aux.getFromTope(4)
         
-        z1.setValorAtributo("funcion",z.getValorAtributo("funcion"))
-        z1.setValorAtributo("switch",z.getValorAtributo("switch"))
+        zp.setValorAtributo("funcion",z.getValorAtributo("funcion"))
+        zp.setValorAtributo("switch",z.getValorAtributo("switch"))
     
     elif a == 59.3:
         o = aux.getFromTope(1)
-        z1 = aux.getFromTope(0)
+        zp = aux.getFromTope(0)
         z = aux.getFromTope(5)
         
         oTipo = o.getValorAtributo("tipo")
-        z1Tipo = z1.getValorAtributo("tipo")
+        zpTipo = zp.getValorAtributo("tipo")
         
-        if(oTipo == z1Tipo and z1Tipo == Tipo.OK):
+        if(oTipo == zpTipo and zpTipo == Tipo.OK):
             z.setValorAtributo("tipo",Tipo.OK)
         else:
             z.setValorAtributo("tipo",Tipo.ERROR)
             error = Error(239,f"ERROR SEMÁNTICO - Sentencia incorrecta en el cuerpo del CASE", "") 
+        
+        oTipoRet = o.getValorAtributo("tipoRet")
+        zpTipoRet = zp.getValorAtributo("tipoRet")
+        
+        if(oTipoRet != None and oTipoRet != Tipo.ERROR):
+            if(oTipoRet == zpTipoRet):
+                z.setValorAtributo("tipoRet", oTipoRet)
+            elif (zpTipoRet == None):
+                z.setValorAtributo("tipoRet", oTipoRet)
+            else:
+                z.setValorAtributo("tipoRet", Tipo.ERROR)
+                error = Error(236,f"ERROR SEMÁNTICO - Valores de retorno de la función son de un tipo distinto: {getTipoString(oTipoRet)} y {getTipoString(zpTipoRet)}", "") 
+        
+        elif (zpTipoRet != None and zpTipoRet != Tipo.ERROR):
+            z.setValorAtributo("tipoRet", zpTipoRet)
+        elif (oTipoRet == Tipo.ERROR or zpTipoRet == Tipo.ERROR):
+            z.setValorAtributo("tipoRet", Tipo.ERROR)
+            error = Error(237,f"ERROR SEMÁNTICO - Expresión de declaración del valor de retorno de la función incorrecta", "") 
+        
         
         aux.pop() # Z'
         aux.pop() # O
@@ -1171,6 +1188,7 @@ def accionesAnalizadorSemantico(a,zona,dec_impl,gestorTS,pila,aux):
         z = aux.getFromTope(2)
         
         o.setValorAtributo("funcion",z.getValorAtributo("funcion"))
+        o.setValorAtributo("switch",z.getValorAtributo("switch"))
     
     elif a == 60.2:
         o = aux.getFromTope(0)
@@ -1183,6 +1201,15 @@ def accionesAnalizadorSemantico(a,zona,dec_impl,gestorTS,pila,aux):
         else:
             z.setValorAtributo("tipo",Tipo.ERROR)
             error = Error(240,f"ERROR SEMÁNTICO - Sentencia incorrecta en el cuerpo del DEFAULT del switch", "") 
+        
+        oTipoRet = o.getValorAtributo("tipoRet")
+        
+        if(oTipoRet != Tipo.ERROR):
+            z.setValorAtributo("tipoRet", oTipoRet)
+        else:
+            z.setValorAtributo("tipoRet", Tipo.ERROR)
+            error = Error(237,f"ERROR SEMÁNTICO - Expresión de declaración del valor de retorno de la función incorrecta", "") 
+        
         
         aux.pop() # O
         aux.pop() # :
@@ -1205,17 +1232,35 @@ def accionesAnalizadorSemantico(a,zona,dec_impl,gestorTS,pila,aux):
     
     elif a == 61.3:
         o = aux.getFromTope(2)
-        oprima = aux.getFromTope(0)
+        o1 = aux.getFromTope(0)
         b = aux.getFromTope(1)
         
-        oprimaTipo = oprima.getValorAtributo("tipo")
+        o1Tipo = o1.getValorAtributo("tipo")
         bTipo = b.getValorAtributo("tipo")
         
-        if(bTipo == oprimaTipo and oprimaTipo == Tipo.OK):
+        if(bTipo == o1Tipo and o1Tipo == Tipo.OK):
             o.setValorAtributo("tipo",Tipo.OK)
         else:
             o.setValorAtributo("tipo",Tipo.ERROR)
             error = Error(241,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
+        
+        bTipoRet = b.getValorAtributo("tipoRet")
+        o1TipoRet = o1.getValorAtributo("tipoRet")
+        
+        if(bTipoRet != None and bTipoRet != Tipo.ERROR):
+            if(bTipoRet == o1TipoRet):
+                o.setValorAtributo("tipoRet", bTipoRet)
+            elif (o1TipoRet == None):
+                o.setValorAtributo("tipoRet", bTipoRet)
+            else:
+                o.setValorAtributo("tipoRet", Tipo.ERROR)
+                error = Error(236,f"ERROR SEMÁNTICO - Valores de retorno de la función son de un tipo distinto: {getTipoString(bTipoRet)} y {getTipoString(o1TipoRet)}", "")   
+        elif (o1TipoRet != None and o1TipoRet != Tipo.ERROR):
+            o.setValorAtributo("tipoRet", o1TipoRet)
+        elif (o1TipoRet == Tipo.ERROR or bTipoRet == Tipo.ERROR):
+            o.setValorAtributo("tipoRet", Tipo.ERROR)
+            error = Error(237,f"ERROR SEMÁNTICO - Expresión de declaración del valor de retorno de la función incorrecta", "") 
+        
         
         aux.pop() # O'
         aux.pop() # B      
@@ -1228,11 +1273,15 @@ def accionesAnalizadorSemantico(a,zona,dec_impl,gestorTS,pila,aux):
     
     # ------------- 63 -------------
     elif a == 63.1:
-        zprima = aux.getFromTope(1)
-        z = aux.getFromTope(0)
+        zprima = aux.getFromTope(0)
+        z = pila.getFromTope(0)
         
         z.setValorAtributo("switch",zprima.getValorAtributo("switch"))
-        z.setValorAtributo("funcion",zprima.getValorAtributo("funcion"))
+        z.setValorAtributo("funcion",zprima.getValorAtributo("funcion"))    
+        
+    elif a == 63.2:
+        zprima = aux.getFromTope(1)
+        z = aux.getFromTope(0)
         
         zTipo = z.getValorAtributo("tipo")
         
@@ -1242,12 +1291,20 @@ def accionesAnalizadorSemantico(a,zona,dec_impl,gestorTS,pila,aux):
             zprima.setValorAtributo("tipo",Tipo.ERROR)
             error = Error(242,f"ERROR SEMÁNTICO - Sentencia incorrecta", "") 
         
+        zTipoRet = z.getValorAtributo("tipoRet")
+        
+        if(zTipoRet != Tipo.ERROR):
+            zprima.setValorAtributo("tipoRet", zTipoRet)
+        else:
+            zprima.setValorAtributo("tipoRet", Tipo.ERROR)
+            error = Error(237,f"ERROR SEMÁNTICO - Expresión de declaración del valor de retorno de la función incorrecta", "") 
+        
+        
         aux.pop() # Z
         
     # ------------- 64 -------------
     elif a == 64.1:
         zprima = aux.getFromTope(0)
-        
         zprima.setValorAtributo("tipo",Tipo.OK)
    
     return zona, dec_impl, error      
