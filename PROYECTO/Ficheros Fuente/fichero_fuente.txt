@@ -13,3 +13,5 @@ x =
     * (2
     * y
     * 7);
+input z;
+print z;

@@ -55,4 +55,10 @@
 < cteEntera , 7 >
 < cerrarParentesis ,  >
 < ptoComa ,  >
+< input ,  >
+< id  , 2 >
+< ptoComa ,  >
+< print ,  >
+< id  , 2 >
+< ptoComa ,  >
 < eof ,  >

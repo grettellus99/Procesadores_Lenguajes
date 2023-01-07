@@ -1,13 +1,17 @@
 from analizadorSintactico import AnalizadorSintactico
 
-analizadorSintactico = AnalizadorSintactico()
 
-terminado = None
+class AnalizadorSemantico():
+    def __init__(self):
+        self.analizadorSintactico = AnalizadorSintactico()
+        self.terminado = None
 
-while(terminado == None):
-    terminado = analizadorSintactico.analisisSintactico()
 
-if terminado == False:
-    print("Error detectado")
-else:
-    print("Programa correcto")
+    def analisisSemantico(self):
+        while(self.terminado == None):
+            self.terminado = self.analizadorSintactico.analisisSintactico()
+
+        if self.terminado == False:
+            print("Error detectado")
+        else:
+            print("Programa correcto")
