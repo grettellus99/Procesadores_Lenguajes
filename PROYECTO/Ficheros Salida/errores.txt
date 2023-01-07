@@ -1,19 +1,2 @@
 
 
-Línea 5 - Código de error 50: 
-	 ERROR LÉXICO - carácter CAR: '[' no esperado.
-
-
-Línea 16 - Código de error 50: 
-	 ERROR LÉXICO - carácter CAR: '-' no esperado.
-
-
-Línea 30 - Código de error 60: 
-	 ERROR LÉXICO - El número introducido está fuera de rango.
-	 NUM: 90000 es mayor que 32767.
-
-
-Línea 30 - Código de error 105: 
-	 ERROR SINTÁCTICO - Token ; no pertenece a una expresión válida
-
-

@@ -1,23 +1,25 @@
 
 
-CONTENIDOS DE LA TABLA # 2 :
-
-	* LEXEMA :	'saludo'
-	ATRIBUTOS :
-	+ Tipo :	'tipo_cadena'
-	+ Despl :	0
-	----------- ----------
-	* LEXEMA :	'saludo2'
-	ATRIBUTOS :
-	+ Tipo :	'tipo_cadena'
-	+ Despl :	64
-	----------- ----------
-
-CONTENIDOS DE LA TABLA # 3 :
+CONTENIDOS DE LA TABLA # 1 :
 
 	* LEXEMA :	'x'
 	ATRIBUTOS :
 	+ Tipo :	'tipo_entero'
 	+ Despl :	0
+	----------- ----------
+	* LEXEMA :	'b'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_logico'
+	+ Despl :	1
+	----------- ----------
+	* LEXEMA :	'z'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	2
+	----------- ----------
+	* LEXEMA :	'y'
+	ATRIBUTOS :
+	+ Tipo :	'tipo_entero'
+	+ Despl :	3
 	----------- ----------
 
