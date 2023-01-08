@@ -1,0 +1,39 @@
+
+
+< let ,  >
+< id  , 0 >
+< string ,  >
+< ptoComa ,   >
+< function ,  >
+< id  , 1 >
+< abrirParantesis ,   >
+< string ,  >
+< id  , 2 >
+< cerrarParantesis ,   >
+< abrirCorchete ,   >
+< print ,  >
+< id  , 2 >
+< ptoComa ,   >
+< cerrarCorchete ,   >
+< function ,  >
+< id  , 3 >
+< abrirParantesis ,   >
+< cerrarParantesis ,   >
+< abrirCorchete ,   >
+< print ,  >
+< cadena , Introduce un texto >
+< ptoComa ,   >
+< input ,  >
+< id  , 0 >
+< ptoComa ,   >
+< cerrarCorchete ,   >
+< id  , 3 >
+< abrirParantesis ,   >
+< cerrarParantesis ,   >
+< ptoComa ,   >
+< id  , 1 >
+< abrirParantesis ,   >
+< id  , 0 >
+< cerrarParantesis ,   >
+< ptoComa ,   >
+< eof ,  >

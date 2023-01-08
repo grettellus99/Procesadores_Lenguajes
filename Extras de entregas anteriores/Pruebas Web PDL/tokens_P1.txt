@@ -1,0 +1,90 @@
+
+
+< let ,  >
+< n1 , 0 >
+< int ,  >
+< ptoComa ,   >
+< let ,  >
+< n2 , 1 >
+< int ,  >
+< ptoComa ,   >
+< let ,  >
+< l1 , 2 >
+< boolean ,  >
+< ptoComa ,   >
+< let ,  >
+< l2 , 3 >
+< boolean ,  >
+< ptoComa ,   >
+< let ,  >
+< cad , 4 >
+< string ,  >
+< ptoComa ,   >
+< input ,  >
+< n1 , 0 >
+< ptoComa ,   >
+< l1 , 2 >
+< asignacion ,   >
+< l2 , 3 >
+< ptoComa ,   >
+< if ,  >
+< abrirParantesis ,   >
+< l1 , 2 >
+< opLogico , 1 >
+< l2 , 3 >
+< cerrarParantesis ,   >
+< cad , 4 >
+< asignacion ,   >
+< cadena , hello >
+< ptoComa ,   >
+< n2 , 1 >
+< asignacion ,   >
+< n1 , 0 >
+< opAritmetico , 2 >
+< cteEntera , 378 >
+< ptoComa ,   >
+< print ,  >
+< cteEntera , 33 >
+< opAritmetico , 1 >
+< n1 , 0 >
+< opAritmetico , 2 >
+< n2 , 1 >
+< ptoComa ,   >
+< function ,  >
+< ff , 5 >
+< boolean ,  >
+< abrirParantesis ,   >
+< boolean ,  >
+< ss , 6 >
+< cerrarParantesis ,   >
+< abrirCorchete ,   >
+< varglobal , 7 >
+< asignacion ,   >
+< cteEntera , 8 >
+< ptoComa ,   >
+< if ,  >
+< abrirParantesis ,   >
+< l1 , 2 >
+< cerrarParantesis ,   >
+< l2 , 3 >
+< asignacion ,   >
+< ff , 5 >
+< abrirParantesis ,   >
+< ss , 6 >
+< cerrarParantesis ,   >
+< ptoComa ,   >
+< return ,  >
+< ss , 6 >
+< ptoComa ,   >
+< cerrarCorchete ,   >
+< if ,  >
+< abrirParantesis ,   >
+< ff , 5 >
+< abrirParantesis ,   >
+< l1 , 2 >
+< cerrarParantesis ,   >
+< cerrarParantesis ,   >
+< print ,  >
+< varglobal , 7 >
+< ptoComa ,   >
+< eof ,  >

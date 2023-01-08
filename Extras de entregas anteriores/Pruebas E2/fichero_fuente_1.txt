@@ -1,0 +1,38 @@
+/*
+    CASO DE PRUEBA #1
+*/
+
+print "Introduce el resultado de 6+6*2: ";
+let a_1 int = 0;
+
+input a_1;
+
+let num int = 5;
+
+if (a_1 == 18) 
+    print "Bien!!";
+if (a_1 == 18)    print "Introduce un número para sumarle a 18: ";
+if (a_1 == 18)    input num;
+
+
+switch (a_1) {
+
+    case 24:
+        print ":( es 6*2 = 12 y luego 12 + 6 = 18 no 24";
+        print "Introduce un número para sumarle a 24: "; 
+        input num;
+        break;
+    default:
+        print "Vaya " + a_1 + " no es correcto.";
+}
+
+
+function Suma int (int a, int b) {
+    
+    j= a + b;
+    return j;
+    /* La función finaliza y devuelve el valor entero de la expresión */
+}
+
+print a_1 + " + " + num + " = ";
+print  Suma(a_1,num);

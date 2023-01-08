@@ -1,0 +1,19 @@
+CONTENIDOS DE LA TABLA # 1 :
+
+
+	* LEXEMA :	'texto'
+	ATRIBUTOS :
+	+ despl :	0
+	----------- ----------
+	* LEXEMA :	'alert'
+	ATRIBUTOS :
+	+ despl :	1
+	----------- ----------
+	* LEXEMA :	'msg_'
+	ATRIBUTOS :
+	+ despl :	2
+	----------- ----------
+	* LEXEMA :	'pideTexto'
+	ATRIBUTOS :
+	+ despl :	3
+	----------- ----------
