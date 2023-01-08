@@ -1,7 +1,0 @@
-int Hola = 5;
-if(Hola5==5) print Hola;
-_B*=57;
-abcd&&f="micasa"; /* alkjf */
-+:,{}
-switch case default return function break
-let string boolean int true false
